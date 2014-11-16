@@ -1,0 +1,64 @@
+
+public class Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String [][] tablero = new String [4][4];
+		
+		tablero [0][0] = "  ivYi     .rvv:   \n"
+				       + ":MOG0OMr  vB8ZEM8. \n"
+				       + "GE5U22XG ,MF1u12OS \n"
+				       + "0022u2UFXq22uUu1Ek \n"
+				       + "iMSU2uUu1U2uUu2SB, \n"
+				       + " vOSuUuUuuuUu1SMi  \n"
+				       + "  i8q22u2uUu1qO,   \n"
+				       + "   .NG22uUU5ZX     \n"
+				       + "     uO52UkOL      \n"
+				       + "      rMkqOi       \n"
+				       + "       :@8.        \n"
+				       + "        ,.         ";
+		
+		tablero [0][1] = "        i@L        \n"
+			           + "       7@B@u       \n"
+			           + "      X@BMM@O      \n"
+			           + "     B@MOGOO@B,    \n"
+			           + "   iB@OOG8ZOO@BL   \n"
+			           + "  1B@O8GOGOZ88BBG  \n"
+			           + " ZBBOO8MOMOMOO8MB@ \n"
+			           + ":B@OOO@B@M@M@OOOBBj\n"
+			           + ".@@@B@B :@Y k@@BB@7\n"
+			           + " r@B@B  .Bv  E@B@u \n"
+			           + "        B@B        \n"
+			           + "       .7:r,       ";
+		
+		tablero [0][2] = "        7.         \n"
+			           + "       2BMi        \n"
+			           + "     .E0FSMJ       \n"
+			           + "    rMk2u228P.     \n"
+			           + "   5O11uUu2Uq8i    \n"
+			           + " rOZ12uUuUuUUXMX   \n"
+			           + " j@P1uUuUu2u21MM,  \n"
+			           + "  .G0FuUuUu1FML    \n"
+			           + "    28kUUu5q8:     \n"
+			           + "     ;8q2FZX       \n"
+			           + "      .PMML        \n"
+			           + "        Ui         ";
+		
+		System.out.println(" ");
+		
+		for (int x=0; x < tablero.length; x++) {
+			 // System.out.print("|");
+			  for (int y=0; y < tablero[x].length; y++) {
+			    System.out.print (tablero[x][y]);
+			    if (y!=tablero[x].length-1) System.out.print("\t");
+			  }
+			 // System.out.println("|");
+			}
+		
+		
+		
+		
+	}
+
+}

@@ -28,4 +28,15 @@ public class Persona {
 	}
 */
 
+	// Método para imprimir
+	
+	public void imprimirDatos (String nombrePers, int edadPers) {
+		nombrePers = nombre;
+		edadPers = edad;
+		System.out.println("\nEl nombre introducido es "+nombrePers+" y la edad es "+edadPers+" años.");
+	}
+	
+	
+	
+	
 }

@@ -1,0 +1,27 @@
+
+public class Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String [][] tablero = new String [4][4];
+		
+		tablero [0][0] = "1";
+		
+		System.out.println(" ");
+		
+		for (int x=0; x < tablero.length; x++) {
+			  System.out.print("|");
+			  for (int y=0; y < tablero[x].length; y++) {
+			    System.out.print (tablero[x][y]);
+			    if (y!=tablero[x].length-1) System.out.print("\t");
+			  }
+			  System.out.println("|");
+			}
+		
+		
+		
+		
+	}
+
+}

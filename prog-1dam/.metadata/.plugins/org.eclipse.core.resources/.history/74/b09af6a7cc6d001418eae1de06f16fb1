@@ -1,0 +1,38 @@
+
+public class Array {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		String [][] tablero = new String [4][4];
+		
+		tablero [0][0] = "  ivYi     .rvv:  \n"
+				       + ":MOG0OMr  vB8ZEM8.\n"
+				       + "GE5U22XG ,MF1u12OS\n"
+				       + "0022u2UFXq22uUu1Ek\n"
+				       + "iMSU2uUu1U2uUu2SB,\n"
+				       + " vOSuUuUuuuUu1SMi \n"
+				       + "  i8q22u2uUu1qO,  \n"
+				       + "   .NG22uUU5ZX    \n"
+				       + "     uO52UkOL     \n"
+				       + "      rMkqOi      \n"
+				       + "       :@8.       \n"
+				       + "        ,.        \n";
+		
+		System.out.println(" ");
+		
+		for (int x=0; x < tablero.length; x++) {
+			 // System.out.print("|");
+			  for (int y=0; y < tablero[x].length; y++) {
+			    System.out.print (tablero[x][y]);
+			    if (y!=tablero[x].length-1) System.out.print("\t");
+			  }
+			 // System.out.println("|");
+			}
+		
+		
+		
+		
+	}
+
+}
