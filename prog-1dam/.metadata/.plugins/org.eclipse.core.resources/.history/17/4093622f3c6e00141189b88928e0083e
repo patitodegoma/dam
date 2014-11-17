@@ -95,7 +95,6 @@ public class Array {
 				  
 				  for (int z=0; z < 12; z++) {
 					  System.out.print (tablero[x][y][z]);
-					  
 				  }
 				  
 				  

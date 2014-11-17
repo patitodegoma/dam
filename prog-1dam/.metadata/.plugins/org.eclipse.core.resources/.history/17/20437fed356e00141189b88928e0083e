@@ -23,7 +23,7 @@ public class Principal {
 		
 		*/
 		
-		miPers.imprimirDatos ();
+		miPers.imprimirDatos (nom, ed);
 
 	}
 

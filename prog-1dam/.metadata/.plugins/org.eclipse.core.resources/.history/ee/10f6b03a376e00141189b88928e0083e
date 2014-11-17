@@ -4,24 +4,8 @@ public class Array {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String [][][] tablero = new String [4][4][12];
+		String [][] tablero = new String [4][4];
 		
-		
-		tablero [0][0][0] = "    ivYi     .rvv:   ";
-		tablero [0][0][1] = "  :MOG0OMr  vB8ZEM8. ";
-		tablero [0][0][2] = "  GE5U22XG ,MF1u12OS ";
-		tablero [0][0][3] = "  0022u2UFXq22uUu1Ek ";
-		tablero [0][0][4] = "  iMSU2uUu1U2uUu2SB, ";
-		tablero [0][0][5] = "   vOSuUuUuuuUu1SMi  ";
-		tablero [0][0][6] = "    i8q22u2uUu1qO,   ";
-		tablero [0][0][7] = "     .NG22uUU5ZX     ";
-		tablero [0][0][8] = "       uO52UkOL      ";
-		tablero [0][0][9] = "        rMkqOi       ";
-		tablero [0][0][10] = "         :@8.        ";
-		tablero [0][0][11] = "          ,.         ";
-		
-		
-/*		
 		tablero [0][0] = "    ivYi     .rvv:   \n"
 				       + "  :MOG0OMr  vB8ZEM8. \n"
 				       + "  GE5U22XG ,MF1u12OS \n"
@@ -33,7 +17,7 @@ public class Array {
 				       + "       uO52UkOL      \n"
 				       + "        rMkqOi       \n"
 				       + "         :@8.        \n"
-				       + "          ,.         \n";
+				       + "          ,.         ";
 		
 		tablero [0][1] = "         i@L         \n"
 			           + "        7@B@u        \n"
@@ -46,7 +30,7 @@ public class Array {
 			           + " .@@@B@B :@Y k@@BB@7 \n"
 			           + "  r@B@B  .Bv  E@B@u  \n"
 			           + "         B@B         \n"
-			           + "        .7:r,        \n";
+			           + "        .7:r,        ";
 		
 		tablero [0][2] = "          7.         \n"
 			           + "         2BMi        \n"
@@ -59,7 +43,7 @@ public class Array {
 			           + "      28kUUu5q8:     \n"
 			           + "       ;8q2FZX       \n"
 			           + "        .PMML        \n"
-			           + "          Ui         \n";
+			           + "          Ui         ";
 		
 		tablero [0][3] = "         ...         \n"
 			           + "       0@B@B@M.      \n"
@@ -72,7 +56,7 @@ public class Array {
 			           + ".@BBM@B@UuBP7@@@MBB@7\n"
 			           + " r@B@BM.  @,  qB@B@2 \n"
 			           + "         ;BF     .   \n"
-			           + "        .@@B:        \n";
+			           + "        .@@B:        ";
 		
 		tablero [1][0] = tablero [0][2];
 		tablero [1][1] = tablero [0][1];
@@ -86,22 +70,16 @@ public class Array {
 		tablero [3][1] = tablero [0][2];
 		tablero [3][2] = tablero [0][1];
 		tablero [3][3] = tablero [0][3];
-	*/	
+		
 		System.out.println(" ");
 		
 		for (int x=0; x < tablero.length; x++) {
-			
+			 // System.out.print("|");
 			  for (int y=0; y < tablero[x].length; y++) {
-				  
-				  for (int z=0; z < 12; z++) {
-					  System.out.print (tablero[x][y][z]);
-					  
-				  }
-				  
-				  
+			    System.out.print (tablero[x][y]);
 			    if (y!=tablero[x].length-1) System.out.print("\t");
 			  }
-			 
+			 // System.out.println("|");
 			}
 		
 		
