@@ -1,0 +1,28 @@
+package Ejercicio_03;
+
+public class Numero {
+	
+	String signo;
+	
+public Numero (String signo) {
+		
+		this.signo = signo;
+	}
+
+public String getSigno() {
+	return signo;
+}
+
+public void setSigno(String signo) {
+	this.signo = signo;
+}
+
+public String devuelveSigno (int num) {
+	if (num >= 0)
+		signo = "positivo";
+	else
+		signo = "negativo";
+	return signo;
+}
+
+}
