@@ -11,7 +11,6 @@ INDEX VERSION 1.127+C:\Users\amacias\Desktop\WShared\dam\prog-1dam\.metadata\.pl
 1811389807.index
 2620426498.index
 2804169155.index
-3344742331.index
 105210318.index
 4134526084.index
 2331038443.index

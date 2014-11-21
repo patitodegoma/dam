@@ -1,0 +1,43 @@
+
+public class Array2 {
+	
+	String array1  = 		"    ivYi     .rvv:   \n"
+					      + "  :MOG0OMr  vB8ZEM8. \n"
+					      + "  GE5U22XG ,MF1u12OS \n"
+					      + "  0022u2UFXq22uUu1Ek \n"
+					      + "  iMSU2uUu1U2uUu2SB, \n"
+					      + "   vOSuUuUuuuUu1SMi  \n"
+					      + "    i8q22u2uUu1qO,   \n"
+					      + "     .NG22uUU5ZX     \n"
+					      + "       uO52UkOL      \n"
+					      + "        rMkqOi       \n"
+					      + "         :@8.        \n"
+					      + "          ,.         ";
+	
+	array2 = array1;
+	array3 = array1;
+	array4 = array1;
+	array5 = array1;
+	array6 = array1;
+	array7 = array1;
+	array8 = array1;
+	array9 = array1;
+	array10 = array1;
+	
+	String [][] tablero = new String[][] {array1, array2, array3, array4, array5,
+			                              array6, array7, array8, array9, array10};
+
+	
+	for (int x=0; x < tablero.length; x++) {
+		
+		  for (int y=0; y < tablero[x].length; y++) {
+			  
+						  
+		    if (y!=tablero[x].length-1) System.out.print("\t");
+		  }
+		 
+		}
+	
+	
+	
+}
