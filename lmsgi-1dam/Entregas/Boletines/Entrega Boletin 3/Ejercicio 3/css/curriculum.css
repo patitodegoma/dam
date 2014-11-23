@@ -1,62 +1,50 @@
-h1, h2, h3, h4, h5, h6 {
-    font-weight: bold;
-    margin: 0 0 0.2em;
-    text-indent: 7%;
+@font-face {
+	font-family: 'Constantine';
+	src: url(../res/Constantine.ttf);
+}
+
+@font-face {
+	font-family: 'Barkentina';
+	src: url(../res/Barkentina.otf);
+}
+
+@font-face {
+	font-family: 'Apple';
+	src: url(../res/Apple.ttf);
 }
 
 body {
-   /* margin-left: 5%;
-    margin-right: 5%;
-    margin-top: 2%; */
-    background-color: #F3E2A9;
+	background-color: #F5F6CE;
 }
 
 h1 {
-    font-size: 200%;
-    color: blue;
+	font-family: 'Constantine';
+	font-size: 48px;
+	color: #B40404;
+	letter-spacing: 15px;
+	text-align: center;
+	background-color: #E6E6E6;
 }
 
 h2 {
-    font-size: 150%;
-    margin-top: 0.5em;
+	font-family: 'Barkentina';
+	font-size: 30px;
+	text-indent: 15px;
+	font-style: italic;
+	letter-spacing: 5px;
+	background-color: #E0F8F1;
 }
 
-h3 {
-    font-size: 140%;
-    margin-top: 0.5em;
-}
-
-h4 {
-    font-size: 130%;
-    margin-top: 0.8em;
-    line-height: 20px;
-}
-
-h5 {
-    font-size: 115%;
-    margin-top: 0.8em;
-}
-
-h6 {
-    font-size: 115%;
-    font-style: italic;
-    margin-top: 0.8em;
+i, em {
+	font-family: 'Apple';
+	letter-spacing: 2px;
+	font-size: 18px;
+	color: #08088A;
 }
 
 p {
-    line-height: 1.5em;
-    margin-bottom: 0.3em;
-    margin-top: 0.3em;
-    text-indent: 5%
-}
-
-a {
-    color: #075000;
-    text-decoration: none;
-}
-
-a:focus, a:hover, a:active {
-  color: #D8B30D;
-  text-decoration: underline;
-  font-style: italic;
+	font-family: 'Apple';
+	text-indent: 15px;
+	letter-spacing: 2px;
+	font-size: 18px;
 }
