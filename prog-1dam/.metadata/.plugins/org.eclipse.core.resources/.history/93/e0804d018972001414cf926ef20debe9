@@ -1,0 +1,22 @@
+
+public class Bidimensional {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		float [][] tablero = new float [4][5];
+		
+		for (int i = 0; i < tablero.length; i++) {
+			System.out.print("\n");   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
+			System.out.print("*\t");  // Asterisco al principio de cada fila
+			for (int j = 0; j < tablero[i].length; j++) {
+				System.out.printf("%.2f\t", Math.random());
+				if (j == tablero[i].length-1) 
+					System.out.printf("%.2f\t*", Math.random());
+			}
+
+		}
+		
+	}
+
+}

@@ -1,0 +1,81 @@
+
+public class Bidimensional {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		int nfilas = 6, ncolumnas = 5, fila1, columna1, fila2, columna2;
+		
+		float [][] tablero = new float [nfilas][ncolumnas];
+		
+		int [][] mostrar = new int [nfilas][ncolumnas];
+		
+		
+		for (int i = 0; i < mostrar.length; i++) {   // Inicializo el mostrar todos a falso
+			for (int j = 0; j < mostrar[i].length; j++) {
+				mostrar [i][j] = 0;
+			}
+		}
+		
+		System.out.println("Hola amigo, dime qué casilla abrimos");
+		fila1 = Leer.datoInt();
+		columna1 = Leer.datoInt();
+		mostrar [fila1-1][columna1-1] = 1;
+			
+		
+		// Inicio del dibujo del tablero
+		
+		for (int i = 0; i < ncolumnas + 2; i++) {    // Para el número de columnas, más la inicio y fin
+			System.out.print("*\t");       // Dibuja un asterisco (fila de asteriscos)
+		}
+		System.out.println(" ");
+		for (int i = 0; i < tablero.length; i++) {		
+			System.out.print("*\t");  // Asterisco al principio de cada fila
+			for (int j = 0; j < tablero[i].length; j++) {
+				if (mostrar [i][j] == 0) {
+					System.out.print("-\t");
+				} else
+					System.out.printf("%.2f\t", Math.random());
+				if (j == tablero[i].length-1)   // Comprueba si hemos puesto el último de la fila
+					System.out.printf("*", Math.random());  // Y en caso afirmativo le ponemos asterisco
+			}
+			System.out.print("\n");   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
+		}
+		for (int i = 0; i < ncolumnas + 2; i++) {    // Para el número de columnas, más la inicio y fin
+			System.out.print("*\t");       // Dibuja un asterisco (fila de asteriscos)
+		}
+		
+		// Fin del tablero
+		
+		System.out.println("\n\nHola amigo, dime qué casilla abrimos ahora");
+		fila2 = Leer.datoInt();
+		columna2 = Leer.datoInt();
+		mostrar [fila2-1][columna2-1] = 1;
+		
+		// Inicio del dibujo del tablero
+		
+				for (int i = 0; i < ncolumnas + 2; i++) {    // Para el número de columnas, más la inicio y fin
+					System.out.print("*\t");       // Dibuja un asterisco (fila de asteriscos)
+				}
+				System.out.println(" ");
+				for (int i = 0; i < tablero.length; i++) {		
+					System.out.print("*\t");  // Asterisco al principio de cada fila
+					for (int j = 0; j < tablero[i].length; j++) {
+						if (mostrar [i][j] == 0) {
+							System.out.print("-\t");
+						} else
+							System.out.printf("%.2f\t", Math.random());
+						if (j == tablero[i].length-1)   // Comprueba si hemos puesto el último de la fila
+							System.out.printf("*", Math.random());  // Y en caso afirmativo le ponemos asterisco
+					}
+					System.out.print("\n");   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
+				}
+				for (int i = 0; i < ncolumnas + 2; i++) {    // Para el número de columnas, más la inicio y fin
+					System.out.print("*\t");       // Dibuja un asterisco (fila de asteriscos)
+				}
+				
+				// Fin del tablero
+		
+	}
+
+}

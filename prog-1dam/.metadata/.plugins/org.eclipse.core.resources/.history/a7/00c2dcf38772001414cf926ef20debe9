@@ -1,0 +1,17 @@
+
+public class Bidimensional {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		float [][] tablero = new float [4][5];
+		
+		for (int i = 0; i < tablero.length; i++) {
+			for (int j = 0; j < tablero[i].length; j++) {
+				System.out.println(Math.random());
+			}
+		}
+		
+	}
+
+}
