@@ -1,0 +1,58 @@
+@font-face {
+	font-family: 'Constantine';
+	src: url(../res/Constantine.ttf);
+}
+
+@font-face {
+	font-family: 'Barkentina';
+	src: url(../res/Barkentina.otf);
+}
+
+@font-face {
+	font-family: 'Apple';
+	src: url(../res/Apple.ttf);
+}
+
+body {
+	background-color: #F5F6CE;
+}
+
+h1 {
+	font-family: 'Constantine';
+	font-size: 48px;
+	color: #B40404;
+	letter-spacing: 15px;
+	text-align: center;
+	background-color: #E6E6E6;
+}
+
+h2 {
+	font-family: 'Barkentina';
+	font-size: 30px;
+	text-indent: 15px;
+	font-style: italic;
+	letter-spacing: 5px;
+	background-color: #E0F8F1;
+}
+
+i, em {
+	font-family: 'Apple';
+	letter-spacing: 2px;
+	font-size: 18px;
+	color: #08088A;
+}
+
+p {
+	font-family: 'Apple';
+	text-indent: 15px;
+	letter-spacing: 2px;
+	font-size: 20px;
+}
+
+a {
+	color: red;
+	font-size: 20px;
+	line-height: 30px;
+	font-style: italic;
+	text-decoration: none;
+}

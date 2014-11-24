@@ -1,0 +1,51 @@
+@font-face {
+	font-family: 'Constantine';
+	src: url(../res/Constantine.ttf);
+}
+
+@font-face {
+	font-family: 'Barkentina';
+	src: url(../res/Barkentina.otf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+body {
+	background-color: #F5F6CE;
+}
+
+h1 {
+	font-family: 'Constantine';
+	font-size: 48px;
+	color: #B40404;
+	letter-spacing: 15px;
+	text-align: center;
+	background-color: #E6E6E6;
+}
+
+h2 {
+	font-family: 'Barkentina';
+	color: #F4FA58;
+	font-size: 30px;
+	text-indent: 15px;
+	font-style: italic;
+	letter-spacing: 5px;
+	background-color: #0B0B3B;
+}
+
+
+blockquote {
+	font-family: 'Sweetly';
+	font-size: 42px;
+}
+
+a {
+	color: red;
+	font-size: 20px;
+	line-height: 30px;
+	font-style: italic;
+	text-decoration: none;
+}

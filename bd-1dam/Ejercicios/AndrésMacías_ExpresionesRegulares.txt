@@ -1,0 +1,67 @@
+
+Construir una expresión regular que nos permita validar que una cadena de caracteres...
+
+
+1. no tenga más de tres “a” o tres “b” seguidas
+
+^(((a{1,3}b{1,3})*|(b{1,3}a{1,3})*)*|a{0,3}|b{0,3})$
+
+
+2. vayan alternando las “a” y las “b” sin repetirse
+
+^(((ab)*a?)|((ba)*b?))$
+
+
+3. sólo tenga parejas de “a” y de “b”
+
+^((aabb)*(aa)?|(bbaa)*(bb)?)$     --> Si las parejas son alternas, es decir, no son válidas las dobles parejas del tipo 'aaaa'
+
+^((aa)*(bb)*|(bb)*(aa)*)*$        --> Si las parejas pueden repetirse, es decir, si se considera válida 'aaaabb' al ser dos parejas juntas de "a"
+
+
+4. tengan sólo “a” o sólo “b”
+
+^(a*|b*)$
+
+
+5. haya unas cuantas “a” y luego unas cuantas “b” o al revés
+
+^((a+b+)|(b+a+))$
+
+
+6. contengan la cadena “aba” o la cadena “bab”
+
+^(.*(aba).*)|(.*(bab).*)$
+
+
+7. contengan la cadena “ba” dos veces
+
+^((a*(ba){2}a*)|(a*(ba)a*(ba)a*))$
+
+
+8. es una hora (en formato de 24 horas) válida (horas, minutos y segundos).
+
+^([0-1][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])$
+
+
+9. es una fecha válida (en formato dd/mm/aaaa).
+
+Los años los admite desde el 0 al 2499, el límite es para acotar los bisiestos que salen cada 400 años.
+
+^((([0-2][0-9]|3[0-1])\/(01|03|05|07|08|10|12)\/([0-1][0-9][0-9][0-9]|2[0-4][0-9][0-9]))|(([0-2][0-9]|30)\/(04|06|09|11)\/([0-1][0-9][0-9][0-9]|2[0-4][0-9][0-9]))|(([0-1][0-9]|2[0-8])\/02\/([0-1][0-9][0-9][0-9]|2[0-4][0-9][0-9]))|(29\/02\/((([0-1][0-9]|2[0-4])(04|08|12|16|20|24|28|32|36|40|44|48|52|56|60|64|68|72|76|80|84|88|92|96))|(0400|0800|1200|1600|2000|2400))))$
+
+
+10. es una IP (versión 4) válida
+
+^((([0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.)(([0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.)(([0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\.)(([0-1]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])))$
+
+
+
+
+
+
+
+
+
+
+

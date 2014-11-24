@@ -1,0 +1,348 @@
+@font-face {
+	font-family: 'Constantine';
+	src: url(../res/Constantine.ttf);
+}
+
+@font-face {
+	font-family: 'Barkentina';
+	src: url(../res/Barkentina.otf);
+}
+
+@font-face {
+	font-family: 'Apple';
+	src: url(../res/Apple.ttf);
+}
+
+@font-face {
+	font-family: 'Bodoni';
+	src: url(../res/Bodoni.ttf);
+}
+
+@font-face {
+	font-family: 'Chopin';
+	src: url(../res/Chopin.otf);
+}
+
+@font-face {
+	font-family: 'Action';
+	src: url(../res/Action.ttf);
+}
+
+@font-face {
+	font-family: 'AlphaWood';
+	src: url(../res/AlphaWood.ttf);
+}
+
+@font-face {
+	font-family: 'Birds';
+	src: url(../res/Birds.ttf);
+}
+
+@font-face {
+	font-family: 'Books';
+	src: url(../res/Books.ttf);
+}
+
+@font-face {
+	font-family: 'Camille';
+	src: url(../res/Camille.ttf);
+}
+
+@font-face {
+	font-family: 'Carnevalee';
+	src: url(../res/Carnevalee.ttf);
+}
+
+@font-face {
+	font-family: 'Cartoon';
+	src: url(../res/Cartoon.ttf);
+}
+
+@font-face {
+	font-family: 'Florentine';
+	src: url(../res/Florentine.ttf);
+}
+
+@font-face {
+	font-family: 'Circus';
+	src: url(../res/Circus.ttf);
+}
+
+@font-face {
+	font-family: 'Dragon';
+	src: url(../res/Dragon.otf);
+}
+
+@font-face {
+	font-family: 'Drifttype';
+	src: url(../res/Drifttype.ttf);
+}
+
+@font-face {
+	font-family: 'Fighting';
+	src: url(../res/Fighting.ttf);
+}
+
+@font-face {
+	font-family: 'FONTita';
+	src: url(../res/FONTita.otf);
+}
+
+@font-face {
+	font-family: 'Germanica';
+	src: url(../res/Germanica.ttf);
+}
+
+@font-face {
+	font-family: 'Hobgoblin';
+	src: url(../res/Hobgoblin.otf);
+}
+
+@font-face {
+	font-family: 'Lighthouse';
+	src: url(../res/Lighthouse.ttf);
+}
+
+@font-face {
+	font-family: 'LittleBird';
+	src: url(../res/LittleBird.ttf);
+}
+
+@font-face {
+	font-family: 'Magnolia';
+	src: url(../res/Magnolia.ttf);
+}
+
+@font-face {
+	font-family: 'OldLondon';
+	src: url(../res/OldLondon.ttf);
+}
+
+@font-face {
+	font-family: 'Orange';
+	src: url(../res/Orange.ttf);
+}
+
+@font-face {
+	font-family: 'Pokemon';
+	src: url(../res/Pokemon.ttf);
+}
+
+@font-face {
+	font-family: 'Shoes';
+	src: url(../res/Shoes.ttf);
+}
+
+@font-face {
+	font-family: 'Sketch';
+	src: url(../res/Sketch.ttf);
+}
+
+@font-face {
+	font-family: 'Sketchy';
+	src: url(../res/Sketchy.ttf);
+}
+
+@font-face {
+	font-family: 'Wolf';
+	src: url(../res/Wolf.ttf);
+}
+
+@font-face {
+	font-family: 'Yaquote';
+	src: url(../res/Yaquote.ttf);
+}
+
+@font-face {
+	font-family: 'Bears';
+	src: url(../res/Bears.ttf);
+}
+
+
+body {
+	background-color: #F5F6CE;
+}
+
+h1 {
+	font-family: 'Constantine';
+	font-size: 48px;
+	color: #B40404;
+	letter-spacing: 15px;
+	text-align: center;
+	background-color: #E6E6E6;
+}
+
+p {
+	text-align: center;
+	font-size: 150px;
+	line-height: 30px;
+}
+
+a {
+	color: red;
+	font-size: 20px;
+	line-height: 30px;
+	font-style: italic;
+	text-decoration: none;
+}
+
+.ositos {
+	font-family: 'Bears';
+	font-size: 50px;
+	color: #B40404;
+}
+
+.normal {
+	line-height: 30px;
+	text-align: left;
+}
+
+.letraA {
+	font-family: 'Barkentina';
+	color: firebrick;
+}
+
+.letraB {
+	font-family: 'Yaquote';	
+	color: teal;
+}
+
+.letraC {
+	font-family: 'Apple';	
+	color: forestgreen;
+}
+
+.letraCH {
+	font-family: 'Bodoni';	
+	color: stateblue;
+}
+
+.letraD {
+	font-family: 'Chopin';	
+	color: indianred;
+}
+
+.letraE {
+	font-family: 'Action';	
+	color: cadetblue;
+}
+ 
+.letraF {
+	font-family: 'AlphaWood';	
+	color: orchid;
+}
+
+.letraG {
+	font-family: 'Birds';
+	color: skyblue;
+}
+
+.letraH {
+	font-family: 'Books';	
+	color: lightgreen;
+}
+
+.letraI {
+	font-family: 'Camille';	
+	color: silver;
+}
+
+.letraJ {
+	font-family: 'Carnevalee';	
+	color: hotpink;
+}
+
+.letraK {
+	font-family: 'Cartoon';	
+	color: midnightblue;
+}
+
+.letraL {
+	font-family: 'Florentine';
+	color: lightcoral;
+}
+
+.letraLL {
+	font-family: 'Circus';	
+	color: peru;
+}
+
+.letraM {
+	font-family: 'Dragon';	
+	color: yellowgreen;
+}
+
+.letraN {
+	font-family: 'Drifttype';	
+	color: darkgoldenrod;
+}
+
+.letraNH {
+	font-family: 'Fighting';	
+	color: forestgreen;
+}
+
+.letraO {
+	font-family: 'FONTita';	
+	color: crimson;
+}
+
+.letraP {
+	font-family: 'Germanica';	
+	color: saddlebrown;
+}
+
+.letraQ {
+	font-family: 'Hobgoblin';	
+	color: burlywood;
+}
+
+.letraR {
+	font-family: 'Lighthouse';
+	color: mediumblue;
+}
+
+.letraRR {
+	font-family: 'LittleBird';	
+	color: lime;
+}
+
+.letraS {
+	font-family: 'Magnolia';	
+	color: indigo;
+}
+
+.letraT {
+	font-family: 'OldLondon';	
+	color: teal;
+}
+
+.letraU {
+	font-family: 'Orange';	
+	color: tan;
+}
+
+.letraV {
+	font-family: 'Pokemon';	
+	color: tomato;
+}
+
+.letraW {
+	font-family: 'Shoes';
+	color: gold;
+}
+
+.letraX {
+	font-family: 'Sketch';
+	color: red;
+}
+
+.letraY {
+	font-family: 'Sketchy';	
+	color: deepskyblue;
+}
+
+.letraZ {
+	font-family: 'Wolf';	
+	color: maroon;
+}
