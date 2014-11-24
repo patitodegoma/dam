@@ -6,7 +6,7 @@ public class Cilindros {
 	
 	// Atrib
 	
-	double radio, altura, volumen;
+	private double radio, altura, volumen;
 	
 	// Constructores (Sobrecarga)
 	
