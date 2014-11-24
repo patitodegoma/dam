@@ -1,0 +1,324 @@
+@font-face {
+	font-family: 'Constantine';
+	src: url(../res/Constantine.ttf);
+}
+
+@font-face {
+	font-family: 'Barkentina';
+	src: url(../res/Barkentina.otf);
+}
+
+@font-face {
+	font-family: 'Apple';
+	src: url(../res/Apple.ttf);
+}
+
+@font-face {
+	font-family: 'Bodoni';
+	src: url(../res/Bodoni.ttf);
+}
+
+@font-face {
+	font-family: 'Chopin';
+	src: url(../res/Chopin.otf);
+}
+
+@font-face {
+	font-family: 'Florence';
+	src: url(../res/Florence.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+@font-face {
+	font-family: 'Sweetly';
+	src: url(../res/Sweetly.ttf);
+}
+
+
+body {
+	background-color: #F5F6CE;
+}
+
+h1 {
+	font-family: 'Constantine';
+	font-size: 48px;
+	color: #B40404;
+	letter-spacing: 15px;
+	text-align: center;
+	background-color: #E6E6E6;
+}
+
+p {
+	text-align: center;
+	font-size: 150px;
+}
+
+.letraA {
+	font-family: 'Barkentina';
+	color: red;
+}
+
+.letraB {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraC {
+	font-family: 'Apple';	
+	color: red;
+}
+
+.letraCH {
+	font-family: 'Bodoni';	
+	color: red;
+}
+
+.letraD {
+	font-family: 'Chopin';	
+	color: red;
+}
+
+.letraE {
+	font-family: 'Florence';	
+	color: red;
+}
+ /* Hasta aquí */ 
+ 
+.letraF {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraG {
+	font-family: 'Sweetly';
+	color: red;
+}
+
+.letraH {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraI {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraJ {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraK {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraL {
+	font-family: 'Barkentina';
+	color: red;
+}
+
+.letraLL {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraM {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraN {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraNH {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraO {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraP {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraQ {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraR {
+	font-family: 'Barkentina';
+	color: red;
+}
+
+.letraRR {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraS {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraT {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraU {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraV {
+	font-family: 'Barkentina';	
+	color: red;
+}
+
+.letraW {
+	font-family: 'Sweetly';
+	color: red;
+}
+
+.letraX {
+	font-family: 'Barkentina';
+	color: red;
+}
+
+.letraY {
+	font-family: 'Sweetly';	
+	color: red;
+}
+
+.letraZ {
+	font-family: 'Barkentina';	
+	color: red;
+}
