@@ -1,0 +1,90 @@
+package Ejercicio_06;
+
+/*
+Se desea llevar un control del estado de una cuenta corriente; la cuenta 
+corriente está caracterizada por su saldo y sobre ella se pueden realizar tres 
+tipos de operaciones: 
+• saldo: devuelve el saldo de la cuenta (puede ser negativo, hasta -1000 
+€). 
+• Imposición (cantidad): ingresa en la cuenta una cantidad de dinero dada 
+por el usuario. 
+• Reintegro (cantidad): saca de la cuenta una determinada cantidad de 
+dinero especificada por el usuario. 
+Supón que la cuenta inicialmente tiene un saldo de cero. Escribe una clase 
+CuentaCorriente que implemente la funcionalidad descrita. 
+*/
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int opcion = 0;
+		double cantidad = 0;
+		char continuar = 's';
+		
+		Cuenta miCuenta = new Cuenta();
+		
+		System.out.println("***Bienvenido a mi programa***\n"
+				+ "\nSimula el funcionamiento básico de una cuenta corriente.\n");
+		
+		
+		do {
+		
+			System.out.println("\nPor favor, teclee en el menú siguiente la opción deseada:"
+					+ "\n1.- Consultar Saldo."
+					+ "\n2.- Ingresar dinero."
+					+ "\n3.- Reintegro.");
+			System.out.print("\nSu opción: ");
+			
+			opcion = Leer.datoInt();
+		
+			switch (opcion) {
+			case 1:
+				System.out.printf("\n\nSu saldo es %.2f €", miCuenta.getSaldo());
+				break;
+			case 2:
+				System.out.print("¿Cuánto dinero desea ingresar?: ");
+				cantidad = Leer.datoDouble();
+				if (miCuenta.ingresar(cantidad)) {
+					System.out.print("\nOperación realizada correctamente. "
+							+ "¿Desea visualizar el nuevo saldo? (S/N): ");
+					continuar = Leer.datoChar();
+					if (continuar == 's' || continuar == 'S') {
+						System.out.printf("\n\nSu saldo es %.2f €", miCuenta.getSaldo());
+						break;
+					} else
+						break;
+				}
+			case 3:
+				System.out.println("\n¿Cuanto dinero desea sacar?");
+				cantidad = Leer.datoDouble();			
+				
+				if (miCuenta.sacar(cantidad)) {
+					System.out.print("\nOperación realizada correctamente. "
+							+ "¿Desea visualizar el nuevo saldo? (S/N): ");
+					continuar = Leer.datoChar();
+					if (continuar == 's' || continuar == 'S') {
+						System.out.printf("\nSu saldo es %.2f €", miCuenta.getSaldo());
+						break;
+					}
+					else
+						break;
+				} else {
+					System.out.println("La operación no se pudo realizar. No existen fondos "
+							+ "suficientes en la cuenta. \n");
+					break;
+				}		
+			}
+			
+			System.out.print("\n\n¿Desea realizar una nueva operación? (S/N): ");
+			continuar = Leer.datoChar();
+			
+		}
+		while (continuar == 's' || continuar == 'S');
+		
+		System.out.println("\nGracias por utilizar mi programa!!");
+
+	}
+
+}

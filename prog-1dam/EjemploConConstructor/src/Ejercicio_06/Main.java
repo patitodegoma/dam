@@ -28,40 +28,62 @@ public class Main {
 		System.out.println("***Bienvenido a mi programa***\n"
 				+ "\nSimula el funcionamiento básico de una cuenta corriente.\n");
 		
-		
 		do {
 		
 			System.out.println("\nPor favor, teclee en el menú siguiente la opción deseada:"
 					+ "\n1.- Consultar Saldo."
 					+ "\n2.- Ingresar dinero."
-					+ "\n3.- Reintegro.");
-			System.out.print("Su opción: ");
+					+ "\n3.- Reintegro."
+					+ "\n"
+					+ "\n0.- Salir.");
+			System.out.print("\nSu opción: ");
 			
 			opcion = Leer.datoInt();
-			
-			
+		
 			switch (opcion) {
 			case 1:
-				System.out.println(miCuenta.getSaldo());
+				System.out.printf("\nSu saldo es %.2f €\n", miCuenta.getSaldo());
 				break;
 			case 2:
-				System.out.print("¿Cuánto dinero desea ingresar?: ");
+				System.out.print("\n¿Cuánto dinero desea ingresar?: ");
 				cantidad = Leer.datoDouble();
-				System.out.println(miCuenta.ingresar(cantidad));
-				break;
+				if (miCuenta.ingresar(cantidad)) {
+					System.out.print("\nOperación realizada correctamente. "
+							+ "¿Desea visualizar el nuevo saldo? (S/N): ");
+					continuar = Leer.datoChar();
+					if (continuar == 's' || continuar == 'S') {
+						System.out.printf("\nSu saldo es %.2f €\n", miCuenta.getSaldo());
+						break;
+					} else
+						break;
+				}
 			case 3:
-				System.out.println("¿Cuanto dinero desea sacar?");
-				cantidad = Leer.datoDouble();
-				System.out.println(miCuenta.sacar(cantidad));		
-			}
+				System.out.print("\n¿Cuanto dinero desea sacar?: ");
+				cantidad = Leer.datoDouble();			
+				
+				if (miCuenta.sacar(cantidad)) {
+					System.out.print("\nOperación realizada correctamente. "
+							+ "¿Desea visualizar el nuevo saldo? (S/N): ");
+					continuar = Leer.datoChar();
+					if (continuar == 's' || continuar == 'S') {
+						System.out.printf("\nSu saldo es %.2f €\n", miCuenta.getSaldo());
+					}
+				} else {
+					System.out.println("\nLa operación no se pudo realizar. No existen fondos "
+							+ "suficientes en la cuenta.");
+				}	
+			case 0:
+			}	
 			
-			System.out.print("\n¿Desea realizar una nueva operación? (S/N): ");
-			continuar = Leer.datoChar();
-			
+			if (opcion != 0) {
+				System.out.print("\n¿Desea realizar una nueva operación? (S/N): ");
+				continuar = Leer.datoChar();
+			} else
+				continuar = 'n';
 		}
 		while (continuar == 's' || continuar == 'S');
 		
-		System.out.println("\nGracias por utilizar mi programa!!");
+		System.out.println("\n¡¡¡Gracias por utilizar mi programa!!!");
 
 	}
 
