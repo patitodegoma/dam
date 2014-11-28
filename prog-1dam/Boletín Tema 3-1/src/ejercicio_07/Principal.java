@@ -26,7 +26,8 @@ public class Principal {
 		// TODO Auto-generated method stub
 		
 		int opcion = 0, numeroTickets = 0;
-		double monedaIns = 0.0, usuarioPass = 0.0, nuevoPrecio = 0.0, nuevaPass = 0.0, nuevaPass2 = 0.0;
+		double monedaIns = 0.0, usuarioPass = 0.0, nuevoPrecio = 0.0, nuevaPass = 0.0, nuevaPass2 = 0.0, 
+				importeAcumulado = 0.0;
 		boolean importeSuficiente = false;
 		char continuar = 's';
 		
@@ -52,16 +53,17 @@ public class Principal {
 				System.out.printf("\nEl importe total es %.2f €.\n", miMaquina.calculatotal(numeroTickets));
 				do {
 					System.out.print("Inserte moneda o billete: ");
-					monedaIns = Leer.datoDouble();
-					importeSuficiente = miMaquina.comprobarimporte(numeroTickets, monedaIns);
+					monedaIns = Leer.datoDouble();	
+					importeAcumulado += monedaIns;
+					importeSuficiente = miMaquina.comprobarimporte(numeroTickets, monedaIns, importeAcumulado);
 					if (importeSuficiente) {
 						System.out.printf("\nGracias por comprar en Metro DAM. Recoja su(s) billete(s) y no olvide "
 								+ "su cambio de %.2f €.\n", miMaquina.devolvercambio(numeroTickets, 
-										miMaquina.getPagadoOperacion()));
+										importeAcumulado));
 					} else {
 						System.out.printf("\nHa pagado %.2f €\tLe queda por pagar %.2f €\n", 
-								miMaquina.getPagadoOperacion(), miMaquina.calculatotal(numeroTickets)-
-																miMaquina.getPagadoOperacion());
+								importeAcumulado, miMaquina.calculatotal(numeroTickets)-
+																importeAcumulado);
 					}
 				} while (!importeSuficiente);
 				miMaquina.imprimirbilletes(numeroTickets);	
@@ -101,7 +103,7 @@ public class Principal {
 						case 4:
 							System.out.print("\nPor favor, introduzca el nuevo precio: ");
 							nuevoPrecio = Leer.datoDouble();
-							miMaquina.setPrecioTicket(nuevoPrecio);
+							miMaquina.cambiarprecio(nuevoPrecio);
 							System.out.printf("\nEl precio se ha modificado correctamente a %.2f €\n", nuevoPrecio);
 							break;	
 						case 5:

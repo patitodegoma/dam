@@ -11,7 +11,7 @@ public class Ticket {
 	}
 	
 	public Ticket () {
-		this.precio = 0.0;
+		this.precio = 0.72;
 	}
 	
 	public double getPrecio() {

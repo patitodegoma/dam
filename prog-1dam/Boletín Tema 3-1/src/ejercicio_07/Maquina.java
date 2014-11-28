@@ -7,25 +7,20 @@ public class Maquina {
 	private double saldo;
 	private double password;
 	private int totalVentas;
-	private double precioTicket;
-	private double pagadoOperacion;
+
 	
 	// Constructores
 	
-	public Maquina (double saldo, double password, int totalVentas, double precioTicket, double pagadoOperacion) {
+	public Maquina (double saldo, double password, int totalVentas) {
 		this.saldo = saldo;
 		this.password = password;
 		this.totalVentas = totalVentas;
-		this.precioTicket = precioTicket;
-		this.pagadoOperacion = pagadoOperacion;
 	}
 	
 	public Maquina () {
 		this.saldo = 0.0;
 		this.password = 1234;
 		this.totalVentas = 0;
-		this.precioTicket = 0.72;
-		this.pagadoOperacion = 0.0;
 	}
 
 	// Getters y Setters
@@ -53,60 +48,46 @@ public class Maquina {
 	public void setTotalVentas(int totalVentas) {
 		this.totalVentas = totalVentas;
 	}
-
-	public double getPrecioTicket() {
-		return precioTicket;
-	}
-
-	public void setPrecioTicket(double precioTicket) {
-		this.precioTicket = precioTicket;
-	}
-	
-	public double getPagadoOperacion() {
-		return pagadoOperacion;
-	}
-
-	public void setPagadoOperacion(double pagadoOperacion) {
-		this.pagadoOperacion = pagadoOperacion;
-	}
 	
 	// Métodos
 	
 	  // Comprar billetes
 	
 	public double calculatotal (int cantidad) {
-		double importeTotal = cantidad * this.precioTicket;
+		Ticket miTicket = new Ticket();
+		double importeTotal = cantidad * miTicket.getPrecio();
 		return importeTotal;
 	}
 	
-	public boolean comprobarimporte (int cantidad, double insertado) {
+	public boolean comprobarimporte (int cantidad, double insertado, double acumulado) {
+		Ticket miTicket = new Ticket();
 		boolean suficiente = true;
-		pagadoOperacion += insertado;
-		if (pagadoOperacion < cantidad * this.precioTicket) {
+		if (acumulado < cantidad * miTicket.getPrecio()) {
 			suficiente = false;
 		}
 		return suficiente;
 	}
 	
 	public double devolvercambio (int cantidad, double dinero) {
-		double cambio = dinero - cantidad*this.precioTicket;
+		Ticket miTicket = new Ticket();
+		double cambio = dinero - cantidad*miTicket.getPrecio();
 		return cambio;
 	}
 	
 	public void imprimirbilletes (int cantidad) {
+		Ticket miTicket = new Ticket();
 		for (int i = 0; i < cantidad; i++) {
 			System.out.println("\n\t* * * * * * * * * * * * * * *\n"
 							   + "\t*    M E T R O     D A M    *\n"
 							   + "\t*                           *\n"
 							   + "\t* Billete sencillo          *");
-			System.out.printf("\t* Precio: %.2f €            *\n", this.precioTicket);
+			System.out.printf("\t* Precio: %.2f €            *\n", miTicket.getPrecio());
 			System.out.println("\t*                           *\n"
 					+ "\t* 27/11/2014          10:34 *\n"
 					+ "\t* * * * * * * * * * * * * * *\n");
 		}
 		this.totalVentas += cantidad;
-		this.saldo += cantidad*this.precioTicket;
-		this.pagadoOperacion = 0.0;
+		this.saldo += cantidad*miTicket.getPrecio();
 	}
 	
 	  // Operaciones operario
@@ -118,6 +99,13 @@ public class Maquina {
 		if (passTecleada == this.password)
 			comprobado = true;
 		return comprobado;
+	}
+	
+		// Cambiar precio
+	
+	public void cambiarprecio (double precioNuevo) {
+		Ticket miTicket = new Ticket();
+		miTicket.setPrecio(precioNuevo);
 	}
 	
 		// Cambiar password
