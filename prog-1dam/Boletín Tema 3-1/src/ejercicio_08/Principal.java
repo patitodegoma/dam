@@ -17,11 +17,17 @@ public class Principal {
 		// TODO Auto-generated method stub
 		
 		double precioDecimo = 20.0, dineroIns = 0.0, dineroAcum = 0.0; 
-		int minNumero = 1, maxNumero = 100, opcion = 0, numEscogido = 0, num = 0, premiado = 0, resultado = 0;
+		int minNumero = 1, maxNumero = 99, opcion = 0, num = 0, resultado = 0;
+		boolean esCorrecto = true;
 		char continuar = 's';
+		int premiados[] = new int [3];
 		
-		System.out.println("\t\t***Bienvenido a mi programa***\n"
-				+ "\tSimula un sorteo básico");
+		Sorteo miSorteo = new Sorteo(precioDecimo, minNumero, maxNumero);
+		
+		System.out.println("\t\t***Bienvenido a mi programa***\n\n"
+				+ "\tSimula un sorteo básico, que permite al usuario comprar un boleto aleatorio o un boleto"
+				+ " con el número que él prefiera, \n\ty que comprueba si al usuario le ha tocado el"
+				+ " premio, o al menos el reintegro.");
 		
 		System.out.print("\n¿Desea comprar un décimo?, mira que luego te pasa como a Manuel, el del anuncio: ");
 		continuar = Leer.datoChar();
@@ -38,18 +44,40 @@ public class Principal {
 				if (dineroAcum < precioDecimo) {
 					System.out.printf("\nLe faltan aún %.2f €. ", precioDecimo - dineroAcum);
 				} else {
-					System.out.print("\nGracias por comprar, ahora pulsa 1 si quieres un décimo aleatorio o "
-							+ "2 si quieres elegir el número del décimo: "); // Falta tb devolver cambio
+					System.out.print("\nGracias por comprar!! ");
+					
+					if (dineroAcum > precioDecimo) {
+						System.out.printf("Recoja su cambio de %.2f €.", dineroAcum-precioDecimo);
+					}
+					
+	
+					System.out.print("\n\nAhora, pulsa 1 si quieres un décimo aleatorio o "
+							+ "2 si quieres elegir el número del décimo: "); 		
 					opcion = Leer.datoInt();
+					
+					Decimo miDecimo = new Decimo (precioDecimo, minNumero, maxNumero);
 					
 					switch (opcion) {
 					case 1:
-						num = (int)Math.floor(Math.random()*(maxNumero - minNumero + 1) + minNumero);
+						num = miDecimo.generadecimo(minNumero, maxNumero);
 						System.out.printf("\nPues te ha tocado el %d. Mucha suerte!!", num);
+						miDecimo.imprimeboleto(num);
 						break;
 					case 2:
 						System.out.print("\n¿Qué número quieres?: ");
 						num = Leer.datoInt();
+						
+						esCorrecto = miDecimo.escogenumero(num);
+						
+						while (!esCorrecto) {
+							System.out.print("\nMelón, ¿cómo vas a pedir el "+num+"? Si los números del sorteo están entre "
+									+ "el "+minNumero+" y el "+maxNumero+"!!! Anda, coge uno bueno: ");
+							num = Leer.datoInt();
+							esCorrecto = miDecimo.escogenumero(num);
+						}
+
+						miDecimo.setNumero(num);
+						miDecimo.imprimeboleto(num);
 						break;
 					}
 				}
@@ -61,36 +89,56 @@ public class Principal {
 			continuar = Leer.datoChar();
 			
 			while (continuar != 's' && continuar != 'S') {
-				System.out.print("\nCuando quieras, dale a la 'S'. Una pista, está entre la 'A' y la 'D', y debajo de la 'W' :");
+				System.out.print("\nCuando quieras, dale a la 'S'. Una pista, está entre la 'A' y la 'D', y debajo de la 'W': ");
 				continuar = Leer.datoChar();
 			}
 			
-			Sorteo miSorteo = new Sorteo(minNumero, maxNumero);
-			
-			premiado = miSorteo.sortear();
-			
-			System.out.printf("\n¡¡¡ El número premiado en el sorteo ha sido el %d !!!\n", premiado);
-			
-			resultado = miSorteo.comprobar(num);			
-			
-			switch (resultado) {
-			case 0:
-				System.out.println("\nLo siento, amigo, otra vez será...");
-				break;
-			case 1:
-				System.out.println("\nToma ya, lo has clavao colega, quiero un hijo tuyo!!! ");
-				break;
-			case 2:
-				System.out.println("\nBueno, al menos te ha tocado el reintegro. Ánimo que podría haber sido peor!!");
+			for (int i = 0; i < premiados.length; i++) {
+				System.out.println("\nVamos a sortear el "+(premiados.length-i)+"º premio.");
+				premiados[i] = miSorteo.sortear();
+				if (maxNumero > 9999) {
+					System.out.println("\nDecenas de millar ............. el "+(premiados[i]/10000)%10+"!");
+				}
+				if (maxNumero > 999) {
+					System.out.println("\nUnidades de millar ............ el "+(premiados[i]/1000)%10+"!");
+				}
+				if (maxNumero > 99) {
+					System.out.println("\nCentenas ...................... el "+(premiados[i]/100)%10+"!");
+				}
+				if (maxNumero > 9) {
+					System.out.println("\nDecenas ....................... el "+(premiados[i]/10)%10+"!");
+				}
+				System.out.println("\nUnidades ...................... el "+premiados[i]%10+"!");
+				
+				System.out.println("\nEl número premiado ha sido el "+premiados[i]);
+				
+				resultado = miSorteo.comprobar(num, premiados[i]);			
+				
+				switch (resultado) {
+				case 0:
+					System.out.println("\nLo siento, amigo, otra vez será...");
+					break;
+				case 1:
+					System.out.println("\nToma ya, lo has clavao colega, quiero un hijo tuyo!!! ");
+					break;
+				case 2:
+					System.out.println("\nBueno, al menos te ha tocado el reintegro. Ánimo que podría haber sido peor!!");
+				}
+		
+				if (i < premiados.length-1) {
+					System.out.print("\nPara seguir con el sorteo, pulsa 'S': ");
+					continuar = Leer.datoChar();
+					
+					while (continuar != 's' && continuar != 'S') {
+						System.out.print("\nPulsa 's' para continuar. Ánimo, tú puedes hacerlo! ");
+						continuar = Leer.datoChar();
+					}
+				}
+				
 			}
-			
-			
+				
 		}
 		
-		
-		
-		
-
+		System.out.println("\n***Gracias por utilizar mi programa. ¡¡Espero que haya habido suerte!!***");
 	}
-
 }

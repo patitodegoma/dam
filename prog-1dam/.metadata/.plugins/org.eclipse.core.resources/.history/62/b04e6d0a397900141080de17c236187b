@@ -1,0 +1,108 @@
+package ejercicio_08;
+
+	/*
+	Crear un programa que gestione un sorteo de lotería. Este hará lo siguiente:
+	a. Posibilidad de comprar un décimo.
+	b. Hacer sorteo, donde se generará aleatoriamente el número
+	premiado.
+	c. Comprobar si nuestro décimo está premiado.
+	d. Mostrar premios.
+	Aunque, realmente habría que crear varias clases, no es necesario usar más
+	de, solo la clase sorteo y la principal. 
+	*/
+
+public class Principal {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		double precioDecimo = 20.0, dineroIns = 0.0, dineroAcum = 0.0; 
+		int minNumero = 1, maxNumero = 100, opcion = 0, numEscogido = 0, num = 0, premiado = 0, resultado = 0;
+		char continuar = 's';
+		int premiados[] = new int [3];
+		
+		Sorteo miSorteo = new Sorteo(minNumero, maxNumero);
+		
+		System.out.println("\t\t***Bienvenido a mi programa***\n\n"
+				+ "\tSimula un sorteo básico, que permite al usuario comprar un boleto aleatorio o un boleto"
+				+ " con el número que prefiera el usuario, \n\ty que comprueba si al usuario le ha tocado el"
+				+ " premio, o al menos el reintegro.");
+		
+		System.out.print("\n¿Desea comprar un décimo?, mira que luego te pasa como a Manuel, el del anuncio: ");
+		continuar = Leer.datoChar();
+		
+		if (continuar != 's' && continuar != 'S') {
+			System.out.println("\nBueno, tú sabrás. Gracias por usar mi programa de todas formas.");
+		} else {
+			System.out.printf("\nPerfecto, son %.2f €. ", precioDecimo);
+			
+			do {
+				System.out.print("Inserte moneda o billete: ");
+				dineroIns = Leer.datoDouble();
+				dineroAcum += dineroIns;
+				if (dineroAcum < precioDecimo) {
+					System.out.printf("\nLe faltan aún %.2f €. ", precioDecimo - dineroAcum);
+				} else {
+					System.out.printf("\nGracias por comprar, recoja su cambio de %.2f €.\n", dineroAcum-precioDecimo);
+	
+					System.out.print("\nAhora, pulsa 1 si quieres un décimo aleatorio o "
+							+ "2 si quieres elegir el número del décimo: "); 		
+					opcion = Leer.datoInt();
+					
+					switch (opcion) {
+					case 1:
+						num = (int)Math.floor(Math.random()*(maxNumero - minNumero + 1) + minNumero);
+						System.out.printf("\nPues te ha tocado el %d. Mucha suerte!!", num);
+						miSorteo.imprimeboleto(num);
+						break;
+					case 2:
+						System.out.print("\n¿Qué número quieres?: ");
+						num = Leer.datoInt();
+						while (num < minNumero || num > maxNumero) {
+							System.out.print("\nMelón, ¿cómo vas a pedir el "+num+"? Si los números del sorteo están entre "
+									+ "el "+minNumero+" y el "+maxNumero+"!!! Anda, coge uno bueno: ");
+							num = Leer.datoInt();
+						}
+						miSorteo.imprimeboleto(num);
+						break;
+					}
+				}
+			} while (dineroAcum < precioDecimo);
+			
+			// Ya tenemos nuestro número
+			
+			System.out.print("\n\n¡¡¡ Ha llegado el día del sorteo !!! ¡¡ Qué nervios !! Pulsa 'S' para continuar: ");
+			continuar = Leer.datoChar();
+			
+			while (continuar != 's' && continuar != 'S') {
+				System.out.print("\nCuando quieras, dale a la 'S'. Una pista, está entre la 'A' y la 'D', y debajo de la 'W': ");
+				continuar = Leer.datoChar();
+			}
+			
+			for (int i = 0; i < premiados.length; i++) {
+				System.out.println("\nVamos a sortear el "+(premiados.length-i)+"er premio.");
+				premiados[i] = miSorteo.sortear();
+				System.out.println("\nDecenas de millar ............. el"+premiados[i]%100000+"!");
+				System.out.println("\nUnidades de millar ............ el"+premiados[i]%10000+"!");
+				System.out.println("\nCentenas ...................... el"+premiados[i]%1000+"!");
+				System.out.println("\nDecenas ....................... el"+premiados[i]%100+"!");
+				System.out.println("\nUnidades ...................... el"+premiados[i]%10+"!");
+				System.out.println("\nEl número premiado ha sido el "+premiados[i]);
+				
+				resultado = miSorteo.comprobar(num, premiados[i]);			
+				
+				switch (resultado) {
+				case 0:
+					System.out.println("\nLo siento, amigo, otra vez será...");
+					break;
+				case 1:
+					System.out.println("\nToma ya, lo has clavao colega, quiero un hijo tuyo!!! ");
+					break;
+				case 2:
+					System.out.println("\nBueno, al menos te ha tocado el reintegro. Ánimo que podría haber sido peor!!");
+				}	
+			}
+				
+		}
+	}
+}

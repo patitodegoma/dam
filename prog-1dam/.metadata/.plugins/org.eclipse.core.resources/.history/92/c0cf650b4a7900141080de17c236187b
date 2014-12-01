@@ -1,0 +1,51 @@
+package ejercicio_08;
+
+public class Decimo {
+	
+	// Atributos
+	
+	private int numero;
+	private int serie;
+	
+	// Constructores
+	
+	public Decimo (int numero, int serie) {
+		this.numero = numero;
+		this.serie = serie;
+	}
+	
+	public Decimo () {
+		this.numero = 0;
+		this.serie = 0;
+	}
+	
+	// Getters and setters
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public int getSerie() {
+		return serie;
+	}
+
+	public void setSerie(int serie) {
+		this.serie = serie;
+	}
+	
+	
+	// Métodos
+	
+	public int generadecimo (int min, int max) {
+		int generado = (int)Math.floor(Math.random()*(max - min + 1) + min);
+		return generado;
+	}
+	
+	
+	
+
+}

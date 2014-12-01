@@ -1,0 +1,83 @@
+package ejercicio_08;
+
+public class Decimo {
+	
+	// Atributos
+	
+	private int minimo;
+	private int maximo;
+	private int numero;
+	private int serie;
+	
+	// Constructores
+	
+	public Decimo (int numero, int serie, int minimo, int maximo) {
+		this.numero = numero;
+		this.serie = serie;
+		this.minimo = minimo;
+		this.maximo = maximo;	
+	}
+	
+	public Decimo () {
+		this.numero = 0;
+		this.serie = 0;
+		this.minimo = 0;
+		this.maximo = 0;
+	}
+	
+	// Getters and setters
+
+	public int getMinimo() {
+		return minimo;
+	}
+
+	public void setMinimo(int minimo) {
+		this.minimo = minimo;
+	}
+
+	public int getMaximo() {
+		return maximo;
+	}
+
+	public void setMaximo(int maximo) {
+		this.maximo = maximo;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
+
+	public int getSerie() {
+		return serie;
+	}
+
+	public void setSerie(int serie) {
+		this.serie = serie;
+	}
+	
+	
+	// Métodos
+	
+	public int generadecimo (int min, int max) {
+		numero = (int)Math.floor(Math.random()*(max - min + 1) + min);
+		return numero;
+	}
+	
+	public boolean escogenumero (int escogido) {
+		boolean ok = true;
+		if (escogido < minimo || escogido > maximo){
+			ok = false;
+		} else {
+			this.numero = escogido;
+		}
+		return ok;
+	}
+	
+	
+	
+
+}

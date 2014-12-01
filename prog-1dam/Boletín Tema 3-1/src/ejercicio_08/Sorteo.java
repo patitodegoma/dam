@@ -4,80 +4,38 @@ public class Sorteo {
 	
 	// Atributos
 	
-	private int numPremiado;
-	private int premio;
-	private int minimo;
-	private int maximo;
-	
+	private Decimo miDecimo;
 	
 	// Constructores
 	
 	public Sorteo () {
-		this.numPremiado = 0;
-		this.premio = 0;
-		this.minimo = 0;
-		this.maximo = 0;		
+		miDecimo = new Decimo (0, 0, 0);			
 	}
 	
-	public Sorteo (int minimo, int maximo) {
-		this.minimo = minimo;
-		this.maximo = maximo;
+	public Sorteo (double precio, int minimo, int maximo) {
+		miDecimo = new Decimo (precio, minimo, maximo);
 	}
 	
-	public Sorteo (int numPremiado, int premio, int minimo, int maximo) {
-		this.numPremiado = numPremiado;
-		this.premio = premio;
-		this.minimo = minimo;
-		this.maximo = maximo;
-	}
-
 		
 	// Getters y Setters
 
-	public int getNumPremiado() {
-		return numPremiado;
-	}
-
-	public void setNumPremiado(int numPremiado) {
-		this.numPremiado = numPremiado;
-	}
-
-	public int getPremio() {
-		return premio;
-	}
-
-	public void setPremio(int premio) {
-		this.premio = premio;
-	}
 	
-	public int getMinimo() {
-		return minimo;
-	}
-
-	public void setMinimo(int minimo) {
-		this.minimo = minimo;
-	}
-
-	public int getMaximo() {
-		return maximo;
-	}
-
-	public void setMaximo(int maximo) {
-		this.maximo = maximo;
-	}
+	
 	
 	// Métodos
 	
+	
 	public int sortear() {
-		numPremiado = (int)Math.floor(Math.random()*(maximo - minimo + 1) + minimo);
-		return numPremiado;
+		int premiado = 0;
+		premiado = (int)Math.floor(Math.random()*(miDecimo.getMaximo() - miDecimo.getMinimo() + 1) + miDecimo.getMinimo());
+		return premiado;
 	}
 	
-	public int comprobar (int miNumero) {
+	public int comprobar (int miNumero, int premiado) {
 		int comprobar = 0;
-		if (miNumero == numPremiado) {
+		if (miNumero == premiado) {
 			comprobar = 1;
-		} else if (miNumero % 10 == numPremiado % 10) {
+		} else if (miNumero % 10 == premiado % 10) {
 			comprobar = 2;
 		}
 		return comprobar;
@@ -85,7 +43,7 @@ public class Sorteo {
 	
 	
 	
-	// ToString
+	
 	
 	
 
