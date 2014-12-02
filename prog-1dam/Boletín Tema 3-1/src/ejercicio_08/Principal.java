@@ -17,12 +17,12 @@ public class Principal {
 		// TODO Auto-generated method stub
 		
 		double precioDecimo = 20.0, dineroIns = 0.0, dineroAcum = 0.0; 
-		int minNumero = 1, maxNumero = 99, opcion = 0, num = 0, resultado = 0;
+		int minNumero = 1, maxNumero = 99999, opcion = 0, num = 0, resultado = 0;
 		boolean esCorrecto = true;
 		char continuar = 's';
 		int premiados[] = new int [3];
 		
-		Sorteo miSorteo = new Sorteo(precioDecimo, minNumero, maxNumero);
+		Sorteo miSorteo = new Sorteo(new Decimo(precioDecimo, minNumero, maxNumero));
 		
 		System.out.println("\t\t***Bienvenido a mi programa***\n\n"
 				+ "\tSimula un sorteo básico, que permite al usuario comprar un boleto aleatorio o un boleto"
@@ -95,20 +95,7 @@ public class Principal {
 			
 			for (int i = 0; i < premiados.length; i++) {
 				System.out.println("\nVamos a sortear el "+(premiados.length-i)+"º premio.");
-				premiados[i] = miSorteo.sortear();
-				if (maxNumero > 9999) {
-					System.out.println("\nDecenas de millar ............. el "+(premiados[i]/10000)%10+"!");
-				}
-				if (maxNumero > 999) {
-					System.out.println("\nUnidades de millar ............ el "+(premiados[i]/1000)%10+"!");
-				}
-				if (maxNumero > 99) {
-					System.out.println("\nCentenas ...................... el "+(premiados[i]/100)%10+"!");
-				}
-				if (maxNumero > 9) {
-					System.out.println("\nDecenas ....................... el "+(premiados[i]/10)%10+"!");
-				}
-				System.out.println("\nUnidades ...................... el "+premiados[i]%10+"!");
+				premiados[i] = miSorteo.sortear();		
 				
 				System.out.println("\nEl número premiado ha sido el "+premiados[i]);
 				
