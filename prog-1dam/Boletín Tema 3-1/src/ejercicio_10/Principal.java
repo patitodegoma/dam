@@ -1,7 +1,5 @@
 package ejercicio_10;
 
-import ejercicio_09.Leer;
-
 public class Principal {
 	
 	/*
@@ -19,9 +17,9 @@ public class Principal {
 		char continuar = 's';
 		int opcion = 0, nSalas = 3, nEntradas = 0;
 		
-		Sala sala1 = new Sala (1, "Los Juegos del Hambre", 30, 15, 7.5);
-		Sala sala2 = new Sala (2, "En busca de Bobby Fisher", 15, 10, 6);
-		Sala sala3 = new Sala (3, "Interstellar 3D", 30, 20, 9.5);
+		Sala sala1 = new Sala (1, "Los Juegos del Hambre", 15, 13, 7.5);
+		Sala sala2 = new Sala (2, "En busca de Bobby Fisher", 12, 6, 6);
+		Sala sala3 = new Sala (3, "Interstellar 3D", 18, 10, 9.5);
 		
 		Cine cineDAM = new Cine (nSalas, sala1, sala2, sala3);
 		
@@ -29,9 +27,6 @@ public class Principal {
 				+ "Sirve para gestionar las salas de un cine.\n");
 		
 		do {
-			//cineDAM.reseteoventas();
-			
-			System.out.println(sala1);
 			
 			System.out.println("\nBienvenido al Cine DAM. Por favor, seleccione la opción deseada:\n "
 					+ "\t1.- Ver cartelera\n"
@@ -63,7 +58,7 @@ public class Principal {
 			
 		} while (continuar == 's' || continuar == 'S');
 		
-		System.out.println("\n¡¡¡Gracias por utilizar mi programa!!!");
+		System.out.println("\n\n¡¡¡Gracias por utilizar mi programa!!!");
 	}
 
 }

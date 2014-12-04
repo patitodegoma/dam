@@ -91,7 +91,7 @@ public class Decimo {
 				           + "\t*                                         *\n"
 				           + "\t*      EL SORTEO DE PRIMERO DE DAM        *\n"
 				           + "\t*                                         *");
-		System.out.printf("\t*  Su número: %d                        *\n", numero);
+		System.out.printf("\t*  Su número: %d                       *\n", numero);
 		System.out.println("\t*                                         *");
 		System.out.printf("\t*  Precio: %.2f €                        *\n", precio);
 		System.out.println("\t*                                         *\n"

@@ -5,19 +5,56 @@ public class Sorteo {
 	// Atributos
 	
 	private Decimo miDecimo;
+	private double primerPremio;
+	private double segundoPremio;
+	private double tercerPremio;
 	
 	// Constructores
 	
 	public Sorteo () {
-		miDecimo = new Decimo (0, 0, 0);			
+		this.miDecimo = new Decimo (0, 0, 0);
+		this.primerPremio = 0.0;
+		this.segundoPremio = 0.0;
+		this.tercerPremio = 0.0;
 	}
 	
 	public Sorteo (Decimo miDecimo) {
 		this.miDecimo = miDecimo;
 	}
 	
+	public Sorteo (Decimo miDecimo, double primerPremio, double segundoPremio, double tercerPremio) {
+		this.miDecimo = miDecimo;
+		this.primerPremio = primerPremio;
+		this.segundoPremio = segundoPremio;
+		this.tercerPremio = tercerPremio;
+	}
+	
 		
 	// Getters y Setters
+
+	public double getPrimerPremio() {
+		return primerPremio;
+	}
+
+	public void setPrimerPremio(double primerPremio) {
+		this.primerPremio = primerPremio;
+	}
+
+	public double getSegundoPremio() {
+		return segundoPremio;
+	}
+
+	public void setSegundoPremio(double segundoPremio) {
+		this.segundoPremio = segundoPremio;
+	}
+
+	public double getTercerPremio() {
+		return tercerPremio;
+	}
+
+	public void setTercerPremio(double tercerPremio) {
+		this.tercerPremio = tercerPremio;
+	}
 
 	public Decimo getMiDecimo() {
 		return miDecimo;

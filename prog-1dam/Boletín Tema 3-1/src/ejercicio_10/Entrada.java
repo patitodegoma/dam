@@ -11,9 +11,13 @@ public class Entrada {
 	// Constructores
 	
 	public Entrada () {
-		this.id = 0;
 		this.fila = 0;
 		this.asiento = 0;
+	}
+	
+	public Entrada (int fila, int asiento) {
+		this.fila = fila;
+		this.asiento = asiento;
 	}
 	
 	public Entrada (int id, int fila, int asiento) {
@@ -50,6 +54,22 @@ public class Entrada {
 	
 	
 	// Métodos
+	
+	public void imprimirEntrada (int id, int fila, int asiento, double precio, String pelicula) {
+		System.out.println("\n\n\t * * * * * * * * * * * * * * * * * * *"
+			             + "\n\t *                                   "
+			             + "\n\t *         MULTICINES DAM            "
+			             + "\n\t *                                   "
+			             + "\n\t *  Película: "+pelicula+"           "
+			             + "\n\t *                                   "
+			             + "\n\t *  Fila: "+fila+" Asiento: "+asiento+"      "
+			             + "\n\t *                              "
+			             + "\n\t *  Precio: "+precio+"          "
+			             + "\n\t *                              "
+			             + "\n\t *  Número de serie: "+id+"     "
+			             + "\n\t *                              "
+			             + "\n\t * * * * * * * * * * * * * * * * * * *");
+	}
 	
 	
 	

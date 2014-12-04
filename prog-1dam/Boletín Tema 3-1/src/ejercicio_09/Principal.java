@@ -69,7 +69,7 @@ public class Principal {
 			}
 			
 			if (opcion != 0) {
-				System.out.print("\n¿Desea realizar otra operación? (S/N): ");
+				System.out.print("\n\n¿Desea realizar otra operación? (S/N): ");
 				continuar = Leer.datoChar();
 			}
 			

@@ -16,20 +16,21 @@ public class Principal {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		double precioDecimo = 20.0, dineroIns = 0.0, dineroAcum = 0.0; 
+		double precioDecimo = 20.0, dineroIns = 0.0, dineroAcum = 0.0, premio1 = 100000.0, premio2 = 25000.0, 
+				premio3 = 5000.0, miPremio = 0.0; 
 		int minNumero = 1, maxNumero = 99999, opcion = 0, num = 0, resultado = 0;
 		boolean esCorrecto = true;
 		char continuar = 's';
 		int premiados[] = new int [3];
 		
-		Sorteo miSorteo = new Sorteo(new Decimo(precioDecimo, minNumero, maxNumero));
+		Sorteo miSorteo = new Sorteo(new Decimo(precioDecimo, minNumero, maxNumero), premio1, premio2, premio3);
 		
 		System.out.println("\t\t***Bienvenido a mi programa***\n\n"
 				+ "\tSimula un sorteo básico, que permite al usuario comprar un boleto aleatorio o un boleto"
 				+ " con el número que él prefiera, \n\ty que comprueba si al usuario le ha tocado el"
 				+ " premio, o al menos el reintegro.");
 		
-		System.out.print("\n¿Desea comprar un décimo?, mira que luego te pasa como a Manuel, el del anuncio: ");
+		System.out.print("\n¿Desea comprar un décimo?, mira que luego te pasa como a Manuel, el del anuncio (S/N): ");
 		continuar = Leer.datoChar();
 		
 		if (continuar != 's' && continuar != 'S') {
@@ -107,10 +108,32 @@ public class Principal {
 					break;
 				case 1:
 					System.out.println("\nToma ya, lo has clavao colega, quiero un hijo tuyo!!! ");
+					if (i == 0) {
+						System.out.printf("\nTe llevas %.2f €, quién los pillara!", miSorteo.getPrimerPremio());
+						miPremio += miSorteo.getPrimerPremio();
+					} else if (i == 1) {
+						System.out.printf("\nTe llevas %.2f €, quién los pillara!", miSorteo.getSegundoPremio());
+						miPremio += miSorteo.getSegundoPremio();
+					} else {
+						System.out.printf("\nTe llevas %.2f €, quién los pillara!", miSorteo.getTercerPremio());
+						miPremio += miSorteo.getTercerPremio();
+					}
 					break;
 				case 2:
 					System.out.println("\nBueno, al menos te ha tocado el reintegro. Ánimo que podría haber sido peor!!");
+					if (i == 0) {
+						System.out.printf("\nTe llevas %.2f €, quién los pillara!", miSorteo.getPrimerPremio()/10);
+						miPremio += miSorteo.getPrimerPremio()/10;
+					} else if (i == 1) {
+						System.out.printf("\nTe llevas %.2f €, quién los pillara!", miSorteo.getSegundoPremio()/10);
+						miPremio += miSorteo.getSegundoPremio()/10;
+					} else {
+						System.out.printf("\nTe llevas %.2f €, quién los pillara!", miSorteo.getTercerPremio()/10);
+						miPremio += miSorteo.getTercerPremio()/10;
+					}
 				}
+				
+				
 		
 				if (i < premiados.length-1) {
 					System.out.print("\nPara seguir con el sorteo, pulsa 'S': ");
@@ -123,9 +146,11 @@ public class Principal {
 				}
 				
 			}
+			
+			System.out.printf("\nTe llevas al final %.2f €", miPremio);
 				
 		}
 		
-		System.out.println("\n***Gracias por utilizar mi programa. ¡¡Espero que haya habido suerte!!***");
+		System.out.println("\n\n***Gracias por utilizar mi programa. ¡¡Espero que haya habido suerte!!***");
 	}
 }

@@ -7,6 +7,7 @@ public class Cine {
 	private Sala sala2;
 	private Sala sala3;
 	private double ganadoDia;
+	private int totalVendidas;
 	
 	public Cine () {
 		this.numSalas = 0;
@@ -14,6 +15,7 @@ public class Cine {
 		this.sala2 = new Sala (0, "", 0, 0, 0.0);
 		this.sala3 = new Sala (0, "", 0, 0, 0.0);
 		this.ganadoDia = 0;
+		this.totalVendidas = 0;
 	}
 	
 	public Cine (int numSalas) {
@@ -27,12 +29,21 @@ public class Cine {
 		this.sala3 = sala3;
 	}
 	
-	public Cine (int numSalas, Sala sala1, Sala sala2, Sala sala3, double ganadoDia) {
+	public Cine (int numSalas, Sala sala1, Sala sala2, Sala sala3, double ganadoDia, int totalVendidas) {
 		this.numSalas = numSalas;
 		this.sala1 = sala1;
 		this.sala2 = sala2;
 		this.sala3 = sala3;
 		this.ganadoDia = ganadoDia;
+		this.totalVendidas = totalVendidas;
+	}
+
+	public int getTotalVendidas() {
+		return totalVendidas;
+	}
+
+	public void setTotalVendidas(int totalVendidas) {
+		this.totalVendidas = totalVendidas;
 	}
 
 	public double getGanadoDia() {
@@ -74,25 +85,6 @@ public class Cine {
 	public void setSala3(Sala sala3) {
 		this.sala3 = sala3;
 	}
-
-	/*public void reseteoventas () {
-		for (int i = 0; i < sala1.getNumFilas(); i++) {
-			for (int j = 0; j < sala1.getNumAsientos(); j++) {
-				sala1.setVentas(i, j, 0);
-			}
-		}
-		for (int i = 0; i < sala2.getNumFilas(); i++) {
-			for (int j = 0; j < sala2.getNumAsientos(); j++) {
-				sala2.ventas[i][j] = 0;
-			}
-		}
-		for (int i = 0; i < sala3.getNumFilas(); i++) {
-			for (int j = 0; j < sala3.getNumAsientos(); j++) {
-				sala3.ventas[i][j] = 0;
-			}
-		}
-		
-	}*/
 	
 	public void mostrarcartelera () {	
 		System.out.println("\nTenemos las siguientes películas:\n"
@@ -115,8 +107,10 @@ public class Cine {
 			if (comprobado > 0) {
 				importe += comprobado;
 			}
+			totalVendidas++;
 		}
 		System.out.printf("\nEn total, serán %.2f €.", importe);
+		
 		ganadoDia += importe;
 		return true;
 	}
@@ -124,15 +118,15 @@ public class Cine {
 	public double comprobarvendido (int sala, int fila, int asiento) {		
 		double comprobado = 0;
 		if (sala == sala1.getNumSala()) {
-			if (sala1.comprobar(fila, asiento)) {
+			if (sala1.comprobar(fila, asiento, totalVendidas)) {
 				comprobado = sala1.getPrecio();
 			}
 		} else if (sala == sala2.getNumSala()) {
-			if (sala2.comprobar(fila, asiento)) {
+			if (sala2.comprobar(fila, asiento, totalVendidas)) {
 				comprobado = sala2.getPrecio();
 			}
 		} else if (sala == sala3.getNumSala()) {
-			if (sala3.comprobar(fila, asiento)) {
+			if (sala3.comprobar(fila, asiento, totalVendidas)) {
 				comprobado = sala3.getPrecio();
 			}
 		} else {

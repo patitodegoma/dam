@@ -1,7 +1,5 @@
 package ejercicio_10;
 
-import java.util.Arrays;
-
 public class Sala {
 	
 	// Atributos
@@ -47,20 +45,20 @@ public class Sala {
 		this.ventas = new int [numFilas][numAsientos];
 	}
 
-	public int[][] getVentas() {
-		return ventas;
-	}
-
-	public void setVentas(int i, int j, int valor) {
-		this.ventas[i][j] = valor;
-	}
-	
 	public int getVendidas() {
 		return vendidas;
 	}
 
 	public void setVendidas(int vendidas) {
 		this.vendidas = vendidas;
+	}
+
+	public int[][] getVentas() {
+		return ventas;
+	}
+
+	public void setVentas(int i, int j, int valor) {
+		this.ventas[i][j] = valor;
 	}
 
 	public int getNumSala() {
@@ -103,32 +101,47 @@ public class Sala {
 		this.precio = precio;
 	}
 	
-	public boolean comprobar (int fila, int asiento) {
+	public boolean comprobar (int fila, int asiento, int totalCine) {
 		boolean vendido = true;
-		while (ventas[fila][asiento] == 1) {
-			System.out.println("F-"+ventas[fila][asiento]);
-			System.out.println("\nEsa butaca ya está vendida. Escoge otra. \n");
-			System.out.print("\n¿Qué fila quieres?: ");
-			fila = Leer.datoInt();
-			System.out.print("\n¿Qué asiento quieres?: ");
-			asiento = Leer.datoInt();
-		} 
-		System.out.println("V-"+ventas[fila][asiento]);
-		System.out.println("\nEa, ya la tienes");
-		ventas[fila][asiento] = 1;
+		
+		if (vendidas == numFilas * numAsientos) {
+			System.out.println("\nLa sala está llena, lo sentimos...");
+			vendido = false;
+		} else {
+			while (fila > numFilas || asiento > numAsientos) {
+				System.out.println("\nLocalidad no válida. Por favor, indique una fila entre 1 y "+numFilas+" y"
+						+ " un asiento entre 1 y "+numAsientos);
+				System.out.print("\nFila: ");
+				fila = Leer.datoInt();
+				System.out.print("\nAsiento: ");
+				asiento = Leer.datoInt();
+			}
+			
+			while (ventas[fila-1][asiento-1] == 1) {
+				System.out.println("\nEsa butaca ya está vendida. Escoja otra. \n");
+				System.out.print("\n¿Qué fila quieres?: ");
+				fila = Leer.datoInt();
+				System.out.print("\n¿Qué asiento quieres?: ");
+				asiento = Leer.datoInt();
+			} 
+			System.out.println("\n¡¡¡Disfrute de la película!!!");
+			ventas[fila-1][asiento-1] = 1;
+			Entrada miEntrada = new Entrada (fila, asiento);
+			vendidas++;
+			totalCine++;
+			miEntrada.setId(totalCine);
+			miEntrada.imprimirEntrada(miEntrada.getId(), fila, asiento, precio, pelicula);
+			System.out.println("\t\t\t\t - P A N T A L L A -");
+			for (int i = 0; i < numFilas; i++) {
+				System.out.println("");
+				for (int j = 0; j < numAsientos; j++) {
+					System.out.print("\t"+ventas[i][j]);
+				}
+			}
+			System.out.println("");
+		}
 		return vendido;
 	}
 
-	@Override
-	public String toString() {
-		return "Sala [numSala=" + numSala + ", pelicula=" + pelicula
-				+ ", numFilas=" + numFilas + ", numAsientos=" + numAsientos
-				+ ", precio=" + precio + ", vendidas=" + vendidas + ", ventas="
-				+ Arrays.toString(ventas) + "]";
-	}
-	
-	
-	
-	
 
 }
