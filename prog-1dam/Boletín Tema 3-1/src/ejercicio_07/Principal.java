@@ -128,10 +128,14 @@ public class Principal {
 				}
 				
 			case 0:	
+				continuar = 'n';
 			}
 			
-			System.out.print("\n¿Desea realizar alguna otra operación? (S/N): ");
-			continuar = Leer.datoChar();
+			if (opcion != 0) {
+				System.out.print("\n¿Desea realizar alguna otra operación? (S/N): ");
+				continuar = Leer.datoChar();
+			}
+			
 			
 		} while (continuar == 's' || continuar == 'S');
 		
