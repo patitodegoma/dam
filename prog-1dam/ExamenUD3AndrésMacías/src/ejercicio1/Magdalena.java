@@ -56,6 +56,7 @@ public class Magdalena {
 		return volumen;
 	}
 	
+
 	public double calcularPrecio (double volumen) {
 		double pvp;
 		pvp = volumen + this.coste;

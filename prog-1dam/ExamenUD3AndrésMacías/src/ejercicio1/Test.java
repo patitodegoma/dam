@@ -1,5 +1,11 @@
 package ejercicio1;
 
+/*  Algun atributo podría ser static, alguno de los totales, aunque no se pide en enunciado
+ *  Se pide pasar como argumento el precio por mm, no leerlo dentro
+ *  Creamos una magdalena con el constructor de pastelería y luego otra fuera. Un poco raro.
+ *  Nota : 9,5
+ */
+
 public class Test {
 
 	public static void main(String[] args) {

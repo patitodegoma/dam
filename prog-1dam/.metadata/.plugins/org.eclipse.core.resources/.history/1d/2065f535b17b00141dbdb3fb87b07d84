@@ -1,0 +1,64 @@
+package ejercicio_10;
+
+public class Principal {
+	
+	/*
+	Hacer un programa para gestionar un cine. Cada entrada de cine tendrá un
+	número identificativo, precio, número de la fila y de localidad.
+	Se darán al usuario las siguientes opciones en un switch:
+	1. Ver cartelera (sólo dos o tres películas). 2. Comprar entrada (una o varias)
+	comprobando si una localidad está vendida y si quedan localidades libres.3.
+	Mostrar precio total a pagar. 4. Calcular ganancias totales del día. 
+	*/
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		char continuar = 's';
+		int opcion = 0, nSalas = 3, nEntradas = 0;
+		
+		Sala sala1 = new Sala (1, "Los Juegos del Hambre", 15, 8, 7.5);
+		Sala sala2 = new Sala (2, "En busca de Bobby Fisher", 12, 6, 6);
+		Sala sala3 = new Sala (3, "Interstellar 3D", 18, 10, 9.5);
+		
+		Cine cineDAM = new Cine (nSalas, sala1, sala2, sala3);
+		
+		System.out.println("\n\t\t***Bienvenido a mi programa***\n\n"
+				+ "Sirve para gestionar las salas de un cine.\n");
+		
+		do {
+			
+			System.out.println("\nBienvenido al Cine DAM. Por favor, seleccione la opción deseada:\n "
+					+ "\t1.- Ver cartelera\n"
+					+ "\t2.- Comprar entradas\n"
+					+ "\t3.- Mostrar las ganancias del día\n\n"
+					+ "\t0.- Salir");
+			System.out.print("\nSu opción: ");
+			opcion = Leer.datoInt();
+			
+			switch (opcion) {
+			case 1:
+				cineDAM.mostrarcartelera();
+			break;
+			case 2:
+				System.out.print("\n¿Cuántas entradas desea comprar?: ");
+				nEntradas = Leer.datoInt();
+				cineDAM.comprarentradas(nEntradas);
+			break;
+			case 3:
+				System.out.printf("\nLas ganancias de hoy ascienden a %.2f €", cineDAM.getGanadoDia());
+			case 0:
+			}
+					
+			
+			if (opcion != 0) {
+				System.out.print("\n¿Desea realizar otra operación? (S/N): ");
+				continuar = Leer.datoChar();
+			}
+			
+		} while (continuar == 's' || continuar == 'S');
+		
+		System.out.println("\n\n¡¡¡Gracias por utilizar mi programa!!!");
+	}
+
+}

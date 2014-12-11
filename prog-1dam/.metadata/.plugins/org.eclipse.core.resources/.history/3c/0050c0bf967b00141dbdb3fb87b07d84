@@ -1,0 +1,144 @@
+package ejercicio_10;
+
+public class Cine {
+	
+	private int numSalas;
+	private Sala sala1;
+	private Sala sala2;
+	private Sala sala3;
+	private double ganadoDia;
+	
+	public Cine () {
+		this.numSalas = 0;
+		this.sala1 = new Sala (0, "", 0, 0, 0.0);
+		this.sala2 = new Sala (0, "", 0, 0, 0.0);
+		this.sala3 = new Sala (0, "", 0, 0, 0.0);
+		this.ganadoDia = 0;
+	}
+	
+	public Cine (int numSalas) {
+		this.numSalas = numSalas;
+	}
+	
+	public Cine (int numSalas, Sala sala1, Sala sala2, Sala sala3) {
+		this.numSalas = numSalas;
+		this.sala1 = sala1;
+		this.sala2 = sala2;
+		this.sala3 = sala3;
+	}
+	
+	public Cine (int numSalas, Sala sala1, Sala sala2, Sala sala3, double ganadoDia) {
+		this.numSalas = numSalas;
+		this.sala1 = sala1;
+		this.sala2 = sala2;
+		this.sala3 = sala3;
+		this.ganadoDia = ganadoDia;
+	}
+
+	public double getGanadoDia() {
+		return ganadoDia;
+	}
+
+	public void setGanadoDia(double ganadoDia) {
+		this.ganadoDia = ganadoDia;
+	}
+
+	public int getNumSalas() {
+		return numSalas;
+	}
+
+	public void setNumSalas(int numSalas) {
+		this.numSalas = numSalas;
+	}
+	
+	public Sala getSala1() {
+		return sala1;
+	}
+
+	public void setSala1(Sala sala1) {
+		this.sala1 = sala1;
+	}
+
+	public Sala getSala2() {
+		return sala2;
+	}
+
+	public void setSala2(Sala sala2) {
+		this.sala2 = sala2;
+	}
+
+	public Sala getSala3() {
+		return sala3;
+	}
+
+	public void setSala3(Sala sala3) {
+		this.sala3 = sala3;
+	}
+
+	/*public void reseteoventas () {
+		for (int i = 0; i < sala1.getNumFilas(); i++) {
+			for (int j = 0; j < sala1.getNumAsientos(); j++) {
+				sala1.setVentas(i, j, 0);
+			}
+		}
+		for (int i = 0; i < sala2.getNumFilas(); i++) {
+			for (int j = 0; j < sala2.getNumAsientos(); j++) {
+				sala2.ventas[i][j] = 0;
+			}
+		}
+		for (int i = 0; i < sala3.getNumFilas(); i++) {
+			for (int j = 0; j < sala3.getNumAsientos(); j++) {
+				sala3.ventas[i][j] = 0;
+			}
+		}
+		
+	}*/
+	
+	public void mostrarcartelera () {	
+		System.out.println("\nTenemos las siguientes películas:\n"
+				+ "\tSala 1: "+sala1.getPelicula()+".\n"
+				+ "\tSala 2: "+sala2.getPelicula()+".\n"
+				+ "\tSala 3: "+sala3.getPelicula()+".");
+	}
+	
+	public boolean comprarentradas (int numEntradas) {
+		int sala = 0, fila = 0, asiento = 0;
+		double importe = 0.0, comprobado = 0.0;
+		for (int i = 0; i < numEntradas; i++) {
+			System.out.printf("\n¿Para qué sala desea la "+(i+1)+"ª entrada?: ");
+			sala = Leer.datoInt();
+			System.out.print("\n¿Qué fila desea?: ");
+			fila = Leer.datoInt();
+			System.out.print("\n¿Qué asiento dentro de la fila desea?: ");
+			asiento = Leer.datoInt();
+			comprobado = comprobarvendido (sala, fila, asiento);
+			if (comprobado > 0) {
+				importe += comprobado;
+			}
+		}
+		System.out.printf("\nEn total, serán %.2f €.", importe);
+		ganadoDia += importe;
+		return true;
+	}
+	
+	public double comprobarvendido (int sala, int fila, int asiento) {		
+		double comprobado = 0;
+		if (sala == sala1.getNumSala()) {
+			if (sala1.comprobar(fila, asiento)) {
+				comprobado = sala1.getPrecio();
+			}
+		} else if (sala == sala2.getNumSala()) {
+			if (sala2.comprobar(fila, asiento)) {
+				comprobado = sala2.getPrecio();
+			}
+		} else if (sala == sala3.getNumSala()) {
+			if (sala3.comprobar(fila, asiento)) {
+				comprobado = sala3.getPrecio();
+			}
+		} else {
+			comprobado = 0;
+		}
+		return comprobado;
+	}
+
+}

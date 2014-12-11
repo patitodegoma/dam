@@ -1,0 +1,75 @@
+package ejercicio1;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		char continuar = 's';
+		int opcion = 0, totalMagdalenas = 0, maxid = 1000;
+		String direccion = "Condes de Bustillo 17";
+		double ladoMag = 0.0, costeMag = 0.0, volumenMag = 0.0, precioVenta = 0.0, beneficio = 0.0, 
+				volumenMasa = 0.0;
+		
+		System.out.println("\n\t\t***Bienvenido a mi programa***\n\n"
+				+ "Gestiona una pastelería básica.");
+		
+		System.out.print("\nPor favor, indique el lado del cubo de la magdalena en mm: ");
+		ladoMag = Leer.datoDouble();
+		System.out.print("\nPor favor, indique el coste de fabricación de una magdalena: ");
+		costeMag = Leer.datoDouble();
+		
+		GestionPasteleria miPasteleria = new GestionPasteleria ((int)Math.floor(Math.random()*maxid)+1, 
+				direccion, new Magdalena (ladoMag, (int)Math.floor(Math.random()*maxid)+1, costeMag));
+		miPasteleria.setTotalMagdalenas(++totalMagdalenas);
+		
+		Magdalena magda2 = new Magdalena (ladoMag, (int)Math.floor(Math.random()*maxid)+1, costeMag);
+		miPasteleria.setTotalMagdalenas(++totalMagdalenas);
+		
+		do {
+		
+			System.out.println("\nPor favor, seleccione la opción que desee realizar: "
+					+ "\n\t1.- Calcular el volumen de una magdalena."
+					+ "\n\t2.- Precio de venta de cada magdalena."
+					+ "\n\t3.- Calcular el beneficio de la tienda."
+					+ "\n\t4.- Mostrar el total de magdalenas de la tienda."
+					+ "\n\t5.- Calcular el volumen total de masa."
+					+ "\n\n\t0.- Salir.");
+			System.out.print("Su opcion: ");		
+			opcion = Leer.datoInt();
+
+			switch (opcion) {
+			case 1:
+				volumenMag = magda2.calcularVolumen(ladoMag);
+				System.out.printf("\nEl volumen de cada magdalena es de %.2f mm³", volumenMag);
+				break;
+			case 2:
+				precioVenta = magda2.calcularPrecio(magda2.calcularVolumen(ladoMag));
+				System.out.printf("\nCada magdalena se debe vender a %.2f €", precioVenta);
+				break;
+			case 3:
+				beneficio = miPasteleria.calcularBeneficio();
+				System.out.printf("\nEl beneficio de la pastelería es de %.2f €", beneficio);
+				break;
+			case 4:
+				System.out.printf("\nTenemos en la pastelería %d magdalenas.", miPasteleria.getTotalMagdalenas());
+				break;
+			case 5:
+				volumenMasa = miPasteleria.calcularVolTotal();
+				System.out.printf("\nEl volumen total de masa gastado es de %.2f mm³.", volumenMasa);
+			case 0:
+			}
+			
+			if (opcion != 0) {
+				System.out.print("\n¿Desea realizar otra operación? (S/N): ");
+				continuar = Leer.datoChar();
+			}
+			
+			
+		} while (continuar == 's' || continuar == 'S');
+		
+		System.out.println("\n¡Gracias por utilizar mi programa!");
+
+	}
+
+}

@@ -1,0 +1,48 @@
+package ejercicio1;
+
+public class Test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		char continuar = 's';
+		int opcion = 0, totalMagdalenas = 500, idTienda = 1, idMag = 1;
+		String direccion = "Condes de Bustillo 17";
+		double ladoMag = 0.0, costeMag = 5.0, volumenMag = 0.0, precioVenta = 0.0, beneficio = 0.0;
+		
+		System.out.println("\n\t\t***Bienvenido a mi programa***\n\n"
+				+ "Gestiona una pastelería básica.");
+		
+		System.out.print("\nPor favor, indique el lado del cubo de la magdalena en mm: ");
+		ladoMag = Leer.datoDouble();
+		Magdalena magda1 = new Magdalena (ladoMag, idMag, costeMag);
+		GestionPasteleria miPasteleria = new GestionPasteleria (totalMagdalenas, idTienda, direccion, magda1);
+		
+		System.out.println("\nPor favor, seleccione la opción que desee realizar: "
+				+ "\n\t1.- Calcular el volumen de una magdalena."
+				+ "\n\t2.- Precio de venta de cada magdalena."
+				+ "\n\t3.- Calcular el beneficio de la tienda."
+				+ "\n\t4.- Mostrar el total de magdalenas de la tienda.");
+		
+		opcion = Leer.datoInt();
+		switch (opcion) {
+		case 1:
+			volumenMag = magda1.calcularVolumen(ladoMag);
+			System.out.printf("\nEl volumen de cada magdalena es de %.2f mm³", volumenMag);
+			break;
+		case 2:
+			precioVenta = magda1.calcularPrecio(magda1.calcularVolumen(ladoMag));
+			System.out.printf("\nCada magdalena se debe vender a %.2f €", precioVenta);
+			break;
+		case 3:
+			beneficio = miPasteleria.calcularBeneficio();
+			System.out.printf("\nEl beneficio de la pastelería es de %.2f €", beneficio);
+			break;
+		case 4:
+			System.out.printf("\nTenemos en la pastelería %d magdalenas", miPasteleria.getTotalMagdalenas());
+			break;
+		}
+
+	}
+
+}

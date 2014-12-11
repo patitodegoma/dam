@@ -1,0 +1,72 @@
+public class Ejercicios5a8 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// La siguiente variable se utilizará a lo largo del código para
+		// almacenar los mensajes que se mostrarán por pantalla
+		String mostrar = "Este es el primer mensaje";
+		System.out.println(mostrar);
+
+		// TODO Ejercicio 6: Utiliza la herramienta necesaria para modificar el
+		// nombre de la variable anterior, de manera que sea más corto y que
+		// siga las convenciones de estilo de Java. ¿Cómo se llama la
+		// herramienta utilizada?¿Cuál es su atajo de teclado? 
+
+		mostrar = "Ya hemos hecho el ejercicio 6";
+		System.out.println(mostrar);
+		// TODO Ejercicio 7: El siguiente código comprueba un valor (que no nos
+		// importa de dónde lo hemos obtenido) y en función del valor indicado,
+		// imprime el nombre del capítulo correspondiente. Utiliza las
+		// sugerencias de corrección para subsanar los errores que tiene el
+		// código. De las opciones que sugiere el entorno, ¿cuáles has elegido?
+		
+
+		switch (indice) {
+		case 1:
+			mostrar = "Tema 1: Introducción";
+			break;
+		case 2:
+			mostrar = "Tema 2: Entornos de desarrollo";
+			break;
+		case a:
+			mostrar = "Tema 3: El lenguaje UML";
+			break;
+		}
+		System.out.println(mostrar);
+
+		// TODO Ejercicio 8: El siguiente código implementa un programa con un
+		// array bidimensional de enteros que guarda los números del 1 al 64 en
+		// 8 filas y 8 columnas. El array tiene una fila y columna más, para
+		// guardar las sumas de los números de cada fila y columna. Utiliza el
+		// depurador y el inspector de variable para contestar a la siguientes
+		// preguntas:
+		// 1. ¿Cuántas iteraciones del primer bucle for (el de i) han pasado
+		// para rellenar la variable numerajos[2][3]?
+		// 2. ¿Cuál es el valor de dicha variable?
+
+
+		int[][] numerajos = new int[9][9];
+		int k = 0;
+
+		for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				numerajos[i][j] = ++k;
+				numerajos[i][8] += k;
+				numerajos[8][j] += k;
+			}
+		}
+		for (int i = 0; i < 8; i++) {
+			numerajos[8][8] += numerajos[i][8];
+		}
+
+		mostrar = "¡¡TERMINÉ EL EXAMEN!!";
+		System.out.println(mostrar);
+	}
+
+	
+
+}
