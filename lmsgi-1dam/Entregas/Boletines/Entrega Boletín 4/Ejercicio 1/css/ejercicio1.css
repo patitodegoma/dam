@@ -1,0 +1,19 @@
+header {
+	display: block;
+	background-color: deepskyblue;
+	color: white;
+	text-align: center;
+	padding: 60px;
+	font-size: 45px;
+	font-family: Arial;
+}
+
+.menu {
+	display: inline;
+	
+}
+
+
+h1 {
+	font-size: 30px;
+}

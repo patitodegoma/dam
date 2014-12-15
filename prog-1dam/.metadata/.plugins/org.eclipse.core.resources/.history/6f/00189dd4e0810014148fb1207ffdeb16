@@ -1,0 +1,9 @@
+package metodos_con_objetos;
+
+public class Movil {
+	
+	private String contrasena;
+	
+	
+
+}
