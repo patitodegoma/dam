@@ -1,0 +1,21 @@
+body {
+	background-image: url("../imagenes/cesped.jpg");
+	margin: 0;
+	padding: 0;
+}
+
+h1, h2, h3 {
+	text-align: center;	
+}
+
+.caja {
+	background-color: #000;
+	color: gold;
+	width: 250px;
+	height: 225px;
+	float: left;
+	margin: 25px;
+	border: 2px solid black;
+	border-radius: 15px;
+	padding-top: 25px;
+}

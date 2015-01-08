@@ -1,0 +1,157 @@
+body {
+	background-color: #a0bcdb;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	display: block;
+	background: url("../imagenes/cabecera.png") no-repeat top left;
+}
+
+nav {
+	display: block;
+	background-color: black;
+	height: 30px;
+	clear: both;
+	padding: 2px 2px 0 2px;
+}
+
+aside {
+	display: block;
+	background-color: white;
+	float: left;
+	height: 1599px;
+}
+
+section {
+	display: block;
+	float: left;
+	background-color: white;
+}
+
+h1, h2 
+	{
+		text-align: center;
+	}
+
+p {
+	font-size: 9pt;
+}
+
+img {
+	vertical-align: text-top;
+}
+
+li {
+	padding: 0 5px 5px 0;
+}
+
+.left {
+	float: left;
+}
+
+.right {
+	float: right;
+}
+
+.centrado {
+	text-align: center;
+}
+
+.new {
+	clear: both;
+}
+
+.circulos {
+	list-style-type: circle;
+}
+
+.indice {
+	margin: 25px;
+	font-size: 16pt;
+	text-decoration: none;
+	color: black;
+}
+
+a.indice:visited {
+	text-decoration: none;
+	color: black;
+}
+
+a.indice:hover {
+	text-decoration: underline;
+	color: red;
+}
+
+#contenedor {
+	width: 980px;
+	background-color: white;
+	margin: 0 auto;
+}
+
+#logo {
+	float:left;
+}
+
+#imgdonbosco {
+	float: right;
+	margin: 0 10px 0 0;
+	overflow: hidden;
+}
+
+#enlacemas {
+	text-align: right;
+	padding: 0 15px 5px;
+}
+
+#enlacesa {
+	padding: 0 40px 10px;
+}
+
+.separador {
+	padding: 0 3px;
+	float: right;
+}
+
+.caja {
+	background-color: #c1d4e7;
+	margin: 10px 12px;
+	width: 215px;
+	border-radius: 10px;
+}
+
+.titulocaja {
+	color: white;
+	background-color: #3c76b5;
+	text-align: center;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	padding: 5px;
+}
+
+.enlacecaja {
+	text-decoration: none;
+	color: black;
+	font-size: 9pt;
+}
+
+a.enlacecaja:hover {
+	color: #896969;
+	text-decoration: underline;
+}
+
+.boletinsalesiano {
+	margin: 0 10px 10px 15px;
+}
+
+.imgsiempreadelante {
+	margin: 0 10px 10px 30px;
+}
+
+.textonoticia {
+	width: 380px;
+	margin: 15px;
+}
+
+

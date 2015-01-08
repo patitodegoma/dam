@@ -1,0 +1,101 @@
+body {
+	background-color: #4d6f98;
+	margin: 0;
+	padding: 0;
+}
+
+header {
+	display: block;
+	background-color: #4d6f98;
+	color: white;
+	text-align: center;
+	padding: 60px 0;
+	font-size: 45px;
+	font-family: Arial;
+}
+
+nav {
+	display: block;
+	background-color: #91ac58;
+	color: white;
+	font-size: 20px;
+	padding: 20px 0;
+	font-family: Arial;
+}
+
+aside {
+	display: inline-block;
+	background-color: #4d6f98;
+}
+
+section {
+	background-color: white;
+	display: inline-block;
+	width: 61%;
+	float: left;
+	
+}
+
+article {
+	float: left;
+	padding: 1%;
+}
+
+footer {
+	display: block;
+	clear: both;
+	background-color: #91ac58;
+	font-size: 15px;
+	padding: 20px;
+	font-family: Arial;
+}
+
+div {
+	margin-bottom: 20px;
+}
+
+.menu {
+	display: inline;
+}
+
+.ultimasnoticias {
+	float: left;
+	width: 15%;
+	color: white;
+	padding: 1%;
+	font-family: Arial;
+}
+
+.subtitulo {
+	font-size: 20px;
+	text-align: center;
+}
+
+.noticias {
+	font-size: 12px;
+	list-style-type: none;
+	padding: 2% 1%;
+}
+
+.tituloart {
+	font-family: "Times new roman";
+	font-size: 30px;
+	font-weight: bold;
+}
+
+.galeria {
+	float: right;
+	width: 20%;
+	color: white;
+	padding-left: 10px;
+	font-family: Arial;
+	text-align: center;
+}
+
+.publicidad {
+	width: 90%;
+	background-color: white;
+	color: black;
+	border-radius: 15px;
+	padding: 10px 5px 75px;
+}
