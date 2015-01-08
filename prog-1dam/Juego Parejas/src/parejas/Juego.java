@@ -5,23 +5,17 @@ public class Juego {
 	public static void main(String[] args) {
 		
 		int nivel = 0, anchura = 0, altura = 0, fila = 0, columna = 0, fila2 = 0, columna2 = 0, 
-				puntosAcierto = 5*nivel, puntosFallo = -2;
+				puntosFallo = -2;
 		String turno = "jugador1", nombre ="";
 		char continuar = 'C';
 		boolean comprobado = false, acierto = false, finalizado = true;
 		
-		String [] cartas = {"A", "B", "C", "D", "E", "F", "G", "H", "I", 
+		String [] cartas = {"Perro", "Gato", "Caballo", "Toro", "Gorrión", "Vaca", "Ratón", "H", "I", 
 							"J", "K", "L", "M", "N", "O", "P", "Q", "R"};
 		
 		Coleccion cole = new Coleccion (cartas);
-		cole.desordenar();
-		
-		System.out.println(cole.getParejas(3));
-		
-		
-		System.out.println();
-		System.out.println(cole);
-		
+		cole.desordenar();	
+			
 		System.out.println("\n\t*** B I E N V E N I D O   A L   J U E G O   D E   L A S   P A R E J A S ***");
 		
 		System.out.println("\nEl juego consiste en buscar por turnos las parejas de nombres en el tablero. Gana el "
@@ -34,6 +28,8 @@ public class Juego {
 				+ "\t4 - Nivel muy difícil (tablero de 6x6)\n");
 		System.out.print("Nivel: ");
 		nivel = Leer.datoInt();
+		
+		int puntosAcierto = 5*nivel;   // Definición de puntos por acierto, una vez determinado el nivel
 		
 		while (!comprobado) {
 			switch (nivel) {

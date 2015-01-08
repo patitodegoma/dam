@@ -27,10 +27,8 @@ public class Coleccion {
 	public void desordenar () {
 		int aleat = 0;
 		String temporal = "";
-		System.out.println(this.parejas.length);
 		for (int i = 0; i < this.parejas.length; i++) {
 			aleat = i + (int) (Math.random() * (this.parejas.length - i));
-			//System.out.println("i="+i+" aleat="+aleat+" temporal="+temporal);
 			temporal = this.parejas[i];
 			this.parejas[i] = this.parejas[aleat];
 			this.parejas[aleat] = temporal;

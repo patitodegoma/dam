@@ -37,7 +37,7 @@ public class Jugador {
 
 	// ToString
 	
-	@Override
+	
 	public String toString() {
 		return "Jugador [nombre=" + nombre + ", puntos=" + puntos + "]";
 	}
