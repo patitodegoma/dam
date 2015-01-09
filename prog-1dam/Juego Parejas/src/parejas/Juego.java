@@ -5,12 +5,12 @@ public class Juego {
 	public static void main(String[] args) {
 		
 		int nivel = 0, anchura = 0, altura = 0, fila = 0, columna = 0, fila2 = 0, columna2 = 0, 
-				puntosFallo = -2;
+				puntosAcierto, puntosFallo = -2;
 		String turno = "jugador1", nombre ="";
 		char continuar = 'C';
 		boolean comprobado = false, acierto = false, finalizado = true;
 		
-		String [] cartas = {"Perro", "Gato", "Caballo", "Toro", "Gorrión", "Vaca", "Ratón", "H", "I", 
+		String [] cartas = {"A", "B", "C", "D", "E", "F", "G", "H", "I", 
 							"J", "K", "L", "M", "N", "O", "P", "Q", "R"};
 		
 		Coleccion cole = new Coleccion (cartas);
@@ -29,7 +29,7 @@ public class Juego {
 		System.out.print("Nivel: ");
 		nivel = Leer.datoInt();
 		
-		int puntosAcierto = 5*nivel;   // Definición de puntos por acierto, una vez determinado el nivel
+		puntosAcierto = 5*nivel;   // Definición de puntos por acierto, una vez determinado el nivel
 		
 		while (!comprobado) {
 			switch (nivel) {
