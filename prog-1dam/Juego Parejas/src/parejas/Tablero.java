@@ -108,14 +108,7 @@ public class Tablero {
 		}
 	}
 	
-	public void taparTodo () {
-		this.mostrar = new boolean [alto][ancho];
-		for (int i = 0; i < alto; i++) {
-			for (int j = 0; j < ancho; j++) {
-				mostrar[i][j] = false;
-			}
-		}
-	}
+	
 	
 	public void inicializarTablero (int nivel) {
 		this.cruce = new String [alto][ancho];
@@ -166,17 +159,51 @@ public class Tablero {
 		taparTodo ();
 	}
 	
+	public void taparTodo () {
+		this.mostrar = new boolean [alto][ancho];
+		for (int i = 0; i < alto; i++) {
+			for (int j = 0; j < ancho; j++) {
+				mostrar[i][j] = false;
+			}
+		}
+	}
+	
 	public void escribeDatos (Jugador [] jugadores) {
-		for (int i = 0; i < this.ancho + 2; i++) {    // Para el número de columnas, más la inicio y fin
-			System.out.print("*\t");       // Dibuja un asterisco (fila de asteriscos)
+		int contador = 0;
+		for (int i = 0; i < 73; i++) {    
+			System.out.print("# ");       
 		}
 		System.out.println();
-		System.out.println("\t\tE L   J U E G O   D E   L A S   P A R E J A S\t\t");
-		for (int i = 0; i < this.ancho + 2; i++) {    // Para el número de columnas, más la inicio y fin
-			System.out.print("*\t");       // Dibuja un asterisco (fila de asteriscos)
+		while (contador < 6) {
+			System.out.print("# ");
+			for (int i = 0; i < 71; i++) {    
+				System.out.print("  ");      	
+			}
+			System.out.print("#\n");
+			contador++;
 		}
+		System.out.println("#\t\t\t\t\t\t\tE L   J U E G O   D E   L A S   P A R E J A S\t\t\t\t\t\t#");
+		while (contador > 0) {
+			System.out.print("# ");
+			for (int i = 0; i < 71; i++) {    
+				System.out.print("  ");      	
+			}
+			System.out.print("#\n");
+			contador--;
+		}	
+		for (int i = 0; i < 73; i++) {    
+			System.out.print("# ");      
+		}
+		System.out.println();
 		for (int i = 0; i < jugadores.length; i++) {
-			System.out.println("\nJugador "+(i+1)+": "+jugadores[i].getNombre()+"\t\tPuntos: "+jugadores[i].getPuntos());
+			System.out.print("# ");
+			System.out.print("Jugador "+(i+1)+": "+jugadores[i].getNombre()+"\t\tPuntos: "+jugadores[i].getPuntos());
+			
+			for (int j = 0; j < 112 - String.valueOf(jugadores[i].getPuntos()).length() - 
+					jugadores[i].getNombre().length(); j++) {
+				System.out.print("a");
+			}
+			System.out.println();
 		}
 		System.out.println("\n\nParejas Levantadas: "+this.parejasLevantadas+" de "+this.ancho * this.alto / 2);
 		System.out.println();
@@ -213,7 +240,7 @@ public class Tablero {
 	}
 	
 	public boolean comprobarJugada (int [] coordenadas) {
-		boolean comprobado = cruce[coordenadas[0]][coordenadas[1]].equals(cruce[coordenadas[2]][coordenadas[3]]) ? 
+		boolean comprobado = cruce[coordenadas[0] - 1 ][coordenadas[1] - 1].equals(cruce[coordenadas[2] - 1][coordenadas[3] - 1]) ? 
 				true : false;
 		if (comprobado)
 			this.parejasLevantadas++;
@@ -222,8 +249,8 @@ public class Tablero {
 	
 	public void ocultarFallos (int [] coordenadas, boolean acertado) {
 		if (!acertado) {
-			setMostrar(coordenadas[0], coordenadas[1], false);
-			setMostrar(coordenadas[2], coordenadas[3], false);
+			setMostrar(coordenadas[0] - 1, coordenadas[1] - 1, false);
+			setMostrar(coordenadas[2] - 1, coordenadas[3] - 1, false);
 		}	
 	}
 	

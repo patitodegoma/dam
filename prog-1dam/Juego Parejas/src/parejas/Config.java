@@ -169,6 +169,21 @@ public class Config {
 		
 		return coordenadas;
 	}
+	//TODO Comprobar coordenadas.
+	
+	public boolean comprobarCoordenadas (int [] coordenadas, int nivel) {
+		boolean comprobado = true;
+		if (coordenadas[0] > altos[nivel] && coordenadas[0] < 1)
+			comprobado = false;
+		if (coordenadas[1] > anchos[nivel] && coordenadas[1] < 1)
+			comprobado = false;
+		if (coordenadas[2] > altos[nivel] && coordenadas[2] < 1)
+			comprobado = false;
+		if (coordenadas[3] > anchos[nivel] && coordenadas[3] < 1)
+			comprobado = false;
+		
+		return comprobado;
+	}
 	
 	public String finalizaJugada (boolean resultado, String turno, Jugador [] jugadores) {
 		if (resultado) {
@@ -191,15 +206,22 @@ public class Config {
 		return turno;
 	}
 	
-	public void pausa () {
-		System.out.print("\nPulsa 'C' para continuar: ");
-		char continuar = Leer.datoChar();
-		while (continuar != 'C' && continuar != 'c') {
+	/**
+	 * Realiza una pausa en el juego, si este no ha finalizado, para que los jugadores puedan ver el tablero. Una vez se pulse la tecla C, se insertan 150 líneas en blanco para "limpiar la pantalla".
+	 * @param finalizado Indica si el juego ha finalizado o no.
+	 */
+	public void pausa (boolean finalizado) {
+		if (!finalizado) {
 			System.out.print("\nPulsa 'C' para continuar: ");
-			continuar = Leer.datoChar();
+			char continuar = Leer.datoChar();
+			while (continuar != 'C' && continuar != 'c') {
+				System.out.print("\nPulsa 'C' para continuar: ");
+				continuar = Leer.datoChar();
+			}
+			for (int i = 0; i < 150; i++) 
+				System.out.println();
 		}
-		for (int i = 0; i < 150; i++) 
-			System.out.println();
+		
 	}
 
 }
