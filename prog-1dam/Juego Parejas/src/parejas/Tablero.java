@@ -170,10 +170,7 @@ public class Tablero {
 	
 	public void escribeDatos (Jugador [] jugadores, String turno) {
 		
-		// Línea de almohadillas
-		for (int i = 0; i < 79; i++) {    
-			System.out.print("# ");       
-		} System.out.println();
+		Utiles.repiteCadena("# ", 79, true);
 		
 		Utiles.ponSolo2Almohadillas();
 		
@@ -181,19 +178,16 @@ public class Tablero {
 		
 		Utiles.ponSolo2Almohadillas();
 		
-		// Línea de almohadillas
-		for (int i = 0; i < 79; i++) {    
-			System.out.print("# ");      
-		} System.out.println();
+		Utiles.repiteCadena("# ", 79, true); 
 		
 		Utiles.ponSolo2Almohadillas();
 		
 		// Escribe nombres y puntos de jugadores
 		for (int i = 0; i < jugadores.length; i++) {
 			System.out.print("#\tJugador "+(i+1)+": "+jugadores[i].getNombre());
-			Utiles.generaEspacios(35 - jugadores[i].getNombre().length());
+			Utiles.repiteCadena(" ", 35 - jugadores[i].getNombre().length(), false);
 			System.out.print("Puntos: "+jugadores[i].getPuntos());
-			Utiles.generaEspacios(94 - String.valueOf(jugadores[i].getPuntos()).length());
+			Utiles.repiteCadena(" ", 94 - String.valueOf(jugadores[i].getPuntos()).length(), false);
 			System.out.println("#");
 		}
 		
@@ -201,23 +195,20 @@ public class Tablero {
 		
 		// Línea de las parejas levantadas
 		System.out.print("#\tParejas Levantadas: "+this.parejasLevantadas+" de "+this.ancho * this.alto / 2);
-		Utiles.generaEspacios(124 - String.valueOf(this.parejasLevantadas).length() - 
-				String.valueOf(this.ancho * this.alto / 2).length());
+		Utiles.repiteCadena(" ", 124 - String.valueOf(this.parejasLevantadas).length() - 
+				String.valueOf(this.ancho * this.alto / 2).length(), false);
 		System.out.println("#");
 		
 		Utiles.ponSolo2Almohadillas();
 		
 		// Línea que indica a quién le toca
 		System.out.print("#\tEl turno es de "+turno);
-		Utiles.generaEspacios(133 - turno.length());
+		Utiles.repiteCadena(" ", 133 - turno.length(), false);
 		System.out.println("#");
 		
 		Utiles.ponSolo2Almohadillas();
 		
-		// Línea de almohadillas
-		for (int i = 0; i < 79; i++) {    
-			System.out.print("# ");      
-		} System.out.println();
+		Utiles.repiteCadena("# ", 79, true); 
 		
 		Utiles.ponSolo2Almohadillas();
 		Utiles.ponSolo2Almohadillas();
@@ -231,39 +222,36 @@ public class Tablero {
 			System.out.print("\tColumna "+(i+1)+"\t");
 		} 
 		if (nivel == 1) {
-			System.out.println("\t\t\t\t\t\t    #");
+			Utiles.repiteCadena("\t", 6, false); 
+			System.out.println("    #");
 		} else {
 			System.out.println("    #");
 		}
-		
-		
-		
+			
 		// Primera fila (guiones)
 		if (nivel == 1) {
-			System.out.print("#\t  ");  // Dos tabuladores de inicio
-			for (int i = 0; i < 94; i++) {    // Dibuja todo el ancho de guiones
-				System.out.print("-");       
-			} System.out.println("\t\t\t\t\t\t    #");
+			System.out.print("#\t  ");  
+			Utiles.repiteCadena("-", 94, false); 
+			Utiles.repiteCadena("\t", 6, false); 
+			System.out.println("    #");
 		} else {
 			System.out.print("#\t  ");  // Dos tabuladores de inicio
-			for (int i = 0; i < 142; i++) {    // Dibuja todo el ancho de guiones
-				System.out.print("-");       
-			} System.out.println("    #");
+			Utiles.repiteCadena("-", 142, false); 
+			System.out.println("    #");
 		}
-		
-		
-		
-		
+				
 		// Fila vacía, solo con palo al inicio y final
 		
 		if (nivel == 1) {
-			System.out.print("#\t |\t\t\t|\t\t\t|\t\t\t|\t\t\t");
-			System.out.println("|\t\t\t\t\t\t    #");
+			System.out.print("#\t |");
+			Utiles.repiteCadena("\t\t\t|", 4, false);
+			Utiles.repiteCadena("\t", 6, false); 
+			System.out.println("    #");
 		} else {
-			System.out.print("#\t |\t\t\t|\t\t\t|\t\t\t|\t\t\t|\t\t\t|\t\t\t");
-			System.out.println("|   #");
+			System.out.print("#\t |");
+			Utiles.repiteCadena("\t\t\t|", 6, false);
+			System.out.println("   #");
 		}
-		
 		
 		// Tablero propiamente dicho
 		for (int i = 0; i < this.alto * 2; i++) {		
@@ -287,7 +275,8 @@ public class Tablero {
 					}			
 					if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
 						if (nivel == 1) {
-							System.out.print("\t\t\t\t\t\t    #");
+							Utiles.repiteCadena("\t", 6, false); 
+							System.out.print("    #");
 						} else {
 							System.out.print("   #");  // Y en caso afirmativo le ponemos el palo
 						}
@@ -296,32 +285,30 @@ public class Tablero {
 					System.out.print("\t\t\t|");      	
 					if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
 						if (nivel == 1) {
-							System.out.print("\t\t\t\t\t\t    #");
+							Utiles.repiteCadena("\t", 6, false); 
+							System.out.print("    #");
 						} else {
 							System.out.print("   #");  // Y en caso afirmativo le ponemos el palo
 						}
 				}			
 			}
-			System.out.print("\n");   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
+			System.out.println();   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
 		}
 		if (nivel == 1) {
-			System.out.print("#\t  ");  // Dos tabuladores de inicio
-			for (int i = 0; i < 94; i++) {    // Dibuja todo el ancho de guiones
-				System.out.print("-");       
-			} System.out.println("\t\t\t\t\t\t    #");
+			System.out.print("#\t  ");  
+			Utiles.repiteCadena("-", 94, false);  
+			Utiles.repiteCadena("\t", 6, false); 
+			System.out.println("    #");
 		} else {
-			System.out.print("#\t  ");  // Dos tabuladores de inicio
-			for (int i = 0; i < 142; i++) {    // Dibuja todo el ancho de guiones
-				System.out.print("-");       
-			} System.out.println("    #");
+			System.out.print("#\t  ");  
+			Utiles.repiteCadena("-", 142, false); 
+			System.out.println("    #");
 		}
 		
 		Utiles.ponSolo2Almohadillas();
 		Utiles.ponSolo2Almohadillas();
 		
-		for (int i = 0; i < 79; i++) {    
-			System.out.print("# ");      
-		} System.out.println();
+		Utiles.repiteCadena("# ", 79, true); 
 	}
 	
 	public boolean comprobarLevantado (int fila, int columna) {
@@ -352,38 +339,6 @@ public class Tablero {
 		return comprobado;
 	}
 	
-	/*
-	public void dibujarTablero () {	
-		System.out.print("\t");  // Tabulador inicial
-		for (int i = 0; i < 52; i++) {    // Para el número de columnas, más la inicio y fin
-			System.out.print("--");       // Dibuja un asterisco (fila de asteriscos)
-		}
-		System.out.println(" ");
-		for (int i = 0; i < this.alto; i++) {		
-			System.out.print("\t|\t");  // Palo
-			for (int j = 0; j < this.ancho; j++) {
-				if (!mostrar [i][j]) {
-					System.out.print("-\t\t");
-				} else {
-					if (this.cruce[i][j].length() < 8) {
-						System.out.print(this.cruce[i][j]+"\t\t");
-					} else {
-						System.out.print(this.cruce[i][j]+"\t");
-					}
-					
-				}
-					
-				if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
-					System.out.print("|");  // Y en caso afirmativo le ponemos palo
-			}
-			System.out.print("\n");   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
-		}
-		System.out.print("\t");  // Tabulador ultima fila
-		for (int i = 0; i < 52; i++) {    // Para el número de columnas, más la inicio y fin
-			System.out.print("--");       // Dibuja un asterisco (fila de asteriscos)
-		}	
-	}
-	*/
 	
 
 }

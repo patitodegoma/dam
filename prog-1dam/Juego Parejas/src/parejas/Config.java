@@ -2,6 +2,7 @@ package parejas;
 
 import utilidades.*;
 
+
 public class Config {
 	
 	private int [] altos; // Número de filas del tablero por nivel
@@ -20,8 +21,6 @@ public class Config {
 	public Coleccion configuraColeccion (int n) {
 		
 		String listElementos [] = new String [18];
-		//String coleLetras [] = {"A", "B", "C", "D", "E", "F", "G", "H", "I", 
-			//	"J", "K", "L", "M", "N", "O", "P", "Q", "R"}; 
 		String coleNombres [] = {"Hugo", "Daniel", "Pablo", "Álvaro", "Mario", "Lucas", "Carlos", "Andrés", "Sergio", 
 				"Paula", "Sara", "Macarena", "Julia", "Alba", "Marta", "Elena", "Inés", "Enma"}; 
 		String coleEuropa [] = {"España", "Italia", "Francia", "Holanda", "Alemania", "Austria", "Eslovenia", "Portugal",  
@@ -80,14 +79,20 @@ public class Config {
 		int nivel = 0;
 		boolean comprobado = false;
 		
-		System.out.println("\nPor favor, seleccione el nivel de juego: \n");
+		Utiles.repiteCadena("# ", 71, true);
+		System.out.println("#                                                                                                                                           #");
+		System.out.println("#      Por favor, seleccione el nivel de juego:                                                                                             #");
+		System.out.println("#                                                                                                                                           #");
 		while (!comprobado) {
-			System.out.println("\t1 - Nivel fácil (tablero de 4x4)\n"
-					 + "\t2 - Nivel normal (tablero de 4x6)\n"
-					 + "\t3 - Nivel difícil (tablero de 5x6)\n"
-					 + "\t4 - Nivel muy difícil (tablero de 6x6)\n");			 
-			System.out.print("Nivel: ");
+			System.out.println("#        1 - Nivel fácil (tablero de 4x4)                                                                                                   #\n"
+					 + "#        2 - Nivel normal (tablero de 4x6)                                                                                                  #\n"
+					 + "#        3 - Nivel difícil (tablero de 5x6)                                                                                                 #\n"
+					 + "#        4 - Nivel muy difícil (tablero de 6x6)                                                                                             #");			 
+			System.out.println("#                                                                                                                                           #");
+			Utiles.repiteCadena("# ", 71, true);
+			System.out.print("\n - Nivel: ");
 			nivel = Leer.datoInt();
+			System.out.println();
 			comprobado = compruebaNivel(nivel);
 		}
 		return nivel;
@@ -97,15 +102,21 @@ public class Config {
 		int numColeccion = 0;
 		boolean comprobado = false;
 		
-		System.out.println("\nPor favor, seleccione la colección a usar: \n");
+		Utiles.repiteCadena("# ", 71, true);
+		System.out.println("#                                                                                                                                           #");
+		System.out.println("#      Por favor, seleccione la colección a usar:                                                                                           #");
+		System.out.println("#                                                                                                                                           #");
 		while (!comprobado) {
-			System.out.println("\t1 - Nombres propios de persona\n"
-					+ "\t2 - Países de Europa\n"
-					+ "\t3 - Estrellas del firmamento\n"
-					+ "\t4 - Nombres de flores\n"
-					+ "\t5 - Nombres de Minerales\n");		 
-			System.out.print("Colección: ");
+			System.out.println("#        1 - Nombres propios de persona                                                                                                     #\n"
+					+ "#        2 - Países de Europa                                                                                                               #\n"
+					+ "#        3 - Estrellas del firmamento                                                                                                       #\n"
+					+ "#        4 - Nombres de flores                                                                                                              #\n"
+					+ "#        5 - Nombres de Minerales                                                                                                           #");		 
+			System.out.println("#                                                                                                                                           #");
+			Utiles.repiteCadena("# ", 71, true);
+			System.out.print("\n - Colección: ");
 			numColeccion = Leer.datoInt();
+			System.out.println();
 			comprobado = compruebaColeccion(numColeccion);
 		}
 		configuraColeccion(numColeccion);
@@ -132,16 +143,17 @@ public class Config {
 	public Jugador[] creaJugadores () {
 		Jugador [] jugadores = new Jugador[2];
 		
-		System.out.print("\nPor favor, introduzca el nombre del jugador 1: ");
+		System.out.print("\n - Por favor, introduzca el nombre del jugador 1: ");
 		Jugador jugador1 = new Jugador (Leer.dato());
 		jugadores[0] = jugador1;
-		System.out.print("\nPor favor, introduzca ahora el nombre del jugador 2: ");
+		System.out.print("\n - Por favor, introduzca ahora el nombre del jugador 2: ");
 		Jugador jugador2 = new Jugador (Leer.dato());
 		jugadores[1] = jugador2;
 		return jugadores;
 	}
 	
 	public String sorteoInicial (Jugador [] jugadores) {
+		char dummy;
 		String turno = (Math.random() > 0.5) ? jugadores[0].getNombre() : jugadores[1].getNombre();
 		
 		if (turno.equals(jugadores[0].getNombre())) {
@@ -150,7 +162,10 @@ public class Config {
 		else {
 			System.out.println("\nComienza jugando "+jugadores[1].getNombre()+". ¡Buena Suerte!\n");
 		}
+		System.out.print("\n - Pulsa INTRO para continuar: ");
+		dummy = Leer.datoChar();
 		
+		Utiles.limpiaPantalla();
 		return turno;
 	}
 	
@@ -229,8 +244,7 @@ public class Config {
 				System.out.print("\nPulsa 'C' para continuar: ");
 				continuar = Leer.datoChar();
 			}
-			for (int i = 0; i < 150; i++) 
-				System.out.println();
+			Utiles.limpiaPantalla();
 		}
 		
 	}
