@@ -1,5 +1,7 @@
 package parejas;
 
+import utilidades.*;
+
 public class Tablero {
 	
 	private int ancho;
@@ -20,9 +22,7 @@ public class Tablero {
 	
 	public Tablero (Coleccion col, Coleccion colRepe) {
 		this.col = col;
-		this.colRepe = colRepe;
-		
-		this.mostrar = new boolean [alto][ancho];
+		this.colRepe = colRepe;	
 	}
 	
 	public Tablero (int ancho, int alto, Coleccion col, Coleccion colRepe) {
@@ -94,12 +94,12 @@ public class Tablero {
 			ancho = 4;		
 			break;
 		case 2:
-			alto = 6;
-			ancho = 4;	
+			alto = 4;
+			ancho = 6;	
 			break;
 		case 3:
-			alto = 6;
-			ancho = 5;
+			alto = 5;
+			ancho = 6;
 			break;
 		case 4:
 			alto = 6;
@@ -131,29 +131,29 @@ public class Tablero {
 			cruce[3][3] = colRepe.getParejas(7);
 		}
 		if (nivel > 1) {
-			cruce[4][0] = col.getParejas(8);
-			cruce[4][1] = colRepe.getParejas(8);
-			cruce[4][2] = col.getParejas(9);
-			cruce[4][3] = colRepe.getParejas(9);
-			cruce[5][0] = col.getParejas(10);
-			cruce[5][1] = colRepe.getParejas(10);
-			cruce[5][2] = col.getParejas(11);
-			cruce[5][3] = colRepe.getParejas(11);
+			cruce[0][4] = col.getParejas(8);
+			cruce[1][4] = colRepe.getParejas(8);
+			cruce[2][4] = col.getParejas(9);
+			cruce[3][4] = colRepe.getParejas(9);
+			cruce[0][5] = col.getParejas(10);
+			cruce[1][5] = colRepe.getParejas(10);
+			cruce[2][5] = col.getParejas(11);
+			cruce[3][5] = colRepe.getParejas(11);
 		}
 		if (nivel > 2) {
-			cruce[0][4] = col.getParejas(12);
-			cruce[1][4] = colRepe.getParejas(12);
-			cruce[2][4] = col.getParejas(13);
-			cruce[3][4] = colRepe.getParejas(13);
+			cruce[4][0] = col.getParejas(12);
+			cruce[4][1] = colRepe.getParejas(12);
+			cruce[4][2] = col.getParejas(13);
+			cruce[4][3] = colRepe.getParejas(13);
 			cruce[4][4] = col.getParejas(14);
-			cruce[5][4] = colRepe.getParejas(14);
+			cruce[4][5] = colRepe.getParejas(14);
 		}
 		if (nivel > 3) {
-			cruce[0][5] = col.getParejas(15);
-			cruce[1][5] = colRepe.getParejas(15);
-			cruce[2][5] = col.getParejas(16);
-			cruce[3][5] = colRepe.getParejas(16);
-			cruce[4][5] = col.getParejas(17);
+			cruce[5][0] = col.getParejas(15);
+			cruce[5][1] = colRepe.getParejas(15);
+			cruce[5][2] = col.getParejas(16);
+			cruce[5][3] = colRepe.getParejas(16);
+			cruce[5][4] = col.getParejas(17);
 			cruce[5][5] = colRepe.getParejas(17);
 		}
 		taparTodo ();
@@ -168,67 +168,160 @@ public class Tablero {
 		}
 	}
 	
-	public void escribeDatos (Jugador [] jugadores) {
-		int contador = 0;
-		for (int i = 0; i < 73; i++) {    
+	public void escribeDatos (Jugador [] jugadores, String turno) {
+		
+		// Línea de almohadillas
+		for (int i = 0; i < 79; i++) {    
 			System.out.print("# ");       
-		}
-		System.out.println();
-		while (contador < 6) {
-			System.out.print("# ");
-			for (int i = 0; i < 71; i++) {    
-				System.out.print("  ");      	
-			}
-			System.out.print("#\n");
-			contador++;
-		}
-		System.out.println("#\t\t\t\t\t\t\tE L   J U E G O   D E   L A S   P A R E J A S\t\t\t\t\t\t#");
-		while (contador > 0) {
-			System.out.print("# ");
-			for (int i = 0; i < 71; i++) {    
-				System.out.print("  ");      	
-			}
-			System.out.print("#\n");
-			contador--;
-		}	
-		for (int i = 0; i < 73; i++) {    
+		} System.out.println();
+		
+		Utiles.ponSolo2Almohadillas();
+		
+		System.out.println("#\t\t\t\t\t\t\t E L   J U E G O   D E   L A S   P A R E J A S      \t\t\t\t\t\t    #");
+		
+		Utiles.ponSolo2Almohadillas();
+		
+		// Línea de almohadillas
+		for (int i = 0; i < 79; i++) {    
 			System.out.print("# ");      
-		}
-		System.out.println();
+		} System.out.println();
+		
+		Utiles.ponSolo2Almohadillas();
+		
+		// Escribe nombres y puntos de jugadores
 		for (int i = 0; i < jugadores.length; i++) {
-			System.out.print("# ");
-			System.out.print("Jugador "+(i+1)+": "+jugadores[i].getNombre()+"\t\tPuntos: "+jugadores[i].getPuntos());
-			
-			for (int j = 0; j < 112 - String.valueOf(jugadores[i].getPuntos()).length() - 
-					jugadores[i].getNombre().length(); j++) {
-				System.out.print("a");
-			}
-			System.out.println();
+			System.out.print("#\tJugador "+(i+1)+": "+jugadores[i].getNombre());
+			Utiles.generaEspacios(35 - jugadores[i].getNombre().length());
+			System.out.print("Puntos: "+jugadores[i].getPuntos());
+			Utiles.generaEspacios(94 - String.valueOf(jugadores[i].getPuntos()).length());
+			System.out.println("#");
 		}
-		System.out.println("\n\nParejas Levantadas: "+this.parejasLevantadas+" de "+this.ancho * this.alto / 2);
-		System.out.println();
+		
+		Utiles.ponSolo2Almohadillas();
+		
+		// Línea de las parejas levantadas
+		System.out.print("#\tParejas Levantadas: "+this.parejasLevantadas+" de "+this.ancho * this.alto / 2);
+		Utiles.generaEspacios(124 - String.valueOf(this.parejasLevantadas).length() - 
+				String.valueOf(this.ancho * this.alto / 2).length());
+		System.out.println("#");
+		
+		Utiles.ponSolo2Almohadillas();
+		
+		// Línea que indica a quién le toca
+		System.out.print("#\tEl turno es de "+turno);
+		Utiles.generaEspacios(133 - turno.length());
+		System.out.println("#");
+		
+		Utiles.ponSolo2Almohadillas();
+		
+		// Línea de almohadillas
+		for (int i = 0; i < 79; i++) {    
+			System.out.print("# ");      
+		} System.out.println();
+		
+		Utiles.ponSolo2Almohadillas();
+		Utiles.ponSolo2Almohadillas();
 	}
 	
-	public void dibujarTablero () {	
-		for (int i = 0; i < this.ancho + 2; i++) {    // Para el número de columnas, más la inicio y fin
-			System.out.print("*\t");       // Dibuja un asterisco (fila de asteriscos)
+	public void dibujarTablero (int nivel) {	
+		
+		// Encabezado columnas
+		System.out.print("#\t  ");
+		for (int i = 0; i < this.ancho; i++) {
+			System.out.print("\tColumna "+(i+1)+"\t");
+		} 
+		if (nivel == 1) {
+			System.out.println("\t\t\t\t\t\t    #");
+		} else {
+			System.out.println("    #");
 		}
-		System.out.println(" ");
-		for (int i = 0; i < this.alto; i++) {		
-			System.out.print("*\t");  // Asterisco al principio de cada fila
+		
+		
+		
+		// Primera fila (guiones)
+		if (nivel == 1) {
+			System.out.print("#\t  ");  // Dos tabuladores de inicio
+			for (int i = 0; i < 94; i++) {    // Dibuja todo el ancho de guiones
+				System.out.print("-");       
+			} System.out.println("\t\t\t\t\t\t    #");
+		} else {
+			System.out.print("#\t  ");  // Dos tabuladores de inicio
+			for (int i = 0; i < 142; i++) {    // Dibuja todo el ancho de guiones
+				System.out.print("-");       
+			} System.out.println("    #");
+		}
+		
+		
+		
+		
+		// Fila vacía, solo con palo al inicio y final
+		
+		if (nivel == 1) {
+			System.out.print("#\t |\t\t\t|\t\t\t|\t\t\t|\t\t\t");
+			System.out.println("|\t\t\t\t\t\t    #");
+		} else {
+			System.out.print("#\t |\t\t\t|\t\t\t|\t\t\t|\t\t\t|\t\t\t|\t\t\t");
+			System.out.println("|   #");
+		}
+		
+		
+		// Tablero propiamente dicho
+		for (int i = 0; i < this.alto * 2; i++) {		
+			if (i % 2 == 0) {
+				System.out.print("# Fila "+(i/2+1)+" |");  // Palos al principio de cada fila
+			}
+			else {
+				System.out.print("#\t |");  // Palos al principio de cada fila
+			}
+			
 			for (int j = 0; j < this.ancho; j++) {
-				if (!mostrar [i][j]) {
-					System.out.print("-\t");
-				} else
-					System.out.print(this.cruce[i][j]+"\t");
-				if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
-					System.out.print("*");  // Y en caso afirmativo le ponemos asterisco
+				if (i % 2 == 0) {  //Juego solo en filas índice par
+					if (!mostrar [i/2][j]) {
+						System.out.print("\t-\t\t|");
+					} else {
+						if (this.cruce[i/2][j].length() < 8) {  // Para evitar descuadres por casillas de texto largo
+							System.out.print("\t"+this.cruce[i/2][j]+"\t\t|");
+						} else {
+							System.out.print("\t"+this.cruce[i/2][j]+"\t|");
+						}
+					}			
+					if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
+						if (nivel == 1) {
+							System.out.print("\t\t\t\t\t\t    #");
+						} else {
+							System.out.print("   #");  // Y en caso afirmativo le ponemos el palo
+						}
+						
+				} else {      // Las filas de índice impar están vacías, solo palos de inicio (ya dibujado) y fin  
+					System.out.print("\t\t\t|");      	
+					if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
+						if (nivel == 1) {
+							System.out.print("\t\t\t\t\t\t    #");
+						} else {
+							System.out.print("   #");  // Y en caso afirmativo le ponemos el palo
+						}
+				}			
 			}
 			System.out.print("\n");   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
 		}
-		for (int i = 0; i < this.ancho + 2; i++) {    // Para el número de columnas, más la inicio y fin
-			System.out.print("*\t");       // Dibuja un asterisco (fila de asteriscos)
-		}	
+		if (nivel == 1) {
+			System.out.print("#\t  ");  // Dos tabuladores de inicio
+			for (int i = 0; i < 94; i++) {    // Dibuja todo el ancho de guiones
+				System.out.print("-");       
+			} System.out.println("\t\t\t\t\t\t    #");
+		} else {
+			System.out.print("#\t  ");  // Dos tabuladores de inicio
+			for (int i = 0; i < 142; i++) {    // Dibuja todo el ancho de guiones
+				System.out.print("-");       
+			} System.out.println("    #");
+		}
+		
+		Utiles.ponSolo2Almohadillas();
+		Utiles.ponSolo2Almohadillas();
+		
+		for (int i = 0; i < 79; i++) {    
+			System.out.print("# ");      
+		} System.out.println();
 	}
 	
 	public boolean comprobarLevantado (int fila, int columna) {
@@ -259,6 +352,38 @@ public class Tablero {
 		return comprobado;
 	}
 	
+	/*
+	public void dibujarTablero () {	
+		System.out.print("\t");  // Tabulador inicial
+		for (int i = 0; i < 52; i++) {    // Para el número de columnas, más la inicio y fin
+			System.out.print("--");       // Dibuja un asterisco (fila de asteriscos)
+		}
+		System.out.println(" ");
+		for (int i = 0; i < this.alto; i++) {		
+			System.out.print("\t|\t");  // Palo
+			for (int j = 0; j < this.ancho; j++) {
+				if (!mostrar [i][j]) {
+					System.out.print("-\t\t");
+				} else {
+					if (this.cruce[i][j].length() < 8) {
+						System.out.print(this.cruce[i][j]+"\t\t");
+					} else {
+						System.out.print(this.cruce[i][j]+"\t");
+					}
+					
+				}
+					
+				if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
+					System.out.print("|");  // Y en caso afirmativo le ponemos palo
+			}
+			System.out.print("\n");   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
+		}
+		System.out.print("\t");  // Tabulador ultima fila
+		for (int i = 0; i < 52; i++) {    // Para el número de columnas, más la inicio y fin
+			System.out.print("--");       // Dibuja un asterisco (fila de asteriscos)
+		}	
+	}
+	*/
 	
 
 }

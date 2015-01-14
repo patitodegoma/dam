@@ -7,12 +7,9 @@ public class Principal {
 		int nivel = 0, jugada = 1;
 		int [] coordenadas = new int [4];
 		String turno = "";
-		boolean acierto = false, finalizado = true, comprobado = false;
+		boolean acierto = false, finalizado = true;
 		
 		Config partida = new Config ();
-		
-		System.out.println("Andres\tPuntos");
-		System.out.println("Macarena\tPuntos");
 		
 		System.out.println("\n\t*** B I E N V E N I D O   A L   J U E G O   D E   L A S   P A R E J A S ***");
 		
@@ -39,39 +36,39 @@ public class Principal {
 		//TODO Clase jugar con el do-while
 		
 		do {
-			miTablero.escribeDatos(jugadores);
-			miTablero.dibujarTablero();
-			coordenadas = partida.pideCoordenadas(turno, jugada, coordenadas); // Las coordenadas serían un array de int de 4 posiciones
-			comprobado = partida.comprobarCoordenadas(coordenadas, nivel);
+			miTablero.escribeDatos(jugadores, turno);
+			miTablero.dibujarTablero(nivel);
+			coordenadas = partida.pideCoordenadas(turno, jugada, coordenadas, nivel); // Las coordenadas serían un array de int de 4 posiciones
 			
 			while (!miTablero.comprobarLevantado(coordenadas[0] - 1, coordenadas[1] - 1)) {
-				coordenadas = partida.pideCoordenadas(turno, jugada, coordenadas);
+				coordenadas = partida.pideCoordenadas(turno, jugada, coordenadas, nivel);
 			}
 			
 			miTablero.setMostrar(coordenadas[0] - 1, coordenadas[1] - 1, true);  //TODO Cambiar las (0,0) por (1,1)
-			miTablero.escribeDatos(jugadores);
-			miTablero.dibujarTablero();  //TODO Estirar el tablero (2 tabs)
+			miTablero.escribeDatos(jugadores, turno);
+			miTablero.dibujarTablero(nivel);  
 			jugada++;
 			
-			System.out.println("\n\n# # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #\n");
-			coordenadas = partida.pideCoordenadas(turno, jugada, coordenadas);
+			coordenadas = partida.pideCoordenadas(turno, jugada, coordenadas, nivel);
 			
 			while (!miTablero.comprobarLevantado(coordenadas[2] - 1, coordenadas[3] - 1)) {
-				coordenadas = partida.pideCoordenadas(turno, jugada, coordenadas);
+				coordenadas = partida.pideCoordenadas(turno, jugada, coordenadas, nivel);
 			}
 			
 			miTablero.setMostrar(coordenadas[2] - 1, coordenadas[3] - 1, true);
-			miTablero.escribeDatos(jugadores);
-			miTablero.dibujarTablero();
+			miTablero.escribeDatos(jugadores, turno);
+			miTablero.dibujarTablero(nivel);
 			jugada--;
 			
 			acierto = miTablero.comprobarJugada(coordenadas);
 			
-			turno = partida.finalizaJugada(acierto, turno, jugadores);
+			finalizado = miTablero.comprobarFinalizado();
+			
+			turno = partida.finalizaJugada(acierto, finalizado, turno, jugadores);
 			
 			miTablero.ocultarFallos (coordenadas, acierto);
 			
-			finalizado = miTablero.comprobarFinalizado();
+			
 			
 			partida.pausa(finalizado);
 			
@@ -79,7 +76,7 @@ public class Principal {
 			
 		} while (!finalizado);
 		
-		//TODO Terminar, resumen de puntuaciones y ganador
+		partida.devuelveGanador(jugadores);
 		
 	}
 

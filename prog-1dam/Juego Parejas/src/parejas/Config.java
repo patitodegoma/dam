@@ -1,5 +1,6 @@
 package parejas;
 
+import utilidades.*;
 
 public class Config {
 	
@@ -153,41 +154,51 @@ public class Config {
 		return turno;
 	}
 	
-	public int [] pideCoordenadas (String turno, int jugada, int [] coordenadas) {
+	public int [] pideCoordenadas (String turno, int jugada, int [] coordenadas, int nivel) {
+		boolean comprobado = false;
 		
-		if (jugada == 1) {
-			System.out.print("\n"+turno+", introduce la fila: ");
-			coordenadas[0] = Leer.datoInt();
-			System.out.print("\n"+turno+", introduce la columna: ");
-			coordenadas[1] = Leer.datoInt();
-		} else {
-			System.out.print("\n"+turno+", introduce la segunda fila: ");
-			coordenadas[2] = Leer.datoInt();
-			System.out.print("\n"+turno+", introduce la segunda columna: ");
-			coordenadas[3] = Leer.datoInt();
-		}
-		
+		while (!comprobado) {
+			if (jugada == 1) {
+				System.out.print("\n"+turno+", introduce la fila: ");
+				coordenadas[0] = Leer.datoInt();
+				System.out.print("\n"+turno+", introduce la columna: ");
+				coordenadas[1] = Leer.datoInt();
+			} else {
+				System.out.print("\n"+turno+", introduce la segunda fila: ");
+				coordenadas[2] = Leer.datoInt();
+				System.out.print("\n"+turno+", introduce la segunda columna: ");
+				coordenadas[3] = Leer.datoInt();
+			}
+			comprobado = comprobarCoordenadas (coordenadas, nivel, jugada);
+		}	
 		return coordenadas;
 	}
-	//TODO Comprobar coordenadas.
-	
-	public boolean comprobarCoordenadas (int [] coordenadas, int nivel) {
+		
+	public boolean comprobarCoordenadas (int [] coordenadas, int nivel, int jugada) {
 		boolean comprobado = true;
-		if (coordenadas[0] > altos[nivel] && coordenadas[0] < 1)
-			comprobado = false;
-		if (coordenadas[1] > anchos[nivel] && coordenadas[1] < 1)
-			comprobado = false;
-		if (coordenadas[2] > altos[nivel] && coordenadas[2] < 1)
-			comprobado = false;
-		if (coordenadas[3] > anchos[nivel] && coordenadas[3] < 1)
-			comprobado = false;
+		if (jugada == 1) {
+			if (coordenadas[0] > altos[nivel-1] || coordenadas[0] < 1)
+				comprobado = false;
+			if (coordenadas[1] > anchos[nivel-1] || coordenadas[1] < 1)
+				comprobado = false;
+		} else {
+			if (coordenadas[2] > altos[nivel-1] || coordenadas[2] < 1)
+				comprobado = false;
+			if (coordenadas[3] > anchos[nivel-1] || coordenadas[3] < 1)
+				comprobado = false;
+		}
+		if (!comprobado)
+			System.out.println("\nLa fila o la columna introducida está fuera de los límites del tablero. Por favor, "
+					+ "introduce una celda válida.");
 		
 		return comprobado;
 	}
 	
-	public String finalizaJugada (boolean resultado, String turno, Jugador [] jugadores) {
+	public String finalizaJugada (boolean resultado, boolean finalizado, String turno, Jugador [] jugadores) {
 		if (resultado) {
-			System.out.println("\n¡¡¡ Muy bien !!! Continúa tu turno");
+			if (!finalizado) {
+				System.out.println("\n¡¡¡ Muy bien !!! Continúa tu turno");
+			}
 			if (turno.equals(jugadores[0].getNombre()))
 				jugadores[0].setPuntos(jugadores[0].getPuntos()+puntosAcierto);
 			else
@@ -222,6 +233,17 @@ public class Config {
 				System.out.println();
 		}
 		
+	}
+	
+	public void devuelveGanador (Jugador [] jugadores) {
+		
+		if (jugadores[0].getPuntos() > jugadores[1].getPuntos()) {
+			System.out.println("\n¡¡¡El ganador es ........ "+jugadores[0].getNombre()+", con "+jugadores[0].getPuntos()+" puntos!!! ¡¡¡ Enhorabuena !!!");		
+		} else if (jugadores[1].getPuntos() > jugadores[0].getPuntos()) {
+			System.out.println("\n¡¡¡El ganador es ........ "+jugadores[1].getNombre()+", con "+jugadores[1].getPuntos()+" puntos!!! ¡¡¡ Enhorabuena !!!");		
+		} else {
+			System.out.println("\n¡Vaya, tenemos un empate! Habrá que jugar otra partida, ¿no? ;)");		
+		}
 	}
 
 }
