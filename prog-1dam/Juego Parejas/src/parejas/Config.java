@@ -28,6 +28,40 @@ public class Config {
 		this.puntosFallo = puntosFallo;
 	}
 	
+	// Getters y Setters
+	
+	public int getAltos(int i) {
+		return altos[i];
+	}
+
+	public void setAltos(int i, int valor) {
+		this.altos[i] = valor;
+	}
+
+	public int getAnchos(int i) {
+		return anchos[i];
+	}
+
+	public void setAnchos(int i, int valor) {
+		this.anchos[i] = valor;
+	}
+
+	public int getPuntosAcierto() {
+		return puntosAcierto;
+	}
+
+	public void setPuntosAcierto(int puntosAcierto) {
+		this.puntosAcierto = puntosAcierto;
+	}
+
+	public int getPuntosFallo() {
+		return puntosFallo;
+	}
+
+	public void setPuntosFallo(int puntosFallo) {
+		this.puntosFallo = puntosFallo;
+	}
+	
 	// Métodos
 	
 	/**
@@ -38,6 +72,8 @@ public class Config {
 		imprimeIntro();
 	}
 	
+	
+
 	/**
 	 * Muestra el cartel "Pareja de Cartas", dibujado con ASCII.
 	 * 
@@ -118,6 +154,7 @@ public class Config {
 		System.out.println("#                                                                                                                                           #");
 		Utiles.repiteCadena("# ", 71, true);
 		System.out.print("\n - Pulsa INTRO para continuar: ");
+		Leer.datoChar();
 		
 		Utiles.limpiaPantalla();
 	}
@@ -272,20 +309,65 @@ public class Config {
 		return comprobado;
 	}
 	
+	
+	public Coleccion [] preparaParejas (int nivel) {
+		Coleccion [] misColecciones = new Coleccion [2];
+		Coleccion cole = configuraColeccion(seleccionaColeccion());
+		cole.desordenar();
+		Coleccion coleRepe = generaParejas(nivel, cole);
+		coleRepe.desordenar();
+		misColecciones[0] = cole;
+		misColecciones[1] = coleRepe;
+		return misColecciones;
+	}
+	
+	
 	/**
 	 * Crea un Array de tipo Jugador con los dos jugadores que participarán, solicitando sus nombres.
 	 * @return
 	 */
 	public Jugador[] creaJugadores () {
 		Jugador [] jugadores = new Jugador[2];
+		String [] nombre = new String [2];
+		boolean comprobado = false, iguales = false;
+			
+		do {
+			for (int i = 0; i < jugadores.length; i++) {
+				do {
+					System.out.print("\n - Por favor, introduzca el nombre del jugador "+(i+1)+": ");
+					nombre[i] = Leer.dato();
+					comprobado = comprobarNombre (nombre[i]);
+				} while (!comprobado);
+			}
+			iguales = comprobarIguales (nombre);
+		} while (iguales);
 		
-		System.out.print("\n - Por favor, introduzca el nombre del jugador 1: ");
-		Jugador jugador1 = new Jugador (Leer.dato());
-		jugadores[0] = jugador1;
-		System.out.print("\n - Por favor, introduzca ahora el nombre del jugador 2: ");
-		Jugador jugador2 = new Jugador (Leer.dato());
-		jugadores[1] = jugador2;
+		for (int i = 0; i < jugadores.length; i++) {
+			jugadores[i] = new Jugador (nombre[i]);
+		}
+		
 		return jugadores;
+	}
+	
+	public boolean comprobarNombre (String nombre) {
+		boolean comprobado = true;
+		if (nombre.length() > 30) {
+			comprobado = false;
+			System.out.println("\n - El nombre del jugador no puede tener más de 30 caracteres de largo.");
+		} else if (nombre.length() == 0){
+			comprobado = false;
+			System.out.println("\n - El nombre del jugador no puede estar vacío.");
+		}
+		return comprobado;
+	}
+	
+	public boolean comprobarIguales (String [] nombres) {
+		boolean comprobado = false;
+		if (nombres[0].equals(nombres[1])) {
+			comprobado = true;
+			System.out.println("\nLos dos jugadores no pueden tener el mismo nombre.");
+		}
+		return comprobado;
 	}
 	
 	/**
@@ -394,22 +476,7 @@ public class Config {
 		return turno;
 	}
 	
-	/**
-	 * Realiza una pausa en el juego, si este no ha finalizado, para que los jugadores puedan ver el tablero. 
-	 * @param finalizado Indica si el juego ha finalizado o no.
-	 */
-	public void pausa (boolean finalizado) {
-		if (!finalizado) {
-			System.out.print("\nPulsa 'C' para continuar: ");
-			char continuar = Leer.datoChar();
-			while (continuar != 'C' && continuar != 'c') {
-				System.out.print("\nPulsa 'C' para continuar: ");
-				continuar = Leer.datoChar();
-			}
-			Utiles.limpiaPantalla();
-		}
-		
-	}
+	
 	
 	/**
 	 * Muestra el marcador final, y quién es el ganador de la partida.

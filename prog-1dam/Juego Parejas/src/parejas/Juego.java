@@ -1,6 +1,6 @@
 package parejas;
 
-import utilidades.Leer;
+import utilidades.*;
 
 public class Juego {
 	
@@ -41,12 +41,10 @@ public class Juego {
 			turno = partida.finalizaJugada(acierto, finalizado, turno, jugadores);
 			
 			miTablero.ocultarFallos (coordenadas, acierto);
-			
-			
-			
-			partida.pausa(finalizado);
-			
-			
+					
+			if (!finalizado) {
+				Utiles.pausa();
+			}
 			
 		} while (!finalizado);
 	}

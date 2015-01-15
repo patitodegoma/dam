@@ -29,6 +29,16 @@ public class Utiles {
 		System.out.print("#\n");
 	}
 	
+	/**
+	 * Realiza una pausa en la ejecución del programa. Limpia la pantalla tras pulsarse INTRO
+	 * 
+	 */
+	public static void pausa () {
+		System.out.print("\n - Pulsa INTRO para continuar: ");
+		Leer.datoChar();
+		Utiles.limpiaPantalla();
+	}
+	
 	public static void limpiaPantalla () {
 		for (int i = 0; i < 150; i++) 
 			System.out.println();

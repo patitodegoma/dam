@@ -24,8 +24,8 @@ public class Coleccion {
 		return parejas[indice];
 	}
 
-	public void setParejas(String[] parejas) { //TODO Cambiar este set autogenerado
-		this.parejas = parejas;
+	public void setParejas(int i, String valor) { 
+		this.parejas[i] = valor;
 	}
 
 	// Métodos
@@ -48,7 +48,9 @@ public class Coleccion {
 	}
 
 	
-	public String toString() {   // TODO Cambiar por uno no autogenerado  
+	// ToString
+	
+	public String toString() {   
 		return "Coleccion [parejas=" + Arrays.toString(parejas) + "]";
 	}
 	

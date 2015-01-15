@@ -1,6 +1,23 @@
 package parejas;
 
 public class Principal {
+	
+	/* Reparto básico del trabajo:
+	 * 
+	 * Juan María Moreno: Diseño de imágenes de cartas (finalmente no incluido en el juego), Diseño de la pantalla de inicio, 
+	 *                    Clase Colección.
+	 *                    
+	 * José Manuel Palma: Métodos de control de errores, Métodos de recopilación de nivel y colección. 
+	 *                    
+	 * Guillermo Delgado: Desarrollo de la Clase Principal.
+	 * 
+	 * Rafael Carretero:  Desarrollo de varios métodos de la Clase Config. y la Clase Jugador.
+	 * 
+	 * Andrés Macías:     Desarrollo de las Clases Coleccion, Juego, Tablero, Utiles, y resto de métodos de la Clase Config.
+	 *                    Compilación y homogeneización de todos los métodos y clases del trabajo. Organización del juego en 
+	 *                    Clases y Métodos.
+	 * 
+	 */
 		
 	public static void main(String[] args) {
 		
@@ -8,6 +25,7 @@ public class Principal {
 		String turno = "";
 		boolean repetida [] = {false, true};	// El primer boolean indica si se repite el juego, y el segundo si se crean nuevos jugadores
 		Jugador [] jugadores = new Jugador [2];	
+		Coleccion [] misColecciones = new Coleccion [2];
 		Config partida = new Config ();
 		
 		partida.arrancar();
@@ -15,14 +33,10 @@ public class Principal {
 		do {
 			nivel = partida.seleccionaNivel();				
 			
-			Coleccion cole = partida.configuraColeccion(partida.seleccionaColeccion());
-			cole.desordenar();
-									
-			Coleccion coleRepe = partida.generaParejas(nivel, cole);	
-			coleRepe.desordenar();
+			misColecciones = partida.preparaParejas(nivel);
 				
-			Tablero miTablero = new Tablero (cole, coleRepe);
-			miTablero.montaTablero(nivel);
+			Tablero miTablero = new Tablero (misColecciones[0], misColecciones[1]);
+			miTablero.montaTablero(nivel, partida);
 			
 			if (repetida[1]) {
 				jugadores = partida.creaJugadores();

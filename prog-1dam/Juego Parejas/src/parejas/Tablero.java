@@ -37,16 +37,16 @@ public class Tablero {
 	
 	// Getters y Setters
 
-	public boolean[][] getMostrar() {
-		return mostrar;
+	public boolean getMostrar(int i, int j) {
+		return mostrar[i][j];
 	}
 
 	public void setMostrar(int i, int j, boolean valor) {
 		this.mostrar[i][j] = valor;
 	}
 	
-	public String[][] getCruce() {
-		return cruce;
+	public String getCruce(int i, int j) {
+		return cruce[i][j];
 	}
 
 	public void setCruce(int i, int j, String valor) {
@@ -87,25 +87,15 @@ public class Tablero {
 	
 	// Métodos
 	
-	public void montaTablero (int nivel) {
-		switch (nivel) {
-		case 1: 
-			alto = 4;
-			ancho = 4;		
-			break;
-		case 2:
-			alto = 4;
-			ancho = 6;	
-			break;
-		case 3:
-			alto = 5;
-			ancho = 6;
-			break;
-		case 4:
-			alto = 6;
-			ancho = 6;
-			break;
-		}
+	/**
+	 * Fija el ancho y el alto del tablero, según el nivel seleccionado por el usuario.
+	 * @param nivel El indicado por el usuario
+	 * @param partida El objeto de la Clase <b>Config</b>, en la que se establece cuánto mide cada tablero según el nivel.
+	 */
+	public void montaTablero (int nivel, Config partida) {	
+		this.alto = partida.getAltos(nivel - 1);
+		this.ancho = partida.getAnchos(nivel - 1);		
+			
 	}
 	
 	
@@ -174,8 +164,12 @@ public class Tablero {
 		
 		Utiles.ponSolo2Almohadillas();
 		
-		System.out.println("#\t\t\t\t\t\t\t E L   J U E G O   D E   L A S   P A R E J A S      \t\t\t\t\t\t    #");
-		
+		System.out.print("#");
+		Utiles.repiteCadena(" ", 55, false);
+		System.out.print("E L   J U E G O   D E   L A S   P A R E J A S");
+		Utiles.repiteCadena(" ", 55, false);
+		System.out.println("#");
+				
 		Utiles.ponSolo2Almohadillas();
 		
 		Utiles.repiteCadena("# ", 79, true); 
