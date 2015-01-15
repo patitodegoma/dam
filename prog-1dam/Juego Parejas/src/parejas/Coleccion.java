@@ -2,6 +2,12 @@ package parejas;
 
 import java.util.Arrays;
 
+/**
+ * Almacena los elementos que serán utilizados como parejas en el juego.
+ * 
+ * @author Andrés
+ *
+ */
 public class Coleccion {
 	
 	private String [] parejas;
@@ -18,12 +24,18 @@ public class Coleccion {
 		return parejas[indice];
 	}
 
-	public void setParejas(String[] parejas) {
+	public void setParejas(String[] parejas) { //TODO Cambiar este set autogenerado
 		this.parejas = parejas;
 	}
 
 	// Métodos
 	
+	/**
+	 * Cambia de posición los elementos del array de String que conforma la Colección. Para ello recorre el array, y va intercambiando sus elementos aleatoriamente, utilizando una variable temporal para no perder los datos.
+	 * 
+	 * @param aleat Es la posición que se va a intercambiar con la que le corresponda en el ciclo del bucle.
+	 * @param temporal Guarda el contenido de la posición marcada por el ciclo del bucle, para que no se pierda al guardar en su posición el contenido de la seleccionada en <b>aleat</b>.
+	 */
 	public void desordenar () {
 		int aleat = 0;
 		String temporal = "";
@@ -36,7 +48,7 @@ public class Coleccion {
 	}
 
 	
-	public String toString() {
+	public String toString() {   // TODO Cambiar por uno no autogenerado  
 		return "Coleccion [parejas=" + Arrays.toString(parejas) + "]";
 	}
 	

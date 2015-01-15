@@ -2,14 +2,17 @@ package parejas;
 
 import utilidades.*;
 
-
+/**
+ * Se encarga de las opciones de configuración inicial del juego, y de los métodos no relacionados directamente con el juego.
+ */
 public class Config {
 	
 	private int [] altos; // Número de filas del tablero por nivel
-	private int [] anchos;
+	private int [] anchos;  // Número de columnas por nivel
 	private int puntosAcierto;
 	private int puntosFallo;
 	
+	// Constructores
 	
 	public Config () {
 		this.altos = new int[]{4, 4, 5, 6};
@@ -18,15 +21,29 @@ public class Config {
 		this.puntosFallo = -1;
 	}
 	
+	public Config (int [] altos, int [] anchos, int puntosAcierto, int puntosFallo) {
+		this.altos = altos;
+		this.anchos = anchos;
+		this.puntosAcierto = puntosAcierto;
+		this.puntosFallo = puntosFallo;
+	}
+	
 	// Métodos
 	
+	/**
+	 * Inicio del programa, lanzamiento consecutivo de los métodos imprimeCartel e imprimeIntro
+	 */
 	public void arrancar() {
 		imprimeCartel();
 		imprimeIntro();
 	}
 	
-	public void imprimeCartel () {
-		char dummy;
+	/**
+	 * Muestra el cartel "Pareja de Cartas", dibujado con ASCII.
+	 * 
+	 * @param dummy Es una variable tonta, que almacena el valor utilizado para el "Pulsar Intro para continuar". No se usa para nada, solo para esperar el Intro, de ahí el warning del Eclipse.
+	 */
+	public void imprimeCartel () { 
 		System.out.println();
 		Utiles.repiteCadena("# ", 71, true);
 		System.out.println("#                                                                                                                                           #");
@@ -63,13 +80,17 @@ public class Config {
 		System.out.println("#                                                                                                                                           #");
 		Utiles.repiteCadena("# ", 71, true);
 		System.out.print("\n - Pulsa INTRO para continuar: ");
-		dummy = Leer.datoChar();
+		Leer.datoChar();
 		
 		Utiles.limpiaPantalla();
 	}
 	
+	/**
+	 * Muestra la introducción, formada por los componentes del grupo, frase de bienvenida y reglas básicas.
+	 * 
+	 * @param dummy Es una variable tonta, que almacena el valor utilizado para el "Pulsar Intro para continuar". No se usa para nada, solo para esperar el Intro, de ahí el warning del Eclipse.
+	 */
 	public void imprimeIntro () {
-		char dummy;
 		System.out.println();
 		Utiles.repiteCadena("# ", 71, true);
 		System.out.println("#                                                                                                                                           #");
@@ -97,11 +118,15 @@ public class Config {
 		System.out.println("#                                                                                                                                           #");
 		Utiles.repiteCadena("# ", 71, true);
 		System.out.print("\n - Pulsa INTRO para continuar: ");
-		dummy = Leer.datoChar();
 		
 		Utiles.limpiaPantalla();
 	}
 	
+	/**
+	 * Selecciona los elementos que formarán las parejas, según la temática elegida por el usuario
+	 * @param n Número de colección, según el menú mostrado.
+	 * @return
+	 */
 	public Coleccion configuraColeccion (int n) {
 		
 		String listElementos [] = new String [18];
@@ -147,6 +172,12 @@ public class Config {
 		return colEscogida;
 	}
 	
+	/**
+	 * Guarda en un objeto de tipo Coleccion únicamente las cartas que serán utilizadas en el juego, descartando las demás de la temática, dependiendo del nivel y de la temática elegida por el usuario.
+	 * @param nivel El nivel de juego, que determina el número de cartas necesarias
+	 * @param colEscogida El conjunto de todas las cartas de la temática elegida.
+	 * @return Las cartas que serán usadas.
+	 */
 	public Coleccion generaParejas (int nivel, Coleccion colEscogida) {
 		int numParejas = altos[nivel-1] * anchos[nivel-1] / 2;
 		String [] utilizadas = new String[numParejas];
@@ -159,6 +190,10 @@ public class Config {
 		return parejas;
 	}
 	
+	/**
+	 * Solicita el nivel de juego (tamaño del tablero). Comprueba si es correcto con el método <b>compruebaNivel</b>
+	 * @return Un entero, donde se guarda el número de nivel
+	 */
 	public int seleccionaNivel () {
 		int nivel = 0;
 		boolean comprobado = false;
@@ -182,6 +217,10 @@ public class Config {
 		return nivel;
 	}
 	
+	/**
+	 * Solicita la temática que tendrán las cartas del juego. Comprueba si la elección es válida con el método <b>compruebaColeccion</b>
+	 * @return Un entero que guarda el número de temática.
+	 */
 	public int seleccionaColeccion () {
 		int numColeccion = 0;
 		boolean comprobado = false;
@@ -207,7 +246,11 @@ public class Config {
 		return numColeccion;
 	}
 	
-	
+	/**
+	 * Verifica que el nivel introducido es un nivel válido.
+	 * @param nivel El nivel introducido
+	 * @return Un booleano, que dice si el nivel es válido o no.
+	 */
 	public boolean compruebaNivel (int nivel) {
 		boolean comprobado = (nivel > 0 && nivel < 5) ? true : false;
 		if (!comprobado) {
@@ -216,6 +259,11 @@ public class Config {
 		return comprobado;
 	}
 	
+	/**
+	 * Verifica que la temática introducida es un número de temática válido, según el menú mostrado.
+	 * @param nivel El número de temática introducido
+	 * @return Un booleano, que dice si el número es válido o no.
+	 */
 	public boolean compruebaColeccion (int numColeccion) {
 		boolean comprobado = (numColeccion > 0 && numColeccion < 6) ? true : false;
 		if (!comprobado) {
@@ -224,6 +272,10 @@ public class Config {
 		return comprobado;
 	}
 	
+	/**
+	 * Crea un Array de tipo Jugador con los dos jugadores que participarán, solicitando sus nombres.
+	 * @return
+	 */
 	public Jugador[] creaJugadores () {
 		Jugador [] jugadores = new Jugador[2];
 		
@@ -236,8 +288,12 @@ public class Config {
 		return jugadores;
 	}
 	
+	/**
+	 * Sortea quién empieza a abrir casillas en el tablero.
+	 * @param jugadores Los participantes en el juego, necesario para mostrar el nombre del ganador del sorteo.
+	 * @return Un string, con el nombre del participante que empieza.
+	 */
 	public String sorteoInicial (Jugador [] jugadores) {
-		char dummy;
 		String turno = (Math.random() > 0.5) ? jugadores[0].getNombre() : jugadores[1].getNombre();
 		
 		if (turno.equals(jugadores[0].getNombre())) {
@@ -247,12 +303,19 @@ public class Config {
 			System.out.println("\nComienza jugando "+jugadores[1].getNombre()+". ¡Buena Suerte!\n");
 		}
 		System.out.print("\n - Pulsa INTRO para continuar: ");
-		dummy = Leer.datoChar();
 		
 		Utiles.limpiaPantalla();
 		return turno;
 	}
 	
+	/**
+	 * Solicita al jugador que tiene el turno que indique qué casilla desea abrir. Comprueba con el método <b>comprobarCoordenadas</b> si la casilla escogida es válida.
+	 * @param turno Un String con el nombre del jugador al que le toca
+	 * @param jugada Un entero, que vale 1 si es su primera casilla, o 2 si es la segunda que abre.
+	 * @param coordenadas Un array de enteros, donde se van guardando las posiciones que determinan la casilla a abrir en el tablero. Los índices 0 y 1 corresponden a la fila y columna de la primera "tirada", y los índices 2 y 3 a los de la segunda.
+	 * @param nivel El nivel del juego, que determina el tamaño del tablero y por tanto las coordenadas máximas.
+	 * @return El array de coordenadas relleno.
+	 */
 	public int [] pideCoordenadas (String turno, int jugada, int [] coordenadas, int nivel) {
 		boolean comprobado = false;
 		
@@ -272,7 +335,14 @@ public class Config {
 		}	
 		return coordenadas;
 	}
-		
+	
+	/**
+	 * Comprueba que la casilla que el usuario decide abrir existe en el tablero.
+	 * @param coordenadas Las coordenadas introducidas.
+	 * @param nivel El nivel del tablero, que determina sus coordenadas máximas.
+	 * @param jugada Indica si es la primera tirada o la segunda, para mirar las posiciones exactas en el array de coordenadas.
+	 * @return Un booleano que indica si la casilla es válida o no.
+	 */
 	public boolean comprobarCoordenadas (int [] coordenadas, int nivel, int jugada) {
 		boolean comprobado = true;
 		if (jugada == 1) {
@@ -293,6 +363,14 @@ public class Config {
 		return comprobado;
 	}
 	
+	/**
+	 * Realiza las operaciones posteriores a la apertura de las dos casillas por parte de un jugador: Sumar o restar puntos, según si ha acertado o no las dos cartas iguales, comprobar si tras el acierto quedan parejas por abrir, y en caso de que el jugador haya fallado, pasar el turno al otro jugador.
+	 * @param resultado Booleano que indica si se acertaron las dos cartas iguales o no.
+	 * @param finalizado Booleano que indica si quedan parejas por abrir.
+	 * @param turno El turno del jugador que ha abierto las casillas.
+	 * @param jugadores Los participantes.
+	 * @return Un String turno que indica a quién le va a tocar en la siguiente tirada.
+	 */
 	public String finalizaJugada (boolean resultado, boolean finalizado, String turno, Jugador [] jugadores) {
 		if (resultado) {
 			if (!finalizado) {
@@ -317,7 +395,7 @@ public class Config {
 	}
 	
 	/**
-	 * Realiza una pausa en el juego, si este no ha finalizado, para que los jugadores puedan ver el tablero. Una vez se pulse la tecla C, se insertan 150 líneas en blanco para "limpiar la pantalla".
+	 * Realiza una pausa en el juego, si este no ha finalizado, para que los jugadores puedan ver el tablero. 
 	 * @param finalizado Indica si el juego ha finalizado o no.
 	 */
 	public void pausa (boolean finalizado) {
@@ -333,6 +411,10 @@ public class Config {
 		
 	}
 	
+	/**
+	 * Muestra el marcador final, y quién es el ganador de la partida.
+	 * @param jugadores
+	 */
 	public void devuelveGanador (Jugador [] jugadores) {
 		
 		System.out.println("\n\n\t **** Resultado Final: "+jugadores[0].getNombre()+" "+jugadores[0].getPuntos()+" puntos, "
@@ -346,6 +428,11 @@ public class Config {
 		}
 	}
 	
+	/**
+	 * Muestra el menú final, que pregunta al usuario si quiere volver a jugar, y si se repiten jugadores y / o si se acumulan los puntos conseguidos.
+	 * @param jugadores Los participantes
+	 * @return Un array de dos booleanos, que indican el primero si se desea volver a jugar, y el segundo si se desean acumular los puntos conseguidos.
+	 */
 	public boolean [] preguntarRepeticion (Jugador [] jugadores) {
 		boolean [] repetida = {false, false};
 		int repetir = 0;
