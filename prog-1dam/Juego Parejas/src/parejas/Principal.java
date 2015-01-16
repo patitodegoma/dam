@@ -11,11 +11,11 @@ public class Principal {
 	 *                    
 	 * Guillermo Delgado: Desarrollo de la Clase Principal.
 	 * 
-	 * Rafael Carretero:  Desarrollo de varios métodos de la Clase Config. y la Clase Jugador.
+	 * Rafael Carretero:  Desarrollo de la Clase Jugador y parte de la Clase Juego.
 	 * 
-	 * Andrés Macías:     Desarrollo de las Clases Coleccion, Juego, Tablero, Utiles, y resto de métodos de la Clase Config.
-	 *                    Compilación y homogeneización de todos los métodos y clases del trabajo. Organización del juego en 
-	 *                    Clases y Métodos.
+	 * Andrés Macías:     Desarrollo de las Clases Coleccion, Juego, Tablero, Utiles, y Config. Creación de todos los Objetos.
+	 *                    Compilación, homogeneización y parametrización de todos los métodos y clases del trabajo. Relaciones
+	 *                    entre Clases. Diseño y formato del juego.
 	 * 
 	 */
 		
@@ -23,7 +23,7 @@ public class Principal {
 		
 		int nivel = 0;
 		String turno = "";
-		boolean repetida [] = {false, true};	// El primer boolean indica si se repite el juego, y el segundo si se crean nuevos jugadores
+		boolean repetida [] = {false, true};	// El primer boolean indica si se va a jugar de nuevo, y el segundo si se van a crear nuevos jugadores en la nueva partida.
 		Jugador [] jugadores = new Jugador [2];	
 		Coleccion [] misColecciones = new Coleccion [2];
 		Config partida = new Config ();

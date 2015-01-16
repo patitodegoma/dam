@@ -4,13 +4,13 @@ import utilidades.*;
 
 public class Tablero {
 	
-	private int ancho;
-	private int alto;
-	private String [][] cruce;
-	private Coleccion col;
-	private Coleccion colRepe;
-	private boolean [][] mostrar;
-	private int parejasLevantadas;
+	private int ancho;					// Ancho del tablero.
+	private int alto;					// Alto del tablero.
+	private String [][] cruce; 			// El contenido de cada celda. Cada cruce [i,j] es una carta.
+	private Coleccion col;				// Las cartas seleccionadas para el juego.
+	private Coleccion colRepe;			// Las parejas de las cartas seleccionadas.
+	private boolean [][] mostrar;		// Cada mostrar [i,j] indica si hay que mostrar el cruce [i,j] o no.
+	private int parejasLevantadas;		// Contador de parejas acertadas.
 	
 	// Constructores
 	
@@ -92,6 +92,7 @@ public class Tablero {
 	 * @param nivel El indicado por el usuario
 	 * @param partida El objeto de la Clase <b>Config</b>, en la que se establece cuánto mide cada tablero según el nivel.
 	 */
+	
 	public void montaTablero (int nivel, Config partida) {	
 		this.alto = partida.getAltos(nivel - 1);
 		this.ancho = partida.getAnchos(nivel - 1);		
@@ -99,6 +100,10 @@ public class Tablero {
 	}
 	
 	
+	/**
+	 * Asigna a cada celda del tablero una carta, sacada de la colección elegida y de la repetida de las parejas. Las posiciones son fijas, pero como las colecciones han sido desordenadas previamente, el tablero siempre es distinto.
+	 * @param nivel El nivel del juego, que determina cuántas cartas hay que poner.
+	 */
 	
 	public void inicializarTablero (int nivel) {
 		this.cruce = new String [alto][ancho];
@@ -149,6 +154,10 @@ public class Tablero {
 		taparTodo ();
 	}
 	
+	/**
+	 * Coloca el tablero en la posición inicial, sin que se muestre el contenido de ninguna celda. Cada celda (i,j) tiene asociado el booleano <i>mostrar(i,j)</i>, que indica si al dibujar el array hay que mostrar el contenido o no.
+	 */
+	
 	public void taparTodo () {
 		this.mostrar = new boolean [alto][ancho];
 		for (int i = 0; i < alto; i++) {
@@ -157,6 +166,24 @@ public class Tablero {
 			}
 		}
 	}
+	
+	/**
+	 * Dibuja el tablero de juego, para cada jugada.
+	 * @param jugadores Los dos jugadores, de los que se extrae su nombre y puntuación
+	 * @param turno A quién corresponde el turno actual
+	 * @param nivel El nivel de juego, para determinar las dimensiones del tablero.
+	 */
+	
+	public void dibujar (Jugador [] jugadores, String turno, int nivel) {
+		escribeDatos (jugadores, turno);
+		dibujarTablero (nivel);
+	}
+	
+	/**
+	 * Primera parte del tablero, que escribe los datos de los jugadores, indica el turno actual y el número de parejas que se han descubierto.
+	 * @param jugadores Los datos de los jugadores
+	 * @param turno El turno actual
+	 */
 	
 	public void escribeDatos (Jugador [] jugadores, String turno) {
 		
@@ -176,7 +203,6 @@ public class Tablero {
 		
 		Utiles.ponSolo2Almohadillas();
 		
-		// Escribe nombres y puntos de jugadores
 		for (int i = 0; i < jugadores.length; i++) {
 			System.out.print("#\tJugador "+(i+1)+": "+jugadores[i].getNombre());
 			Utiles.repiteCadena(" ", 35 - jugadores[i].getNombre().length(), false);
@@ -187,7 +213,6 @@ public class Tablero {
 		
 		Utiles.ponSolo2Almohadillas();
 		
-		// Línea de las parejas levantadas
 		System.out.print("#\tParejas Levantadas: "+this.parejasLevantadas+" de "+this.ancho * this.alto / 2);
 		Utiles.repiteCadena(" ", 124 - String.valueOf(this.parejasLevantadas).length() - 
 				String.valueOf(this.ancho * this.alto / 2).length(), false);
@@ -195,7 +220,6 @@ public class Tablero {
 		
 		Utiles.ponSolo2Almohadillas();
 		
-		// Línea que indica a quién le toca
 		System.out.print("#\tEl turno es de "+turno);
 		Utiles.repiteCadena(" ", 133 - turno.length(), false);
 		System.out.println("#");
@@ -208,9 +232,13 @@ public class Tablero {
 		Utiles.ponSolo2Almohadillas();
 	}
 	
+	/**
+	 * Dibuja el tablero propiamente dicho
+	 * @param nivel El nivel del juego, para saber las dimensiones del tablero.
+	 */
+	
 	public void dibujarTablero (int nivel) {	
 		
-		// Encabezado columnas
 		System.out.print("#\t  ");
 		for (int i = 0; i < this.ancho; i++) {
 			System.out.print("\tColumna "+(i+1)+"\t");
@@ -222,20 +250,17 @@ public class Tablero {
 			System.out.println("    #");
 		}
 			
-		// Primera fila (guiones)
 		if (nivel == 1) {
 			System.out.print("#\t  ");  
 			Utiles.repiteCadena("-", 94, false); 
 			Utiles.repiteCadena("\t", 6, false); 
 			System.out.println("    #");
 		} else {
-			System.out.print("#\t  ");  // Dos tabuladores de inicio
+			System.out.print("#\t  ");  
 			Utiles.repiteCadena("-", 142, false); 
 			System.out.println("    #");
 		}
-				
-		// Fila vacía, solo con palo al inicio y final
-		
+						
 		if (nivel == 1) {
 			System.out.print("#\t |");
 			Utiles.repiteCadena("\t\t\t|", 4, false);
@@ -247,46 +272,45 @@ public class Tablero {
 			System.out.println("   #");
 		}
 		
-		// Tablero propiamente dicho
 		for (int i = 0; i < this.alto * 2; i++) {		
 			if (i % 2 == 0) {
-				System.out.print("# Fila "+(i/2+1)+" |");  // Palos al principio de cada fila
+				System.out.print("# Fila "+(i/2+1)+" |");  
 			}
 			else {
-				System.out.print("#\t |");  // Palos al principio de cada fila
+				System.out.print("#\t |");  
 			}
 			
 			for (int j = 0; j < this.ancho; j++) {
-				if (i % 2 == 0) {  //Juego solo en filas índice par
+				if (i % 2 == 0) {  
 					if (!mostrar [i/2][j]) {
 						System.out.print("\t-\t\t|");
 					} else {
-						if (this.cruce[i/2][j].length() < 8) {  // Para evitar descuadres por casillas de texto largo
+						if (this.cruce[i/2][j].length() < 8) {  
 							System.out.print("\t"+this.cruce[i/2][j]+"\t\t|");
 						} else {
 							System.out.print("\t"+this.cruce[i/2][j]+"\t|");
 						}
 					}			
-					if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
+					if (j == ancho-1)   
 						if (nivel == 1) {
 							Utiles.repiteCadena("\t", 6, false); 
 							System.out.print("    #");
 						} else {
-							System.out.print("   #");  // Y en caso afirmativo le ponemos el palo
+							System.out.print("   #"); 
 						}
 						
-				} else {      // Las filas de índice impar están vacías, solo palos de inicio (ya dibujado) y fin  
+				} else {       
 					System.out.print("\t\t\t|");      	
-					if (j == ancho-1)   // Comprueba si hemos puesto el último de la fila
+					if (j == ancho-1)   
 						if (nivel == 1) {
 							Utiles.repiteCadena("\t", 6, false); 
 							System.out.print("    #");
 						} else {
-							System.out.print("   #");  // Y en caso afirmativo le ponemos el palo
+							System.out.print("   #");  
 						}
 				}			
 			}
-			System.out.println();   // Salto de linea cada vez que hay que cambiar de i (nueva fila)
+			System.out.println();   
 		}
 		if (nivel == 1) {
 			System.out.print("#\t  ");  
@@ -305,6 +329,13 @@ public class Tablero {
 		Utiles.repiteCadena("# ", 79, true); 
 	}
 	
+	/**
+	 * Comprueba si la celda que el usuario decide abrir ya ha sido descubierta con anterioridad.
+	 * @param fila La fila introducida por el usuario.
+	 * @param columna La columna introducida por el usuario.
+	 * @return Un booleano que indica si hay que solicitar nuevas coordenadas.
+	 */
+	
 	public boolean comprobarLevantado (int fila, int columna) {
 		boolean comprobado = (this.mostrar[fila][columna] == true) ? false : true;
 		if (!comprobado) {
@@ -312,6 +343,12 @@ public class Tablero {
 		}
 		return comprobado;
 	}
+	
+	/**
+	 * Comprueba si el contenido de las celdas introducidas por el usuario son iguales (acierto) o no. En caso de acierto, aumenta el contador de parejas descubiertas.
+	 * @param coordenadas Las cuatro coordenadas de las dos celdas.
+	 * @return Un booleano, que indica si ha habido acierto o no.
+	 */
 	
 	public boolean comprobarJugada (int [] coordenadas) {
 		boolean comprobado = cruce[coordenadas[0] - 1 ][coordenadas[1] - 1].equals(cruce[coordenadas[2] - 1][coordenadas[3] - 1]) ? 
@@ -321,12 +358,23 @@ public class Tablero {
 		return comprobado;
 	}
 	
+	/**
+	 * Oculta las celdas descubiertas en el caso de que el usuario haya fallado en su jugada.
+	 * @param coordenadas Las cuatro coordenadas de las celdas descubiertas.
+	 * @param acertado Un booleano que indica si hubo acierto en la jugada o no.
+	 */
+	
 	public void ocultarFallos (int [] coordenadas, boolean acertado) {
 		if (!acertado) {
 			setMostrar(coordenadas[0] - 1, coordenadas[1] - 1, false);
 			setMostrar(coordenadas[2] - 1, coordenadas[3] - 1, false);
 		}	
 	}
+	
+	/**
+	 * Verifica al final de cada turno si el tablero se ha completado, comprobando si el número de parejas levantadas es igual al número máximo de parejas que caben en el tablero.
+	 * @return Un booleano, que indica si la partida terminó o no.
+	 */
 	
 	public boolean comprobarFinalizado () {
 		boolean comprobado = (this.parejasLevantadas == (this.ancho * this.alto / 2)) ? true : false;

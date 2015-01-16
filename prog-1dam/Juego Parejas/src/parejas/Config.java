@@ -5,6 +5,7 @@ import utilidades.*;
 /**
  * Se encarga de las opciones de configuración inicial del juego, y de los métodos no relacionados directamente con el juego.
  */
+
 public class Config {
 	
 	private int [] altos; // Número de filas del tablero por nivel
@@ -67,6 +68,7 @@ public class Config {
 	/**
 	 * Inicio del programa, lanzamiento consecutivo de los métodos imprimeCartel e imprimeIntro
 	 */
+	
 	public void arrancar() {
 		imprimeCartel();
 		imprimeIntro();
@@ -79,6 +81,7 @@ public class Config {
 	 * 
 	 * @param dummy Es una variable tonta, que almacena el valor utilizado para el "Pulsar Intro para continuar". No se usa para nada, solo para esperar el Intro, de ahí el warning del Eclipse.
 	 */
+	
 	public void imprimeCartel () { 
 		System.out.println();
 		Utiles.repiteCadena("# ", 71, true);
@@ -124,8 +127,8 @@ public class Config {
 	/**
 	 * Muestra la introducción, formada por los componentes del grupo, frase de bienvenida y reglas básicas.
 	 * 
-	 * @param dummy Es una variable tonta, que almacena el valor utilizado para el "Pulsar Intro para continuar". No se usa para nada, solo para esperar el Intro, de ahí el warning del Eclipse.
 	 */
+	
 	public void imprimeIntro () {
 		System.out.println();
 		Utiles.repiteCadena("# ", 71, true);
@@ -164,6 +167,7 @@ public class Config {
 	 * @param n Número de colección, según el menú mostrado.
 	 * @return
 	 */
+	
 	public Coleccion configuraColeccion (int n) {
 		
 		String listElementos [] = new String [18];
@@ -215,6 +219,7 @@ public class Config {
 	 * @param colEscogida El conjunto de todas las cartas de la temática elegida.
 	 * @return Las cartas que serán usadas.
 	 */
+	
 	public Coleccion generaParejas (int nivel, Coleccion colEscogida) {
 		int numParejas = altos[nivel-1] * anchos[nivel-1] / 2;
 		String [] utilizadas = new String[numParejas];
@@ -231,6 +236,7 @@ public class Config {
 	 * Solicita el nivel de juego (tamaño del tablero). Comprueba si es correcto con el método <b>compruebaNivel</b>
 	 * @return Un entero, donde se guarda el número de nivel
 	 */
+	
 	public int seleccionaNivel () {
 		int nivel = 0;
 		boolean comprobado = false;
@@ -258,6 +264,7 @@ public class Config {
 	 * Solicita la temática que tendrán las cartas del juego. Comprueba si la elección es válida con el método <b>compruebaColeccion</b>
 	 * @return Un entero que guarda el número de temática.
 	 */
+	
 	public int seleccionaColeccion () {
 		int numColeccion = 0;
 		boolean comprobado = false;
@@ -288,6 +295,7 @@ public class Config {
 	 * @param nivel El nivel introducido
 	 * @return Un booleano, que dice si el nivel es válido o no.
 	 */
+	
 	public boolean compruebaNivel (int nivel) {
 		boolean comprobado = (nivel > 0 && nivel < 5) ? true : false;
 		if (!comprobado) {
@@ -301,6 +309,7 @@ public class Config {
 	 * @param nivel El número de temática introducido
 	 * @return Un booleano, que dice si el número es válido o no.
 	 */
+	
 	public boolean compruebaColeccion (int numColeccion) {
 		boolean comprobado = (numColeccion > 0 && numColeccion < 6) ? true : false;
 		if (!comprobado) {
@@ -323,9 +332,10 @@ public class Config {
 	
 	
 	/**
-	 * Crea un Array de tipo Jugador con los dos jugadores que participarán, solicitando sus nombres.
+	 * Crea un Array de tipo Jugador con los dos jugadores que participarán, solicitando sus nombres. Lanza los métodos de comprobación para aceptar únicamente nombres válidos.
 	 * @return
 	 */
+	
 	public Jugador[] creaJugadores () {
 		Jugador [] jugadores = new Jugador[2];
 		String [] nombre = new String [2];
@@ -349,6 +359,12 @@ public class Config {
 		return jugadores;
 	}
 	
+	/**
+	 * Realiza las comprobaciones de validez del nombre de jugador.
+	 * @param nombre El nombre de jugador introducido por el usuario.
+	 * @return Un booleano, que indica si el nombre es válido o no.
+	 */
+	
 	public boolean comprobarNombre (String nombre) {
 		boolean comprobado = true;
 		if (nombre.length() > 30) {
@@ -360,6 +376,12 @@ public class Config {
 		}
 		return comprobado;
 	}
+	
+	/**
+	 * Comprueba si los nombres de los jugadores son iguales
+	 * @param nombres
+	 * @return Un booleano que indica si los dos jugadores tienen el mismo nombre.
+	 */
 	
 	public boolean comprobarIguales (String [] nombres) {
 		boolean comprobado = false;
@@ -375,6 +397,7 @@ public class Config {
 	 * @param jugadores Los participantes en el juego, necesario para mostrar el nombre del ganador del sorteo.
 	 * @return Un string, con el nombre del participante que empieza.
 	 */
+	
 	public String sorteoInicial (Jugador [] jugadores) {
 		String turno = (Math.random() > 0.5) ? jugadores[0].getNombre() : jugadores[1].getNombre();
 		
@@ -398,6 +421,7 @@ public class Config {
 	 * @param nivel El nivel del juego, que determina el tamaño del tablero y por tanto las coordenadas máximas.
 	 * @return El array de coordenadas relleno.
 	 */
+	
 	public int [] pideCoordenadas (String turno, int jugada, int [] coordenadas, int nivel) {
 		boolean comprobado = false;
 		
@@ -425,6 +449,7 @@ public class Config {
 	 * @param jugada Indica si es la primera tirada o la segunda, para mirar las posiciones exactas en el array de coordenadas.
 	 * @return Un booleano que indica si la casilla es válida o no.
 	 */
+	
 	public boolean comprobarCoordenadas (int [] coordenadas, int nivel, int jugada) {
 		boolean comprobado = true;
 		if (jugada == 1) {
@@ -453,6 +478,7 @@ public class Config {
 	 * @param jugadores Los participantes.
 	 * @return Un String turno que indica a quién le va a tocar en la siguiente tirada.
 	 */
+	
 	public String finalizaJugada (boolean resultado, boolean finalizado, String turno, Jugador [] jugadores) {
 		if (resultado) {
 			if (!finalizado) {
@@ -476,23 +502,48 @@ public class Config {
 		return turno;
 	}
 	
-	
-	
 	/**
 	 * Muestra el marcador final, y quién es el ganador de la partida.
 	 * @param jugadores
 	 */
+	
 	public void devuelveGanador (Jugador [] jugadores) {
-		
-		System.out.println("\n\n\t **** Resultado Final: "+jugadores[0].getNombre()+" "+jugadores[0].getPuntos()+" puntos, "
-														  +jugadores[1].getNombre()+" "+jugadores[1].getPuntos()+" puntos. **** \n");
-		if (jugadores[0].getPuntos() > jugadores[1].getPuntos()) {
-			System.out.println("\n - ¡¡¡El ganador es ........ "+jugadores[0].getNombre()+", con "+jugadores[0].getPuntos()+" puntos!!! ¡¡¡ Enhorabuena !!!");		
-		} else if (jugadores[1].getPuntos() > jugadores[0].getPuntos()) {
-			System.out.println("\n - ¡¡¡El ganador es ........ "+jugadores[1].getNombre()+", con "+jugadores[1].getPuntos()+" puntos!!! ¡¡¡ Enhorabuena !!!");		
-		} else {
-			System.out.println("\n - ¡Vaya, tenemos un empate! Habrá que jugar otra partida, ¿no? ;)");		
+		String nombreGanador = (jugadores[0].getPuntos() > jugadores[1].getPuntos()) ? 
+				jugadores[0].getNombre() : jugadores[1].getNombre();
+				
+		if (jugadores[0].getPuntos() == jugadores[1].getPuntos()) {
+			nombreGanador = "";
 		}
+		
+		Utiles.repiteCadena("# ", 79, true);
+		
+		Utiles.ponSolo2Almohadillas();
+		
+		System.out.print("#");
+		Utiles.repiteCadena(" ", 55, false);
+		System.out.print("R E S U L T A D O   D E   L A   P A R T I D A");
+		Utiles.repiteCadena(" ", 55, false);
+		System.out.println("#");
+				
+		Utiles.ponSolo2Almohadillas();
+		
+		for (int i = 0; i < jugadores.length; i++) {
+			System.out.print("#\tJugador "+(i+1)+": "+jugadores[i].getNombre());
+			Utiles.repiteCadena(" ", 35 - jugadores[i].getNombre().length(), false);
+			System.out.print("Puntos: "+jugadores[i].getPuntos());
+			Utiles.repiteCadena(" ", 94 - String.valueOf(jugadores[i].getPuntos()).length(), false);
+			System.out.println("#");
+			Utiles.ponSolo2Almohadillas();
+		}
+		
+		Utiles.repiteCadena("# ", 79, true); 
+		
+		if (nombreGanador == "") {
+			System.out.println("\n - ¡¡¡Vaya, tenemos un empate!!! Habrá que echar otra partidita, ¿no?");
+		} else {
+			System.out.println("\n - Enhorabuena, "+nombreGanador+" ¡HAS GANADO LA PARTIDA!");
+		}
+		
 	}
 	
 	/**
@@ -500,6 +551,7 @@ public class Config {
 	 * @param jugadores Los participantes
 	 * @return Un array de dos booleanos, que indican el primero si se desea volver a jugar, y el segundo si se desean acumular los puntos conseguidos.
 	 */
+	
 	public boolean [] preguntarRepeticion (Jugador [] jugadores) {
 		boolean [] repetida = {false, false};
 		int repetir = 0;
@@ -508,11 +560,11 @@ public class Config {
 			if (repetir < 0 || repetir > 3) {
 				System.out.println("\nOpción incorrecta. Por favor, seleccione una opción del menú.\n");
 			}
-			System.out.print("\n - ¿Qué desea hacer ahora?\n\n"
+			System.out.println("\n - ¿Qué desea hacer ahora?\n\n"
 					+ "\t1 - Jugar una partida nueva con los mismos jugadores\n"
 					+ "\t2 - Jugar una partida con los mismos jugadores, pero acumulando los puntos\n"
 					+ "\t3 - Jugar una partida con otros jugadores.\n\n"
-					+ "\t0 - Salir del juego");
+					+ "\t0 - Salir del juego.");
 			System.out.print("\n - Opción: ");
 			repetir = Leer.datoInt();
 			
@@ -535,6 +587,9 @@ public class Config {
 		case 0:
 			System.out.println("\n\n - ¡¡¡Gracias por jugar a nuestro juego!!!");	
 		}
+		
+		Utiles.limpiaPantalla();
+		
 		return repetida;
 	}
 
