@@ -12,7 +12,60 @@ public class Profesor extends Persona {
 		this.sueldo = sueldo;
 	}
 	
-	calculaSueldo ();
-	evaluar ();
+
+	
+	// Getters y Setters
+	
+	public String getEspecialidad() {
+		return especialidad;
+	}
+
+	public void setEspecialidad(String especialidad) {
+		this.especialidad = especialidad;
+	}
+
+	public double getSueldo() {
+		return sueldo;
+	}
+
+	public void setSueldo(double sueldo) {
+		this.sueldo = sueldo;
+	}
+	
+	// Métodos
+	
+	/*
+	calculaSueldo () {
+		
+	}
+	evaluar () {
+		
+	}
+	*/
+	
+	
+	public double calcularIMC () {
+		double indice = super.calcularIMC();
+		
+		if (indice > 25)
+			System.out.println("\nCuidado!!");
+		
+		return indice;
+	}
+
+	public double ganancias (double extra) {   // Sobrecarga de métodos heredados
+		return super.ganancias() + extra;
+	}
+	
+
+	
+
+	public String toString() {
+		return super.toString()+"Profesor [especialidad=" + especialidad + ", sueldo=" + sueldo
+				+ "]";
+	}
+	
+	
+	
 
 }
