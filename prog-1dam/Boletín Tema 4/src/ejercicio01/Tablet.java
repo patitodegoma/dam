@@ -1,7 +1,5 @@
 package ejercicio01;
 
-import utiles.*;
-
 public class Tablet extends Ordenador {
 	
 	private double pulgadasPantalla;
@@ -58,5 +56,10 @@ public class Tablet extends Ordenador {
 		this.megapixeles = megapixeles;
 	}
 	
+	public double calcularPrecio (double modificador) {
+		double precio;
+		return precio = super.calcularPrecio() + pulgadasPantalla * 5 + bateriaMAH / 3
+				+ megapixeles * 20 - modificador;
+	}
 	
 }

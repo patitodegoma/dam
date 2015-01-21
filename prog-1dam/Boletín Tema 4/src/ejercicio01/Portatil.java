@@ -1,6 +1,6 @@
 package ejercicio01;
 
-import utiles.*;
+
 
 public class Portatil extends Ordenador {
 	
@@ -69,7 +69,13 @@ public class Portatil extends Ordenador {
 		this.webcam = webcam;
 	}
 	
-	
+	public double calcularPrecio (double modificador, double cargoGrafica) {
+		double precio;
+		if (!graficaDedicada)
+			cargoGrafica = 0;
+		return precio = super.calcularPrecio() + pulgadasMonitor * 5 + bateria * 10 + 
+				peso * 20 - modificador + cargoGrafica;
+	}
 	
 
 }

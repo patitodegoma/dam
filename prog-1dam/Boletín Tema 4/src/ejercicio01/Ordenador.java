@@ -1,6 +1,6 @@
 package ejercicio01;
 
-import utiles.*;
+
 
 public class Ordenador {
 	
@@ -53,6 +53,11 @@ public class Ordenador {
 
 	public void setSistemaOperativo(String sistemaOperativo) {
 		this.sistemaOperativo = sistemaOperativo;
+	}
+	
+	public double calcularPrecio () {
+		double precio;
+		return precio = velocidadProcesador * 0.75 + memoriaRAM * 15 + capacidadDisco / 2;
 	}
 	
 	
