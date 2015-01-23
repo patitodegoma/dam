@@ -80,8 +80,8 @@ public class Peliculas extends Articulos {
 		this.clasificacion = clasificacion;
 	}
 	
-	public Peliculas pideDatos (Peliculas miPeli) {
-		super.pideDatos();
+	public Peliculas pideDatos (Articulos miArticulo, Peliculas miPeli) {
+		super.pideDatos(miArticulo);
 		System.out.print("\nPor favor, introduzca el nombre del director: ");
 		setDirector(Leer.dato());
 		System.out.println("\nPor favor, introduzca el nombre del protagonista: ");

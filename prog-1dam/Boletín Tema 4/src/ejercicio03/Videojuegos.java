@@ -46,8 +46,8 @@ public class Videojuegos extends Articulos {
 		this.genero = genero;
 	}
 	
-	public Videojuegos pideDatos (Videojuegos miJuego) {
-		super.pideDatos();
+	public Videojuegos pideDatos (Articulos miArticulo, Videojuegos miJuego) {
+		super.pideDatos(miArticulo);
 		System.out.print("\nPor favor, introduzca el nombre del fabricante: ");
 		setFabricante(Leer.dato());
 		System.out.println("\nPor favor, introduzca la clasificación PEGI: ");

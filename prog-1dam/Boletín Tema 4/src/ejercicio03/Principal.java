@@ -14,17 +14,19 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
+		Articulos miArticulo = new Articulos ();
 		Peliculas miPeli = new Peliculas ();
 		Videojuegos miJuego = new Videojuegos ();
 		Discos miDisco = new Discos ();
 		
-		miPeli.pideDatos();
-		miJuego.pideDatos();
-		miDisco.pideDatos();
+		miArticulo.pideDatos(miArticulo);
+		miPeli.pideDatos(miArticulo, miPeli);
+		miJuego.pideDatos(miArticulo, miJuego);
+		miDisco.pideDatos(miArticulo, miDisco);
 		
-		System.out.println(miPeli);
-		System.out.println(miJuego);
-		System.out.println(miDisco);
+		System.out.println("\n\t" + miPeli);
+		System.out.println("\n\t" + miJuego);
+		System.out.println("\n\t" + miDisco);
 
 	}
 

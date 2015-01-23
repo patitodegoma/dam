@@ -46,8 +46,8 @@ public class Discos extends Articulos {
 		this.minutos = minutos;
 	}
 	
-	public Discos pideDatos (Discos miDisco) {
-		super.pideDatos();
+	public Discos pideDatos (Articulos miArticulo, Discos miDisco) {
+		super.pideDatos(miArticulo);
 		System.out.print("\nPor favor, introduzca el nombre del grupo: ");
 		setTitulo(Leer.dato());
 		System.out.println("\nPor favor, introduzca el número de canciones: ");
