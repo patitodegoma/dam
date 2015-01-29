@@ -2,19 +2,19 @@ package utilidades;
 
 /**
  * Incluye una serie de métodos ajenos al juego que son usados para su mejor funcionamiento.
- * @author Andrés Macías
- * 
+ * @author Andrés Macías Jiménez
+ * @since Parejas 0.5
+ * @version 4.4
  *
  */
 public class Utiles {
 
 	/**
-	 * Genera una cantidad de n espacios en blanco consecutivos.
-	 * @param cadena Es el String que se repite tantas veces como indique el parámetro <b>n</b>.
-	 * @param n Es un valor entero que determina el número de espacios en blanco a generar.
-	 * @param saltoLinea Es un booleano que indica si al acabar hay que insertar un salto de línea.
+	 * Genera una determinada cadena consecutivamente las veces que se indique con el parámetro <b>n</b>.
+	 * @param cadena String que se repite tantas veces como indique el parámetro <b>n</b>.
+	 * @param n Valor entero que determina el número de veces a repetir la <b>cadena</b>.
+	 * @param saltoLinea Booleano que indica si al acabar hay que insertar un salto de línea.
 	 */
-	
 	public static void repiteCadena (String cadena, int n, boolean saltoLinea) {
 		for (int i = 0; i < n; i++) {
 			System.out.print(cadena);

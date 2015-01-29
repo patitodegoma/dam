@@ -4,17 +4,38 @@ import utilidades.*;
 
 /**
  * Se encarga de las opciones de configuración inicial del juego, y de los métodos no relacionados directamente con el juego.
+ * 
+ * @author Andrés Macías Jiménez
+ * @since Parejas 0.6
+ * @version 12.2
  */
 
 public class Config {
 	
-	private int [] altos; // Número de filas del tablero por nivel
-	private int [] anchos;  // Número de columnas por nivel
+	/**
+	 * Array que almacena las diferentes alturas de tablero según el nivel que escoja el jugador.
+	 */
+	private int [] altos; 
+	
+	/**
+	 * Array que almacena los diferentes anchos de tablero según el nivel que escoja el jugador.
+	 */
+	private int [] anchos;  
+	
+	/**
+	 * Puntos que obtiene el jugador que descubre una pareja de cartas.
+	 */
 	private int puntosAcierto;
+	
+	/**
+	 * Puntos que se le descuentan al jugador en caso de fallar en su jugada.
+	 */
 	private int puntosFallo;
 	
-	// Constructores
-	
+	/**
+	 * Constructor vacío de objetos tipo Config, que inicializa las características iniciales del juego.
+	 * 
+	 */
 	public Config () {
 		this.altos = new int[]{4, 4, 5, 6};
 		this.anchos = new int[]{4, 6, 6, 6};
@@ -22,14 +43,19 @@ public class Config {
 		this.puntosFallo = -1;
 	}
 	
+	/**
+	 * @deprecated Este constructor no se utiliza en el juego, las características iniciales se establecen con el {@link #Config() constructor vacío}.
+	 * @param altos Array que almacena las diferentes alturas de tablero según el nivel que escoja el jugador.
+	 * @param anchos Array que almacena los diferentes anchos de tablero según el nivel que escoja el jugador.
+	 * @param puntosAcierto Puntos que obtiene el jugador que descubre una pareja de cartas.
+	 * @param puntosFallo Puntos que se le descuentan al jugador en caso de fallar en su jugada.
+	 */
 	public Config (int [] altos, int [] anchos, int puntosAcierto, int puntosFallo) {
 		this.altos = altos;
 		this.anchos = anchos;
 		this.puntosAcierto = puntosAcierto;
 		this.puntosFallo = puntosFallo;
 	}
-	
-	// Getters y Setters
 	
 	public int getAltos(int i) {
 		return altos[i];
@@ -63,23 +89,19 @@ public class Config {
 		this.puntosFallo = puntosFallo;
 	}
 	
-	// Métodos
-	
 	/**
-	 * Inicio del programa, lanzamiento consecutivo de los métodos imprimeCartel e imprimeIntro
+	 * Inicio del programa, lanzamiento consecutivo de los métodos {@link #imprimeCartel imprimeCartel} e {@link #imprimeIntro imprimeIntro}
 	 */
 	
 	public void arrancar() {
 		imprimeCartel();
 		imprimeIntro();
 	}
-	
-	
+		
 
 	/**
 	 * Muestra el cartel "Pareja de Cartas", dibujado con ASCII.
 	 * 
-	 * @param dummy Es una variable tonta, que almacena el valor utilizado para el "Pulsar Intro para continuar". No se usa para nada, solo para esperar el Intro, de ahí el warning del Eclipse.
 	 */
 	
 	public void imprimeCartel () { 
@@ -163,9 +185,26 @@ public class Config {
 	}
 	
 	/**
+	 * Realiza la selección de las cartas con las que se jugará la partida actual. Estas se dividen en dos objetos de tipo Coleccion, ambos con los mismos elementos, que guardan cada carta y su pareja, respectivamente. Estos dos objetos (<b>cole</b> y <b>coleRepe</b>) son almacenados en un array de tipo Coleccion (<code>misColecciones</code>). Para determinar el contenido de estas dos colecciones, se usan los métodos {@link #configuraColeccion(int) configuraColeccion} y {@link #generaParejas(int, Coleccion) generaParejas}.
+	 * @param nivel Nivel del juego, que determina el número de cartas a usar.
+	 * @return Un array de tipo Coleccion, con la colección de elementos a usar y la de sus parejas.
+	 */
+	public Coleccion [] preparaParejas (int nivel) {
+		Coleccion [] misColecciones = new Coleccion [2];
+		Coleccion cole = configuraColeccion(seleccionaColeccion());
+		cole.desordenar();
+		Coleccion coleRepe = generaParejas(nivel, cole);
+		coleRepe.desordenar();
+		misColecciones[0] = cole;
+		misColecciones[1] = coleRepe;
+		return misColecciones;
+	}
+	
+	
+	/**
 	 * Selecciona los elementos que formarán las parejas, según la temática elegida por el usuario
 	 * @param n Número de colección, según el menú mostrado.
-	 * @return
+	 * @return Un objeto de tipo Colección, con todos los elementos de la temática utilizada en la partida actual.
 	 */
 	
 	public Coleccion configuraColeccion (int n) {
@@ -214,10 +253,10 @@ public class Config {
 	}
 	
 	/**
-	 * Guarda en un objeto de tipo Coleccion únicamente las cartas que serán utilizadas en el juego, descartando las demás de la temática, dependiendo del nivel y de la temática elegida por el usuario.
+	 * Guarda en un objeto de tipo Coleccion únicamente las cartas que serán utilizadas en el juego, descartando las demás de la temática, dependiendo del nivel y de la temática elegida por el usuario. El número de elementos (<b>numParejas</b>) se establece como el ancho del tablero por el alto dividido por dos, ya que cada carta debe aparecer dos veces.
 	 * @param nivel El nivel de juego, que determina el número de cartas necesarias
-	 * @param colEscogida El conjunto de todas las cartas de la temática elegida.
-	 * @return Las cartas que serán usadas.
+	 * @param colEscogida El conjunto de todas las cartas de la temática elegida, extraído desde el método {@link #configuraColeccion(int) configuraColeccion}
+	 * @return Un objeto de tipo Colección, con únicamente los elementos a usar en la partida actual.
 	 */
 	
 	public Coleccion generaParejas (int nivel, Coleccion colEscogida) {
@@ -233,8 +272,8 @@ public class Config {
 	}
 	
 	/**
-	 * Solicita el nivel de juego (tamaño del tablero). Comprueba si es correcto con el método <b>compruebaNivel</b>
-	 * @return Un entero, donde se guarda el número de nivel
+	 * Solicita el nivel de juego (tamaño del tablero). Comprueba si es correcto con el método {@link #compruebaNivel(int) compruebaNivel}
+	 * @return Un entero, donde se guarda el número de nivel.
 	 */
 	
 	public int seleccionaNivel () {
@@ -261,7 +300,7 @@ public class Config {
 	}
 	
 	/**
-	 * Solicita la temática que tendrán las cartas del juego. Comprueba si la elección es válida con el método <b>compruebaColeccion</b>
+	 * Solicita la temática que tendrán las cartas del juego. Comprueba si la elección es válida con el método {@link #compruebaColeccion(int) compruebaColeccion}
 	 * @return Un entero que guarda el número de temática.
 	 */
 	
@@ -306,7 +345,7 @@ public class Config {
 	
 	/**
 	 * Verifica que la temática introducida es un número de temática válido, según el menú mostrado.
-	 * @param nivel El número de temática introducido
+	 * @param numColeccion El número de temática introducido
 	 * @return Un booleano, que dice si el número es válido o no.
 	 */
 	
@@ -318,22 +357,10 @@ public class Config {
 		return comprobado;
 	}
 	
-	
-	public Coleccion [] preparaParejas (int nivel) {
-		Coleccion [] misColecciones = new Coleccion [2];
-		Coleccion cole = configuraColeccion(seleccionaColeccion());
-		cole.desordenar();
-		Coleccion coleRepe = generaParejas(nivel, cole);
-		coleRepe.desordenar();
-		misColecciones[0] = cole;
-		misColecciones[1] = coleRepe;
-		return misColecciones;
-	}
-	
-	
 	/**
-	 * Crea un Array de tipo Jugador con los dos jugadores que participarán, solicitando sus nombres. Lanza los métodos de comprobación para aceptar únicamente nombres válidos.
-	 * @return
+	 * Crea un Array de tipo Jugador con los dos jugadores que participarán, solicitando sus nombres. Lanza los métodos de comprobación {@link #comprobarNombre(String) comprobarNombre} y {@link #comprobarIguales(String[]) comprobarIguales} para aceptar únicamente nombres válidos (con menos de 30 caracteres, no nulos y diferentes entre sí).
+	 * @return Un array de tipo Jugador de dos posiciones, una por participante, creado a partir de su nombre. 
+	 * @see parejas.Jugador#Jugador(String) Constructor de objetos tipo Jugador
 	 */
 	
 	public Jugador[] creaJugadores () {
@@ -360,7 +387,7 @@ public class Config {
 	}
 	
 	/**
-	 * Realiza las comprobaciones de validez del nombre de jugador.
+	 * Realiza las comprobaciones de validez del nombre de jugador (longitud inferior a 30 caracteres y nombres no nulos).
 	 * @param nombre El nombre de jugador introducido por el usuario.
 	 * @return Un booleano, que indica si el nombre es válido o no.
 	 */
@@ -379,7 +406,7 @@ public class Config {
 	
 	/**
 	 * Comprueba si los nombres de los jugadores son iguales
-	 * @param nombres
+	 * @param nombres Los nombres de los dos jugadores, pasados a través de un array de String de dos posiciones.
 	 * @return Un booleano que indica si los dos jugadores tienen el mismo nombre.
 	 */
 	
@@ -414,7 +441,7 @@ public class Config {
 	}
 	
 	/**
-	 * Solicita al jugador que tiene el turno que indique qué casilla desea abrir. Comprueba con el método <b>comprobarCoordenadas</b> si la casilla escogida es válida.
+	 * Solicita al jugador que tiene el turno que indique qué casilla desea abrir. Comprueba con el método {@link #comprobarCoordenadas(int[], int, int) comprobarCoordenadas} si la casilla escogida es válida.
 	 * @param turno Un String con el nombre del jugador al que le toca
 	 * @param jugada Un entero, que vale 1 si es su primera casilla, o 2 si es la segunda que abre.
 	 * @param coordenadas Un array de enteros, donde se van guardando las posiciones que determinan la casilla a abrir en el tablero. Los índices 0 y 1 corresponden a la fila y columna de la primera "tirada", y los índices 2 y 3 a los de la segunda.
@@ -444,7 +471,7 @@ public class Config {
 	
 	/**
 	 * Comprueba que la casilla que el usuario decide abrir existe en el tablero.
-	 * @param coordenadas Las coordenadas introducidas.
+	 * @param coordenadas Las coordenadas introducidas, chequeadas en el método {@link #pideCoordenadas(String, int, int[], int) pideCoordenadas}.
 	 * @param nivel El nivel del tablero, que determina sus coordenadas máximas.
 	 * @param jugada Indica si es la primera tirada o la segunda, para mirar las posiciones exactas en el array de coordenadas.
 	 * @return Un booleano que indica si la casilla es válida o no.
@@ -504,7 +531,7 @@ public class Config {
 	
 	/**
 	 * Muestra el marcador final, y quién es el ganador de la partida.
-	 * @param jugadores
+	 * @param jugadores El array de dos objetos tipo <code>Jugador</code> con los jugadores de la partida.
 	 */
 	
 	public void devuelveGanador (Jugador [] jugadores) {

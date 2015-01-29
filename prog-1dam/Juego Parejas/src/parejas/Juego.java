@@ -2,8 +2,22 @@ package parejas;
 
 import utilidades.*;
 
+/**
+ * Se encarga de las operaciones y llamadas a métodos del juego en sí, desde que el primer jugador se dispone a abrir la primera casilla.
+ * @since Parejas 0.8
+ * @version 4.0
+ *
+ */
 public class Juego {
 	
+	/**
+	 * Realiza cada turno de juego, con las dos tiradas de cada jugador.
+	 * @param partida La configuración inicial, establecida en la clase <code>Config</code>.
+	 * @param miTablero El tablero de juego, un objeto de la clase <code>Tablero</code>, con sus medidas correspondientes.
+	 * @param nivel Entero que guarda el nivel del jugador
+	 * @param jugadores Array de dos objetos de la clase <code>Jugador</code>, con los datos de los dos participantes.
+	 * @param turno String que almacena el nombre del jugador que tiene el turno en este momento.
+	 */
 	public static void jugar (Config partida, Tablero miTablero, int nivel, Jugador [] jugadores, String turno) {
 		int [] coordenadas = new int [4];
 		int jugada = 1;

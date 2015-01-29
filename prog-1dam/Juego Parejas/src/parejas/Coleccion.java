@@ -3,22 +3,28 @@ package parejas;
 import java.util.Arrays;
 
 /**
- * Almacena los elementos que serán utilizados como parejas en el juego.
+ * Almacena los elementos que serán utilizados como parejas en el juego para su gestión.
  * 
- * @author Andrés
+ * @author Andrés Macías Jiménez
+ * @since Parejas 0.01
+ * @version 2.1
  *
  */
 public class Coleccion {
 	
+	/**
+	 * Array de elementos usados como cartas en el juego.
+	 */
 	private String [] parejas;
 	
-	// Constructores
 	
+	/**
+	 * Constructor de objetos Coleccion. 
+	 * @param parejas Almacena en cada posición del String un elemento de la colección a crear, extraído del método {@link parejas.Config#configuraColeccion(int) configuraColeccion}.
+	 */
 	public Coleccion (String[] parejas) {
 		this.parejas = parejas;
 	}
-	
-	// Getters y Setters
 
 	public String getParejas(int indice) {
 		return parejas[indice];
@@ -27,14 +33,10 @@ public class Coleccion {
 	public void setParejas(int i, String valor) { 
 		this.parejas[i] = valor;
 	}
-
-	// Métodos
 	
 	/**
-	 * Cambia de posición los elementos del array de String que conforma la Colección. Para ello recorre el array, y va intercambiando sus elementos aleatoriamente, utilizando una variable temporal para no perder los datos.
+	 * Cambia de posición los elementos del array de String que conforma la Colección. Para ello recorre el array, y va intercambiando sus elementos aleatoriamente, utilizando una variable temporal (<b>temp</b>) para no perder los datos.
 	 * 
-	 * @param aleat Es la posición que se va a intercambiar con la que le corresponda en el ciclo del bucle.
-	 * @param temporal Guarda el contenido de la posición marcada por el ciclo del bucle, para que no se pierda al guardar en su posición el contenido de la seleccionada en <b>aleat</b>.
 	 */
 	public void desordenar () {
 		int aleat = 0;
@@ -46,9 +48,6 @@ public class Coleccion {
 			this.parejas[aleat] = temporal;
 		}
 	}
-
-	
-	// ToString
 	
 	public String toString() {   
 		return "Coleccion [parejas=" + Arrays.toString(parejas) + "]";

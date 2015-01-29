@@ -2,29 +2,77 @@ package parejas;
 
 import utilidades.*;
 
+/**
+ * Realiza las operaciones necesarias para configurar y usar el tablero de juego.
+ * @author Andrés Macías Jiménez
+ * @since Parejas 0.1
+ * @version 17.0
+ *
+ */
 public class Tablero {
 	
-	private int ancho;					// Ancho del tablero.
-	private int alto;					// Alto del tablero.
-	private String [][] cruce; 			// El contenido de cada celda. Cada cruce [i,j] es una carta.
-	private Coleccion col;				// Las cartas seleccionadas para el juego.
-	private Coleccion colRepe;			// Las parejas de las cartas seleccionadas.
-	private boolean [][] mostrar;		// Cada mostrar [i,j] indica si hay que mostrar el cruce [i,j] o no.
-	private int parejasLevantadas;		// Contador de parejas acertadas.
+	/**
+	 * Ancho del tablero.
+	 */
+	private int ancho;	
 	
-	// Constructores
+	/**
+	 * Alto del tablero.
+	 */
+	private int alto;	
 	
+	/**
+	 * Contenido de cada "celda" del tablero. Cada <code>cruce[i][j]</code> es un String que almacena un elemento de un objeto tipo <code>Coleccion</code> (una carta en el juego).
+	 */
+	private String [][] cruce; 			
+	
+	/**
+	 * Objeto de tipo <code>Coleccion</code> con las cartas a usar en el juego.
+	 */
+	private Coleccion col;				
+	
+	/**
+	 * Objeto de tipo <code>Coleccion</code> con las parejas de las cartas a usar en el juego.
+	 */
+	private Coleccion colRepe;			
+	
+	/**
+	 * Array bidimensional de booleanos, que indica con un valor <code>mostrar[i][j]</code> true que el elemento <code>cruce[i][j]</code> se debe mostrar al usuario, o si es false que se debe ocultar.
+	 */
+	private boolean [][] mostrar;		
+	
+	/**
+	 * Entero que almacena el total de parejas descubiertas en la partida actual.
+	 */
+	private int parejasLevantadas;		
+	
+	
+	/**
+	 * @deprecated Constructor vacío de objetos tipo <code>Tablero</code>. No se usa en el juego.
+	 */
 	public Tablero () {
 		this.ancho = 0;
 		this.alto = 0;
 		this.parejasLevantadas = 0;
 	}
 	
+	/**
+	 * Constructor de objetos de tipo <code>Tablero</code>, a partir de los elementos a usar en la partida. El resto de atributos son suministrados desde la clase Principal o desde otros métodos.
+	 * @param col Objeto de tipo <code>Coleccion</code> con las cartas a usar en el juego.
+	 * @param colRepe Objeto de tipo <code>Coleccion</code> con las parejas de las cartas a usar en el juego.
+	 */
 	public Tablero (Coleccion col, Coleccion colRepe) {
 		this.col = col;
 		this.colRepe = colRepe;	
 	}
 	
+	/**
+	 * @deprecated Constructor de objetos tipo <code>Tablero</code>. No se usa en el juego.
+	 * @param ancho Ancho del tablero.
+	 * @param alto Alto del tablero.
+	 * @param col Objeto de tipo <code>Coleccion</code> con las cartas a usar en el juego.
+	 * @param colRepe Objeto de tipo <code>Coleccion</code> con las parejas de las cartas a usar en el juego.
+	 */
 	public Tablero (int ancho, int alto, Coleccion col, Coleccion colRepe) {
 		this.ancho = ancho;
 		this.alto = alto;
@@ -34,8 +82,6 @@ public class Tablero {
 		this.mostrar = new boolean [alto][ancho];
 		this.parejasLevantadas = 0;
 	}
-	
-	// Getters y Setters
 
 	public boolean getMostrar(int i, int j) {
 		return mostrar[i][j];
@@ -85,12 +131,11 @@ public class Tablero {
 		this.parejasLevantadas = parejas;
 	}
 	
-	// Métodos
 	
 	/**
 	 * Fija el ancho y el alto del tablero, según el nivel seleccionado por el usuario.
 	 * @param nivel El indicado por el usuario
-	 * @param partida El objeto de la Clase <b>Config</b>, en la que se establece cuánto mide cada tablero según el nivel.
+	 * @param partida El objeto de la Clase <code>Config</code>, en la que se establece cuánto mide cada tablero según el nivel.
 	 */
 	
 	public void montaTablero (int nivel, Config partida) {	
@@ -155,7 +200,7 @@ public class Tablero {
 	}
 	
 	/**
-	 * Coloca el tablero en la posición inicial, sin que se muestre el contenido de ninguna celda. Cada celda (i,j) tiene asociado el booleano <i>mostrar(i,j)</i>, que indica si al dibujar el array hay que mostrar el contenido o no.
+	 * Coloca el tablero en la posición inicial, sin que se muestre el contenido de ninguna celda. Cada celda (i,j) tiene asociado el booleano <code>mostrar[i][j])</code>, que indica si al dibujar el array hay que mostrar el contenido o no.
 	 */
 	
 	public void taparTodo () {
