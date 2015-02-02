@@ -13,7 +13,31 @@ public class Inicio {
 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		double maxPrecio = 50.0;
+		
+		// Generamos un carrito de productos
+		
+		int cantidadProductos = (int)(Math.random() * 20);
+		
+		Producto [] miCarrito = new Producto [cantidadProductos];      
+		
+		for (int i = 0; i < cantidadProductos; i++) {
+			switch ((int)(Math.random() * 3)) {
+			case 0:
+				miCarrito [i] = new Alimentacion ( Math.random() * maxPrecio, "Alimentación", (int)(Math.random() * 100), (int)(Math.random() * 10)  );
+				break;
+			case 1:
+				miCarrito [i] = new Ropa ();
+				break;
+			case 2:
+				miCarrito [i] = new Electronica ();
+			}	
+		}
+		
+		for (int i = 0; i < cantidadProductos; i++) {
+			System.out.println(miCarrito [i]);
+		}
 		
 		
 

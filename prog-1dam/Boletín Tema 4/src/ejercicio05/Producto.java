@@ -1,20 +1,20 @@
 package ejercicio05;
 
-public class Producto {
+public abstract class Producto {
 	
 	private double precioUnit;
 	private String nomProducto;
-	private String refID;
-	private int unidades;
+	private int refID;
+	private int unidades;    // Unidades compradas del producto refID.
 	
 	public Producto () {
 		this.precioUnit = 0.0;
 		this.nomProducto = "";
-		this.refID = "";
+		this.refID = 0;
 		this.unidades = 0;
 	}
 	
-	public Producto (double precioUnit, String nomProducto, String refID, int unidades) {
+	public Producto (double precioUnit, String nomProducto, int refID, int unidades) {
 		this.precioUnit = precioUnit;
 		this.nomProducto = nomProducto;
 		this.refID = refID;
@@ -37,11 +37,11 @@ public class Producto {
 		this.nomProducto = nomProducto;
 	}
 
-	public String getRefID() {
+	public int getRefID() {
 		return refID;
 	}
 
-	public void setRefID(String refID) {
+	public void setRefID(int refID) {
 		this.refID = refID;
 	}
 
@@ -53,12 +53,10 @@ public class Producto {
 		this.unidades = unidades;
 	}
 
-	public double importeTotalProducto () {
-		return 0.0;
-	}
+	public abstract double calcularImporte ();
 
 	public String toString() {
-		return "Producto ID: " + refID + "\tNombre: " + nomProducto + "\tPrecio: " + precioUnit + "€ \tUds: " + unidades;
+		return "Producto ID: " + refID + "\tNombre: " + nomProducto + "\tPrecio: " + precioUnit + "€";
 	}
 	
 	
