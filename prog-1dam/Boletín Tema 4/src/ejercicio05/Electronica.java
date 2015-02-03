@@ -36,16 +36,17 @@ public class Electronica extends Producto {
 
 	@Override
 	public double calcularImporte () {  // Aplica un 2ª unidad al 50%
-		double importeTotal = super.getPrecioUnit() * super.getUnidades();
-		if (super.getUnidades() % 2 == 0) {
-			importeTotal = (super.getPrecioUnit() * (int)super.getUnidades() / 2)    
-						 + (super.getPrecioUnit() * this.porcentaje2ud / 100 * (int)super.getUnidades() / 2);
-		}
+		double importeTotal; 
+		
+		importeTotal = (super.getPrecioUnit() * (int)(super.getUnidades() / 2))    
+						 + (super.getPrecioUnit() * this.porcentaje2ud / 100 * (int)(super.getUnidades() / 2)) +
+						 (super.getUnidades() % 2) * super.getPrecioUnit();
+		
 		return importeTotal;
 	}
 	
 	public String toString () {
-		return super.toString() + "\tImporte total: " + calcularImporte();
+		return super.toString() + "\tImporte total: " + calcularImporte() + " €";
 	}
 
 

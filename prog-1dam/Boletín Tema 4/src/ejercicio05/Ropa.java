@@ -21,7 +21,7 @@ public class Ropa extends Producto {
 		this.fabricante = fabricante;
 		this.talla = talla;
 		this.porcentajeDescuento = 10;
-		this.tallaDescuento = 40;
+		this.tallaDescuento = 42;
 	}
 	
 	public String getFabricante() {
@@ -52,13 +52,14 @@ public class Ropa extends Producto {
 	public double calcularImporte () {  // Aplica un descuento del 10% a las tallas grandes
 		double importeTotal = super.getPrecioUnit() * super.getUnidades();
 		if (this.talla > this.tallaDescuento) {
-			importeTotal = super.getPrecioUnit() * this.porcentajeDescuento / 100 * (int)super.getUnidades();
+			importeTotal = (super.getPrecioUnit() * super.getUnidades()) -
+					(super.getPrecioUnit() * this.porcentajeDescuento / 100 * super.getUnidades());
 		}
 		return importeTotal;
 	}
 	
 	public String toString () {
-		return super.toString() + "\tImporte total: " + calcularImporte();
+		return super.toString() + "\tImporte total: " + calcularImporte() + " €\tTalla: " + talla;
 	}
 
 }

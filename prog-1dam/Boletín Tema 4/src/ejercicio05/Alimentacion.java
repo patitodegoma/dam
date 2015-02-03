@@ -32,13 +32,14 @@ public class Alimentacion extends Producto {
 	public double calcularImporte () {  // Aplica un 3x2 en estos productos
 		double importeTotal = super.getPrecioUnit() * super.getUnidades();
 		if (super.getUnidades() >= this.triggerOferta) {
-			importeTotal = super.getPrecioUnit() * (int)super.getUnidades() / this.triggerOferta;
+			importeTotal = 2 * super.getPrecioUnit() * (int)(super.getUnidades() / this.triggerOferta) +
+					 super.getPrecioUnit() * (super.getUnidades() % this.triggerOferta);
 		}
 		return importeTotal;
 	}
 	
 	public String toString () {
-		return super.toString() + "\tImporte total: " + calcularImporte();
+		return super.toString() + "\tImporte total: " + calcularImporte() + " €";
 	}
 
 }

@@ -56,7 +56,7 @@ public abstract class Producto {
 	public abstract double calcularImporte ();
 
 	public String toString() {
-		return "Producto ID: " + refID + "\tNombre: " + nomProducto + "\tPrecio: " + precioUnit + "€";
+		return "Producto: " + refID + "\tNombre: " + nomProducto + "\tPrecio: " + precioUnit + " €\tUnidades: " + unidades;
 	}
 	
 	

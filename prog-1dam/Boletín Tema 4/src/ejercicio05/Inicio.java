@@ -14,33 +14,34 @@ public class Inicio {
 
 	public static void main(String[] args) {
 		
-		double maxPrecio = 50.0;
-		
-		// Generamos un carrito de productos
+		double minPrecioAlim = 0.29, maxPrecioAlim = 20.0, minPrecioRopa = 2.79, maxPrecioRopa = 39.99, 
+				minPrecioElec = 4.95, maxPrecioElec = 59.99;
+		int minTalla = 34, maxProdAlim = 10, maxProdRopa = 5, maxProdElec = 4;
 		
 		int cantidadProductos = (int)(Math.random() * 20);
 		
-		Producto [] miCarrito = new Producto [cantidadProductos];      
+		Producto [] miCarrito = new Producto [cantidadProductos];   
+		Cajera miCajera = new Cajera ("Juani");
 		
 		for (int i = 0; i < cantidadProductos; i++) {
 			switch ((int)(Math.random() * 3)) {
 			case 0:
-				miCarrito [i] = new Alimentacion ( Math.random() * maxPrecio, "Alimentación", (int)(Math.random() * 100), (int)(Math.random() * 10)  );
+				miCarrito [i] = new Alimentacion (minPrecioAlim + Math.random() * (maxPrecioAlim - minPrecioAlim), 
+						"Alimentación", (int)(Math.random() * 100), 1 + (int)(Math.random() * maxProdAlim));
 				break;
 			case 1:
-				miCarrito [i] = new Ropa ();
+				miCarrito [i] = new Ropa (minPrecioRopa + Math.random() * (maxPrecioRopa - minPrecioRopa), 
+						"Prendas Vestir", 100 + (int)(Math.random() * 100), 1 + (int)(Math.random() * maxProdRopa), 
+						"Fabricante", minTalla + (int)(Math.random() * 20) );
 				break;
 			case 2:
-				miCarrito [i] = new Electronica ();
+				miCarrito [i] = new Electronica (minPrecioElec + Math.random() * (maxPrecioElec - minPrecioElec), 
+						"Electrónica", 200 + (int)(Math.random() * 100), 1 + (int)(Math.random() * maxProdElec), 
+						"Fabricante");
 			}	
-		}
+		}	
 		
-		for (int i = 0; i < cantidadProductos; i++) {
-			System.out.println(miCarrito [i]);
-		}
-		
-		
-
+		miCajera.realizaGestion(miCarrito);		
 	}
 
 }
