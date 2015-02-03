@@ -18,7 +18,7 @@ public class Inicio {
 				minPrecioElec = 4.95, maxPrecioElec = 59.99;
 		int minTalla = 34, maxProdAlim = 10, maxProdRopa = 5, maxProdElec = 4;
 		
-		int cantidadProductos = (int)(Math.random() * 20);
+		int cantidadProductos = (int)(Math.random() * 12);
 		
 		Producto [] miCarrito = new Producto [cantidadProductos];   
 		Cajera miCajera = new Cajera ("Juani");

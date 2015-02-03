@@ -9,6 +9,14 @@ WHERE NOMEQ NOT IN (
                     FROM CICLISTA JOIN PUERTO USING (DORSAL))
 GROUP BY NOMEQ;
 
+
+
+          -- Corrección 
+          Está bien.
+          
+          
+
+
 -- Obtener el dorsal y el nombre de los ciclistas que han ganado los puertos de
 -- menor altura de cada etapa.
 
