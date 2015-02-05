@@ -25,6 +25,13 @@ public class Cliente {
 	public void setMiCuenta(Cuenta miCuenta) {
 		this.miCuenta = miCuenta;
 	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nombre=" + nombre + ", miCuenta=" + miCuenta + "]";
+	}
+	
+	
 	
 	
 	

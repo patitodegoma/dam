@@ -1,5 +1,7 @@
 package ejercicio07;
 
+import utiles.Datos;
+
 public class Inicio {
 	
 	/*
@@ -19,18 +21,38 @@ public class Inicio {
 		// TODO Auto-generated method stub
 		
 		int numClientes = 1 + (int)(5 * Math.random());
+		Cuenta [] libroCuentas = new Cuenta [numClientes];
 		Cliente [] colaClientes = new Cliente [numClientes];
+		
+		double mantenimiento = 15;
 		
 		// "Apertura" de cuentas
 		for (int i = 0; i < numClientes; i++) {
-			switch ((int)Math.random() * 3) {
+			switch ((int)(Math.random() * 3)) {
 			case 0:
-				colaClientes [i].setMiCuenta(new CuentaCorriente("cuenta1", 0, 0, 0, 0));
-			case 1:
+				libroCuentas [i] = new CuentaCorriente("cuenta"+(i+1), 
+						300 + (int)(Math.random() * 1000), mantenimiento, 0, 0);
 				
+				colaClientes [i] = new Cliente (Datos.dame1Nombre(), libroCuentas[i]);
+				break;
+			case 1:
+				libroCuentas [i] = new CuentaEmpresa("cuenta"+(i+1), 
+						300 + (int)(Math.random() * 1000), 0);
+				
+				colaClientes [i] = new Cliente (Datos.dame1Nombre(), libroCuentas[i]);
+	
+				break;
 			case 2:
+				libroCuentas [i] = new CuentaJoven("cuenta"+(i+1), 
+						300 + (int)(Math.random() * 1000), 0);
+				
+				colaClientes [i] = new Cliente (Datos.dame1Nombre(), libroCuentas[i]);
 			}
 			
+		}
+		
+		for (int i = 0; i< numClientes; i++) {
+			System.out.println(colaClientes[i]);
 		}
 		
 		

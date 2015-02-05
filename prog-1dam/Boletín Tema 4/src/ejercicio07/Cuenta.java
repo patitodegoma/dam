@@ -43,6 +43,13 @@ public abstract class Cuenta {
 	public String mostrarSaldo() {
 		return "\nEl saldo de la cuenta es de " + getSaldo() + " €.";
 	}
+
+	@Override
+	public String toString() {
+		return "Cuenta [ccc=" + ccc + ", saldo=" + saldo + ", mantenimiento="
+				+ mantenimiento + "]";
+	}
+	
 	
 	
 
