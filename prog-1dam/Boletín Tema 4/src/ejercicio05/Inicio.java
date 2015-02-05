@@ -14,10 +14,13 @@ public class Inicio {
 
 	public static void main(String[] args) {
 		
+		// Precios máximos y mínimos para cada categoría de producto
 		double minPrecioAlim = 0.29, maxPrecioAlim = 20.0, minPrecioRopa = 2.79, maxPrecioRopa = 39.99, 
 				minPrecioElec = 4.95, maxPrecioElec = 59.99;
+		// Talla mínima y máximo de productos que un cliente se llevaría de cada producto
 		int minTalla = 34, maxProdAlim = 10, maxProdRopa = 5, maxProdElec = 4;
 		
+		// Número de productos distintos que se ha comprado
 		int cantidadProductos = (int)(Math.random() * 12);
 		
 		Producto [] miCarrito = new Producto [cantidadProductos];   
