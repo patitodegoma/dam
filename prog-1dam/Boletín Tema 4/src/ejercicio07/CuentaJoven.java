@@ -18,6 +18,7 @@ public class CuentaJoven extends Cuenta {
 			System.out.println("\nLa operación no pudo realizarse por falta de fondos suficientes en cuenta.");
 		} else {
 			super.setSaldo(super.getSaldo() - cantidad);
+			System.out.println("\nOperación realizada satisfactoriamente.");
 		}
 	}
 	

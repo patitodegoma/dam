@@ -20,18 +20,19 @@ public class Inicio {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		int numClientes = 1 + (int)(5 * Math.random());
+		int numClientes = 1 + (int)(12 * Math.random());
 		Cuenta [] libroCuentas = new Cuenta [numClientes];
 		Cliente [] colaClientes = new Cliente [numClientes];
 		
 		double mantenimiento = 15;
+		int puntosUsoCajero = 10;
 		
 		// "Apertura" de cuentas
 		for (int i = 0; i < numClientes; i++) {
 			switch ((int)(Math.random() * 3)) {
 			case 0:
 				libroCuentas [i] = new CuentaCorriente("cuenta"+(i+1), 
-						300 + (int)(Math.random() * 1000), mantenimiento, 0, 0);
+						300 + (int)(Math.random() * 1000), mantenimiento, puntosUsoCajero, 0);
 				
 				colaClientes [i] = new Cliente (Datos.dame1Nombre(), libroCuentas[i]);
 				break;
@@ -51,17 +52,10 @@ public class Inicio {
 			
 		}
 		
-		for (int i = 0; i< numClientes; i++) {
-			System.out.println(colaClientes[i]);
-		}
+		System.out.println("\n *** Bienvenido a mi programa. Gestiona los clientes que se acercan a un cajero ***\n");
 		
-		
-		
-		
-		
-		
-		
-		Cajero miCajero = new Cajero (colaClientes);
+		Cajero miCajero = new Cajero (colaClientes, libroCuentas);
+		miCajero.gestionaClientes();
 
 	}
 

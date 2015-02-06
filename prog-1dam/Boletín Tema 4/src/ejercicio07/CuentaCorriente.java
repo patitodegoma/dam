@@ -41,6 +41,7 @@ public class CuentaCorriente extends Cuenta {
 		} else {
 			super.setSaldo(super.getSaldo() - cantidad);
 			this.saldoPuntos += this.puntosPorUso;
+			System.out.println("\nOperación realizada satisfactoriamente.");
 		}
 	}
 	
