@@ -1,0 +1,81 @@
+body {
+	margin: 0;
+	padding: 0;
+}
+
+nav {
+	display: block;
+	width: 100%;
+	height: 46px;
+	background-color: #656565;
+}
+
+h1 {
+	color: blue;
+	text-align: center;
+}
+
+ul {
+	margin: 0;
+	padding: 12px 0 0 0;
+	list-style: none;
+	width: 100%;
+}
+
+li.normal {
+	float: left;
+	width: 8%;
+	text-align: center;
+}
+
+li.first {
+	float: left;
+	width: 4%;
+	text-align: center;
+	padding-left: 13%;
+}
+
+li.last {
+	float: left;
+	width: 5%;
+	text-align: center;
+	padding-left: 3%;
+}
+
+a.activo {	
+	color: #c8c8c8;
+}
+
+span {
+	display: none;
+}
+
+.appel {
+	background-image: url(../images/mixta.png);
+	background-repeat: no-repeat;
+	width: 22px;
+	height: 25px;
+}
+
+.magnifaier {
+	background-image: url(../images/lupas.png);
+	background-repeat: no-repeat;
+	width: 25px;
+	height: 25px;
+}
+
+a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 11pt;
+}
+
+a:hover, a:active {
+	background-position: bottom;
+	color: #c8c8c8;
+	text-decoration: none;
+}
+
+

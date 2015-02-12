@@ -1,0 +1,60 @@
+body {
+	margin: 0;
+	padding: 10px 0 0 0;
+}
+
+#contenedor {
+	width: 95%;
+	margin: 0 auto;
+	padding: 0;
+}
+
+nav {
+	display: block;
+	width: 100%;
+	height: 46px;
+}
+
+ul {
+	margin: 0;
+	padding: 0 0 0 0;
+	list-style: none;
+	width: 100%;
+}
+
+li {
+	float: left;
+	width: 14%;
+	background-color: #333;
+	text-align: center;
+}
+
+.activo {
+	background-color: white;
+	color: black;
+}
+
+li:hover {
+	background-color: white;
+	margin-top: -3px;
+}
+
+a {
+	display: block;
+	color: white;
+	text-decoration: none;
+	font-family: Verdana;
+	font-size: 11pt;
+	height: 36px;
+	padding-top: 10px;
+}
+
+a:hover, a:active {
+	background-color: maroon;
+	text-decoration: none;
+	border: 2px #333;
+	height: 40px;
+	border-style: outset none;
+}
+
+
