@@ -19,8 +19,10 @@ public class Inicio {
 		
 		int opcion, numNota;
 		String titulo, texto;
-		char respuesta;
+		char respuesta = 'n';
+		boolean borrado;
 		
+		// Creo esta nota a mano para que la agenda no esté vacía por defecto, y se pueda probar el menú sin necesidad de crear notas.
 		Nota miNota = new Nota ("Comprar tomates", "Comprar en el Día los tomates para la ensalada de esta noche.");
 		
 		Agenda miAgenda = new Agenda ();
@@ -31,7 +33,9 @@ public class Inicio {
 			System.out.println("\n¿Qué hacemos?\n");
 			
 			System.out.println("1 - Agregar nota\n"
-					+ "2 - Borrar nota");
+					+ "2 - Borrar nota\n"
+					+ "3 - Mostrar una nota\n"
+					+ "4 - Listar todas");
 			
 			System.out.print("Opción: ");
 			opcion = Leer.datoInt();
@@ -53,21 +57,33 @@ public class Inicio {
 				System.out.print("\n¿Está seguro? (S/N): ");
 				respuesta = Leer.datoChar();
 				if (respuesta == 's' || respuesta == 'S') {
-					miAgenda.borrarNota(numNota);
+					borrado = miAgenda.borrarNota(numNota);
+					if (borrado)
+						System.out.println("\nNota borrada satisfactoriamente.");
+					else
+						System.out.println("\nLa nota no se pudo eliminar.");
 				} else {
-					System.out.println("\nNo se borró la nota");
+					System.out.println("\nNo se borró la nota.");
 				}
 				break;
+			case 3:
+				System.out.print("\nPor favor, dígame el número de nota:");
+				numNota = Leer.datoInt();
+				System.out.println(miAgenda.mostrarNota(numNota));
+				break;
+			case 4:
+				System.out.println("\nActualmente hay " + miAgenda.mostrarTamano() + " nota(s) guardada(s) hasta ahora en la agenda, y son las siguientes:\n");
+				miAgenda.mostrarTodas();
+			case 0:
 			}
 			
-			System.out.print("\n¿Algo más? (S/N): ");
-			respuesta = Leer.datoChar();
+			if (opcion != 0) {
+				System.out.print("\n¿Algo más? (S/N): ");
+				respuesta = Leer.datoChar();
+			}
 			
-		} while (respuesta == 's' || respuesta == 'S');
-		
-		
-		
-		
+			
+		} while (respuesta == 's' || respuesta == 'S');	
 		
 		System.out.println(miAgenda);
 	}

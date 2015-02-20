@@ -43,8 +43,8 @@ public class Nota {
 
 	@Override
 	public String toString() {
-		return "Nota [idNota=" + idNota + ", titulo=" + titulo + ", texto="
-				+ texto + "]";
+		return "Nota " + idNota + ".- Título: " + titulo + ", Texto: " + texto;
+			
 	}
 	
 	
